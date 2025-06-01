@@ -235,7 +235,7 @@ python -m pytest
 
 **[⭐ このリポジトリにスター](https://github.com/superdoccimo/modern-serial-communication.git)** を付けて、役に立ったら教えてください！
 
-**[📧 お問い合わせ](mailto:summer@minokamo.xyz)** エンタープライズサポートやカスタム開発について。
+**[📧 お問い合わせ](mailto:github@minokamo.xyz)** エンタープライズサポートやカスタム開発について。
 
 ## 🔍 スクリーンショット
 

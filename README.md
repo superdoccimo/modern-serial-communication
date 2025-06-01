@@ -235,4 +235,4 @@ Join us in making serial communication accessible to everyone!
 
 **[⭐ Star this repo](https://github.com/superdoccimo/modern-serial-communication.git)** if you find it useful!
 
-**[📧 Get in touch](mailto:summer@minokamo.xyz)** for enterprise support or custom development.
+**[📧 Get in touch](mailto:github@minokamo.xyz)** for enterprise support or custom development.

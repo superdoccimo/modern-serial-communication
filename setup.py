@@ -20,7 +20,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/superdoccimo/modern-serial-communication.git",
     author="Your Name",
-    author_email="summer@minokamo.xyz",
+    author_email="github@minokamo.xyz",
     license="MIT",
     classifiers=[
         "Development Status :: 4 - Beta",
