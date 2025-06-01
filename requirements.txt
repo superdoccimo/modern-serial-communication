@@ -1,0 +1,15 @@
+# Modern Serial Communication - Dependencies
+# Python Serial Communication Library Requirements
+
+pyserial>=3.5
+pyserial-asyncio>=0.6
+textual>=0.41.0
+rich>=13.0.0
+
+# Optional: For future MQTT support
+# asyncio-mqtt>=0.11.1
+
+# Optional: For future web interface
+# fastapi>=0.68.0
+# uvicorn>=0.15.0
+# websockets>=10.0
