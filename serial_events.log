@@ -1,0 +1,921 @@
+{"timestamp": "2025-06-08T10:30:16.830320", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.831208", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.831208", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.834000", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.837307", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.837307", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.837307", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.837307", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.837307", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.855489", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.855489", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T10:30:16.855489", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.618683", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.619792", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.622681", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.622681", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.625060", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.626088", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.626088", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.627061", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.629414", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.630412", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.632412", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.633416", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.634411", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.635450", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.636412", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.637417", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.637417", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.638929", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.640942", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:32:25.641944", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.907019", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.908036", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.908036", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.909019", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.921544", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.923569", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.923569", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.924553", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.924553", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.934779", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.938347", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T10:34:27.939432", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T10:34:48.345942", "event_type": "data_sent", "message": "Sent 6 bytes", "details": {"length": 6, "data_str": "test\r\n"}}
+{"timestamp": "2025-06-08T10:36:27.515698", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.516968", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.517471", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.517471", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.517471", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.517471", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.518476", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.518476", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.519476", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.520793", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.520793", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T10:36:27.520793", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:49:00.160993", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:49:00.161993", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:49:00.161993", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:49:00.161993", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:49:00.171429", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:49:00.173483", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.081152", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.081764", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.082387", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.082387", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.082387", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.082387", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.083409", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.083409", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.085946", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:20.085946", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:50:24.941147", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:24.941147", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:24.942147", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:24.942147", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:50:24.956314", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:50:24.960316", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.555032", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.556141", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.556141", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.557453", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.557995", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.557995", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.557995", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.559050", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.560013", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:35.560013", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:50:36.505115", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:36.506146", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:36.506146", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:36.506146", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:50:36.519079", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T11:50:36.524089", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.011416", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.012416", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.013418", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.013418", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.013418", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.013418", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.014925", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.014925", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.015932", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.015932", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.770130", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.771133", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM3, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.771133", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM3, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.771759", "event_type": "connecting", "message": "Attempting to connect to COM3 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.783011", "event_type": "connected", "message": "Successfully connected to COM3", "details": {}}
+{"timestamp": "2025-06-08T11:50:42.786813", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.963870", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.965551", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.966573", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.967587", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.968584", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.969586", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.970584", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.971585", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.973627", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:50:46.975360", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:50:51.731538", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:51.732443", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:51.732443", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:50:51.732443", "event_type": "connecting", "message": "Attempting to connect to COM2 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:50:51.742666", "event_type": "connected", "message": "Successfully connected to COM2", "details": {}}
+{"timestamp": "2025-06-08T11:50:51.746242", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.785034", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.786069", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.787069", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.787069", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.787069", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.788069", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.788069", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.788069", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.789576", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:51:24.789576", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:51:28.887718", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:51:28.887718", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:51:28.887718", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:51:28.887718", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:51:28.901894", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:51:28.905454", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.172755", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.172755", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.173764", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.173764", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.173764", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.173764", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.173764", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.175269", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.176279", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:51:32.176279", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:52:04.356028", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:04.357027", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:04.357027", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:04.357027", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:52:04.369509", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:52:04.372515", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.390417", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.391417", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.392417", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.393986", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.395651", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.396672", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.397691", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.397691", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.401692", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:52:11.402692", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:52:20.479325", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:20.479946", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:20.479946", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:20.479946", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:52:20.492796", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:52:20.496640", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.413127", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.413127", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.414695", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.414695", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.415648", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.415648", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.415648", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.416648", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.418064", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:52:25.418064", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:52:29.702760", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:29.703758", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:29.703758", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:52:29.704758", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:52:29.716247", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T11:52:29.721215", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.301116", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.301116", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.302124", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.302124", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.302124", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.303124", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.303124", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.303124", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.303124", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:52:42.304409", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:53:21.025129", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:53:21.025129", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:53:21.025946", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:53:21.025946", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:53:21.036854", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:53:21.041873", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.829306", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.830275", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.832287", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.833189", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.835185", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.836568", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.837568", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.838135", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.841193", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:39.842242", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:54:40.598083", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:40.598083", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:40.598083", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:40.599134", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:54:40.611107", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:54:40.617688", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.176206", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.176206", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.177208", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.177208", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.177208", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.178206", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.178206", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.178206", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.179206", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:46.179206", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.510829", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.510829", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.511831", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.511831", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.522666", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.525270", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.525270", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.525270", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.526234", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.534749", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.539764", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:54:51.539764", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.482830", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.484293", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.484293", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.485338", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.485338", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.485338", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.485338", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.486532", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.489769", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.489769", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.490732", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.490732", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.490732", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.491738", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.491738", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.491738", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.491738", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.491738", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.492738", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:54:59.492738", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:55:12.507677", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:12.508670", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:12.508670", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:12.508670", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:55:12.519019", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:55:12.522054", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.232132", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.232132", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.233730", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.233730", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.233730", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.233730", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.233730", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.233730", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.236399", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:55:15.236399", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:55:18.996423", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:18.996423", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:18.996948", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:18.996948", "event_type": "connecting", "message": "Attempting to connect to COM2 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:55:19.007976", "event_type": "connected", "message": "Successfully connected to COM2", "details": {}}
+{"timestamp": "2025-06-08T11:55:19.010984", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.941654", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.942775", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.943699", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.945301", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.946413", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.947418", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.947418", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.948901", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.952823", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:55:26.953889", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:55:27.622260", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:27.623258", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM3, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:27.623258", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM3, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:27.623258", "event_type": "connecting", "message": "Attempting to connect to COM3 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:55:27.636830", "event_type": "connected", "message": "Successfully connected to COM3", "details": {}}
+{"timestamp": "2025-06-08T11:55:27.639937", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.233268", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.233268", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.234952", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.234952", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.234952", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.235952", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.235952", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.235952", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.237909", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:55:39.237909", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.229613", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.229613", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.230612", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.230612", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.242682", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.243679", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.243679", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.245204", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.245204", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.254223", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.256793", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:55:40.256793", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.562191", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.563731", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.564747", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.565287", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.565287", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.565287", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.566304", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.566304", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.567305", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.568304", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.568304", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.568304", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.568304", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.569323", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.569323", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.569323", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.569323", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.569323", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.571324", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:56:06.571510", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:56:07.162011", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:56:07.162011", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:56:07.163057", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:56:07.163057", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:56:07.173612", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:56:07.177162", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.212411", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.212411", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.213425", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.213425", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.214561", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.215078", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.215078", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.215078", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.216093", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:56:17.217489", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:56:34.392165", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:56:34.393165", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:56:34.393165", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:56:34.393165", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:56:34.404223", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:56:34.407708", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.380125", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.380125", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.381016", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.381016", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.382012", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.382012", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.382012", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.382012", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.383676", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:57:42.383676", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:58:50.967418", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:58:50.967418", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:58:50.968416", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:58:50.968416", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:58:50.978790", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:58:50.984796", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.502187", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.503138", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.504248", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.505853", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.506922", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.507975", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.508981", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.508981", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.511929", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:58:56.512959", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.659761", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.660762", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.661763", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.661763", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.674712", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.677240", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.677240", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.678224", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.678224", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.692439", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.697198", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:59:04.697198", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.659544", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.659544", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.660563", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.661563", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.663561", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.663561", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.665144", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.666636", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.670693", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.670693", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.674936", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.675870", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.678453", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.679568", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.680587", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.681587", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.682555", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.683559", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.711829", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T11:59:45.712830", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T11:59:57.193465", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:57.193465", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:57.193465", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T11:59:57.194970", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T11:59:57.204983", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T11:59:57.207991", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.960673", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.961673", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.961673", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.962677", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.962677", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.962677", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.962677", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.963669", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.965078", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T12:53:31.965078", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.073772", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.074895", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.075642", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.076155", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.086835", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.089849", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.089849", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.090834", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.090834", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.099714", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.102727", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T13:04:03.103712", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.543180", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.544194", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.545198", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.545198", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.546181", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.547301", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.547802", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.547802", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.548814", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.548814", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.549812", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.549812", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.550811", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.550811", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.551813", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.551813", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.552813", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.552813", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.556814", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:04:05.557821", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.991395", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.992307", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.992911", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.993967", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.999740", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.999740", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.999740", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.999740", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T13:05:27.999740", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T13:05:28.015364", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T13:05:28.015364", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T13:05:28.015364", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T13:08:19.872447", "event_type": "data_received", "message": "Received 39 bytes", "details": {"length": 39, "raw_hex": "53595354454d5f444154412c312c32332c4d454d4f52595f55534147455f50455243454e540d0a"}}
+{"timestamp": "2025-06-08T13:08:22.356001", "event_type": "data_received", "message": "Received 39 bytes", "details": {"length": 39, "raw_hex": "53595354454d5f444154412c322c34352c4d454d4f52595f55534147455f50455243454e540d0a"}}
+{"timestamp": "2025-06-08T13:08:23.975239", "event_type": "data_received", "message": "Received 22 bytes", "details": {"length": 22, "raw_hex": "50524f434553535f434f554e542c332c3236372c544f"}}
+{"timestamp": "2025-06-08T13:08:23.976245", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "54414c5f50524f434553"}}
+{"timestamp": "2025-06-08T13:08:23.990305", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "5345530d0a"}}
+{"timestamp": "2025-06-08T13:08:26.320323", "event_type": "data_received", "message": "Received 36 bytes", "details": {"length": 36, "raw_hex": "4c494e55585f4845415254424541542c342c414c4956455f46524f4d5f4c494e55580d0a"}}
+{"timestamp": "2025-06-08T13:08:28.666827", "event_type": "data_received", "message": "Received 34 bytes", "details": {"length": 34, "raw_hex": "5542554e54555f5354415455532c352c52554e4e494e472c31333a30383a32370d0a"}}
+{"timestamp": "2025-06-08T13:08:31.087326", "event_type": "data_received", "message": "Received 107 bytes", "details": {"length": 107, "raw_hex": "7b226964223a20362c202274696d657374616d70223a2022323032352d30362d30385431333a30383a33302e323231313238222c2022736f75726365223a20224c696e75785f4775657374222c2022646972656374696f6e223a20224c696e75785f746f5f57696e646f77"}}
+{"timestamp": "2025-06-08T13:08:31.103376", "event_type": "data_received", "message": "Received 112 bytes", "details": {"length": 112, "raw_hex": "73222c202273797374656d223a207b22686f73746e616d65223a20227562756e74752d766d222c2022757074696d65223a2037353733342c20226c6f61645f617667223a20302e31392c2022667265655f6d656d6f7279223a20333538377d2c202273656e736f7273223a207b226370"}}
+{"timestamp": "2025-06-08T13:08:31.105419", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "755f74656d70"}}
+{"timestamp": "2025-06-08T13:08:31.109401", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "223a2035302c20"}}
+{"timestamp": "2025-06-08T13:08:31.113383", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "2266616e5f7370"}}
+{"timestamp": "2025-06-08T13:08:31.115404", "event_type": "data_received", "message": "Received 20 bytes", "details": {"length": 20, "raw_hex": "656564223a20313935312c2022766f6c74616765"}}
+{"timestamp": "2025-06-08T13:08:31.118400", "event_type": "data_received", "message": "Received 11 bytes", "details": {"length": 11, "raw_hex": "223a2031322e327d7d0d0a"}}
+{"timestamp": "2025-06-08T13:08:33.527980", "event_type": "data_received", "message": "Received 37 bytes", "details": {"length": 37, "raw_hex": "4e4554574f524b5f535441542c372c363135352c5041434b4554535f5045525f5345430d0a"}}
+{"timestamp": "2025-06-08T13:08:41.943172", "event_type": "data_received", "message": "Received 34 bytes", "details": {"length": 34, "raw_hex": "5542554e54555f5354415455532c312c52554e4e494e472c31333a30383a34310d0a"}}
+{"timestamp": "2025-06-08T13:08:43.825164", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "4c494e55585f544f5f57494e2c322c32342e36352c435055"}}
+{"timestamp": "2025-06-08T13:08:43.828191", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "5f54454d500d0a"}}
+{"timestamp": "2025-06-08T13:08:46.805016", "event_type": "data_received", "message": "Received 37 bytes", "details": {"length": 37, "raw_hex": "50524f434553535f434f554e542c332c3132322c544f54414c5f50524f4345535345530d0a"}}
+{"timestamp": "2025-06-08T13:08:49.238848", "event_type": "data_received", "message": "Received 34 bytes", "details": {"length": 34, "raw_hex": "5542554e54555f5354415455532c342c52554e4e494e472c31333a30383a34380d0a"}}
+{"timestamp": "2025-06-08T13:08:51.640566", "event_type": "data_received", "message": "Received 37 bytes", "details": {"length": 37, "raw_hex": "50524f434553535f434f554e542c352c3231372c544f54414c5f50524f4345535345530d0a"}}
+{"timestamp": "2025-06-08T13:08:54.042430", "event_type": "data_received", "message": "Received 31 bytes", "details": {"length": 31, "raw_hex": "4c494e55585f544f5f57494e2c362c32312e36372c4350555f54454d500d0a"}}
+{"timestamp": "2025-06-08T13:08:56.588654", "event_type": "data_received", "message": "Received 26 bytes", "details": {"length": 26, "raw_hex": "4e4554574f524b5f535441542c372c343131332c5041434b4554"}}
+{"timestamp": "2025-06-08T13:08:56.589655", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "535f50"}}
+{"timestamp": "2025-06-08T13:08:56.590661", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "45525f"}}
+{"timestamp": "2025-06-08T13:08:56.591660", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "5345430d0a"}}
+{"timestamp": "2025-06-08T13:08:58.142293", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "7b226964223a20382c202274696d6573"}}
+{"timestamp": "2025-06-08T13:08:58.143738", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "74"}}
+{"timestamp": "2025-06-08T13:08:58.158834", "event_type": "data_received", "message": "Received 191 bytes", "details": {"length": 191, "raw_hex": "616d70223a2022323032352d30362d30385431333a30383a35372e323937313232222c2022736f75726365223a20224c696e75785f4775657374222c2022646972656374696f6e223a20224c696e75785f746f5f57696e646f7773222c202273797374656d223a207b22686f73746e616d65223a20227562756e74752d766d222c2022757074696d65223a2036383937332c20226c6f61645f617667223a20302e32392c2022667265655f6d656d6f7279223a20333738337d2c202273656e"}}
+{"timestamp": "2025-06-08T13:08:58.158834", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "736f7273223a207b226370755f74656d"}}
+{"timestamp": "2025-06-08T13:08:58.160063", "event_type": "data_received", "message": "Received 13 bytes", "details": {"length": 13, "raw_hex": "70223a2035322c202266616e5f"}}
+{"timestamp": "2025-06-08T13:08:58.160063", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "73706565"}}
+{"timestamp": "2025-06-08T13:08:58.161434", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "64223a20313231"}}
+{"timestamp": "2025-06-08T13:08:58.161434", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "322c2022766f6c7461"}}
+{"timestamp": "2025-06-08T13:08:58.161434", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "6765223a2031322e307d"}}
+{"timestamp": "2025-06-08T13:08:58.162928", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "7d0d0a"}}
+{"timestamp": "2025-06-08T13:08:59.668984", "event_type": "data_received", "message": "Received 38 bytes", "details": {"length": 38, "raw_hex": "53595354454d5f444154412c392c362c4d454d4f52595f55534147455f50455243454e540d0a"}}
+{"timestamp": "2025-06-08T13:09:01.925102", "event_type": "data_received", "message": "Received 40 bytes", "details": {"length": 40, "raw_hex": "53595354454d5f444154412c31302c32342c4d454d4f52595f55534147455f50455243454e540d0a"}}
+{"timestamp": "2025-06-08T13:09:04.214671", "event_type": "data_received", "message": "Received 35 bytes", "details": {"length": 35, "raw_hex": "5542554e54555f5354415455532c31312c52554e4e494e472c31333a30393a30330d0a"}}
+{"timestamp": "2025-06-08T13:09:06.106044", "event_type": "data_received", "message": "Received 12 bytes", "details": {"length": 12, "raw_hex": "50524f434553535f434f554e"}}
+{"timestamp": "2025-06-08T13:09:06.107945", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "542c31322c"}}
+{"timestamp": "2025-06-08T13:09:06.109979", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "3134362c544f5441"}}
+{"timestamp": "2025-06-08T13:09:06.112009", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "4c5f50524f"}}
+{"timestamp": "2025-06-08T13:09:06.114022", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "434553534553"}}
+{"timestamp": "2025-06-08T13:09:06.116149", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "0d0a"}}
+{"timestamp": "2025-06-08T13:09:38.936859", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30312c48656c6c6f5f66726f6d5f74747953302c31333a30393a33380d0a"}}
+{"timestamp": "2025-06-08T13:09:39.935675", "event_type": "data_received", "message": "Received 37 bytes", "details": {"length": 37, "raw_hex": "46524f4d5f54545953312c30312c48656c6c6f5f66726f6d5f74747953312c31333a30393a"}}
+{"timestamp": "2025-06-08T13:09:39.936687", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "33390d0a"}}
+{"timestamp": "2025-06-08T13:09:40.943339", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30322c48656c6c6f5f66726f6d5f74747953302c31333a30393a34300d0a"}}
+{"timestamp": "2025-06-08T13:09:41.950402", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30322c48656c6c6f5f66726f6d5f74747953312c31333a30393a34310d0a"}}
+{"timestamp": "2025-06-08T13:09:42.941066", "event_type": "data_received", "message": "Received 26 bytes", "details": {"length": 26, "raw_hex": "46524f4d5f54545953302c30332c48656c6c6f5f66726f6d5f74"}}
+{"timestamp": "2025-06-08T13:09:42.944049", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "747953302c31"}}
+{"timestamp": "2025-06-08T13:09:42.946558", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "333a30393a34320d0a"}}
+{"timestamp": "2025-06-08T13:09:43.955376", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30332c48656c6c6f5f66726f6d5f74747953312c31333a30393a34330d0a"}}
+{"timestamp": "2025-06-08T13:09:44.951932", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30342c48656c6c6f5f66726f6d5f74747953302c31333a30393a34340d0a"}}
+{"timestamp": "2025-06-08T13:09:45.951163", "event_type": "data_received", "message": "Received 15 bytes", "details": {"length": 15, "raw_hex": "46524f4d5f54545953312c30342c48"}}
+{"timestamp": "2025-06-08T13:09:45.952178", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "656c"}}
+{"timestamp": "2025-06-08T13:09:45.953209", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "6c6f5f"}}
+{"timestamp": "2025-06-08T13:09:45.953209", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "6672"}}
+{"timestamp": "2025-06-08T13:09:45.954676", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "6f"}}
+{"timestamp": "2025-06-08T13:09:45.954676", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "6d"}}
+{"timestamp": "2025-06-08T13:09:45.954676", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "5f"}}
+{"timestamp": "2025-06-08T13:09:45.955613", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "74"}}
+{"timestamp": "2025-06-08T13:09:45.955613", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "74"}}
+{"timestamp": "2025-06-08T13:09:45.955613", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "79"}}
+{"timestamp": "2025-06-08T13:09:45.956860", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "53"}}
+{"timestamp": "2025-06-08T13:09:45.956860", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "31"}}
+{"timestamp": "2025-06-08T13:09:45.956860", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "2c"}}
+{"timestamp": "2025-06-08T13:09:45.956860", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "31"}}
+{"timestamp": "2025-06-08T13:09:45.965024", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "333a30393a34350d0a"}}
+{"timestamp": "2025-06-08T13:09:46.964695", "event_type": "data_received", "message": "Received 14 bytes", "details": {"length": 14, "raw_hex": "46524f4d5f54545953302c30352c"}}
+{"timestamp": "2025-06-08T13:09:47.015274", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "48656c6c6f"}}
+{"timestamp": "2025-06-08T13:09:47.025896", "event_type": "data_received", "message": "Received 22 bytes", "details": {"length": 22, "raw_hex": "5f66726f6d5f74747953302c31333a30393a34360d0a"}}
+{"timestamp": "2025-06-08T13:09:47.977359", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30352c48656c6c6f5f66726f6d5f74747953312c31333a30393a34370d0a"}}
+{"timestamp": "2025-06-08T13:09:48.977695", "event_type": "data_received", "message": "Received 28 bytes", "details": {"length": 28, "raw_hex": "46524f4d5f54545953302c30362c48656c6c6f5f66726f6d5f747479"}}
+{"timestamp": "2025-06-08T13:09:48.981412", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "53302c31333a3039"}}
+{"timestamp": "2025-06-08T13:09:48.983923", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "3a34380d0a"}}
+{"timestamp": "2025-06-08T13:09:50.007355", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30362c48656c6c6f5f66726f6d5f74747953312c31333a30393a34390d0a"}}
+{"timestamp": "2025-06-08T13:09:50.997890", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30372c48656c6c6f5f66726f6d5f74747953302c31333a30393a35300d0a"}}
+{"timestamp": "2025-06-08T13:09:51.996511", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30372c48656c6c6f5f66726f6d5f74747953312c31333a30393a35310d0a"}}
+{"timestamp": "2025-06-08T13:09:53.007156", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30382c48656c6c6f5f66726f6d5f74747953302c31333a30393a35320d0a"}}
+{"timestamp": "2025-06-08T13:09:54.018333", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30382c48656c6c6f5f66726f6d5f74747953312c31333a30393a35330d0a"}}
+{"timestamp": "2025-06-08T13:09:55.032200", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30392c48656c6c6f5f66726f6d5f74747953302c31333a30393a35340d0a"}}
+{"timestamp": "2025-06-08T13:09:56.029036", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30392c48656c6c6f5f66726f6d5f74747953312c31333a30393a35350d0a"}}
+{"timestamp": "2025-06-08T13:09:57.042251", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31302c48656c6c6f5f66726f6d5f74747953302c31333a30393a35360d0a"}}
+{"timestamp": "2025-06-08T13:09:58.051209", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "46"}}
+{"timestamp": "2025-06-08T13:09:58.066649", "event_type": "data_received", "message": "Received 40 bytes", "details": {"length": 40, "raw_hex": "524f4d5f54545953312c31302c48656c6c6f5f66726f6d5f74747953312c31333a30393a35370d0a"}}
+{"timestamp": "2025-06-08T13:09:59.040953", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31312c48656c6c6f5f66726f6d5f74747953302c31333a30393a35380d0a"}}
+{"timestamp": "2025-06-08T13:10:00.043306", "event_type": "data_received", "message": "Received 23 bytes", "details": {"length": 23, "raw_hex": "46524f4d5f54545953312c31312c48656c6c6f5f66726f"}}
+{"timestamp": "2025-06-08T13:10:00.046323", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T13:10:00.049333", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "333a30393a35390d0a"}}
+{"timestamp": "2025-06-08T13:10:01.047750", "event_type": "data_received", "message": "Received 30 bytes", "details": {"length": 30, "raw_hex": "46524f4d5f54545953302c31322c48656c6c6f5f66726f6d5f7474795330"}}
+{"timestamp": "2025-06-08T13:10:01.052748", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "2c31333a31303a30"}}
+{"timestamp": "2025-06-08T13:10:01.057572", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "300d0a"}}
+{"timestamp": "2025-06-08T13:10:02.061103", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31322c48656c6c6f5f66726f6d5f74747953312c31333a31303a30310d0a"}}
+{"timestamp": "2025-06-08T13:10:03.065095", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "46524f4d5f5454595330"}}
+{"timestamp": "2025-06-08T13:10:03.074627", "event_type": "data_received", "message": "Received 15 bytes", "details": {"length": 15, "raw_hex": "2c31332c48656c6c6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T13:10:03.103914", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "74747953302c31333a31303a30320d0a"}}
+{"timestamp": "2025-06-08T13:10:04.070560", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "46524f4d5f54545953312c31332c48656c6c"}}
+{"timestamp": "2025-06-08T13:10:04.071640", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T13:10:04.071640", "event_type": "data_received", "message": "Received 11 bytes", "details": {"length": 11, "raw_hex": "74747953312c31333a3130"}}
+{"timestamp": "2025-06-08T13:10:04.072891", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "3a30330d0a"}}
+{"timestamp": "2025-06-08T13:10:05.083911", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31342c48656c6c6f5f66726f6d5f74747953302c31333a31303a30340d0a"}}
+{"timestamp": "2025-06-08T13:10:06.098477", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31342c48656c6c6f5f66726f6d5f74747953312c31333a31303a30350d0a"}}
+{"timestamp": "2025-06-08T13:10:07.097568", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31352c48656c6c6f5f66726f6d5f74747953302c31333a31303a30360d0a"}}
+{"timestamp": "2025-06-08T13:10:08.085866", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "46524f4d5f54545953312c31352c48656c6c"}}
+{"timestamp": "2025-06-08T13:10:08.089879", "event_type": "data_received", "message": "Received 14 bytes", "details": {"length": 14, "raw_hex": "6f5f66726f6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T13:10:08.092882", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "333a31303a30370d"}}
+{"timestamp": "2025-06-08T13:10:08.094502", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T13:10:09.042063", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.042063", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.044623", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.045609", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.047607", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.049126", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.050112", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.051183", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.055131", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.055957", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.058858", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.060560", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.062395", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.063532", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.065951", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.066242", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.067965", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.068964", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.091461", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T13:10:09.092391", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.031885", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.032885", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.033884", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM1, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.033884", "event_type": "connecting", "message": "Attempting to connect to COM1 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.044115", "event_type": "connected", "message": "Successfully connected to COM1", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.045618", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.045618", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.045618", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM4, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.045618", "event_type": "connecting", "message": "Attempting to connect to COM4 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.054216", "event_type": "connected", "message": "Successfully connected to COM4", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.059199", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T14:02:58.059199", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T14:04:36.923753", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "46524f4d5f54545953302c30312c48656c6c6f5f66726f6d"}}
+{"timestamp": "2025-06-08T14:04:36.928317", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "5f7474795330"}}
+{"timestamp": "2025-06-08T14:04:36.931869", "event_type": "data_received", "message": "Received 11 bytes", "details": {"length": 11, "raw_hex": "2c31343a30343a33360d0a"}}
+{"timestamp": "2025-06-08T14:04:37.935100", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30312c48656c6c6f5f66726f6d5f74747953312c31343a30343a33370d0a"}}
+{"timestamp": "2025-06-08T14:04:38.930207", "event_type": "data_received", "message": "Received 34 bytes", "details": {"length": 34, "raw_hex": "46524f4d5f54545953302c30322c48656c6c6f5f66726f6d5f74747953302c31343a"}}
+{"timestamp": "2025-06-08T14:04:38.933658", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "30343a33380d0a"}}
+{"timestamp": "2025-06-08T14:04:39.943705", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "46524f4d5f54545953312c30322c4865"}}
+{"timestamp": "2025-06-08T14:04:39.944769", "event_type": "data_received", "message": "Received 25 bytes", "details": {"length": 25, "raw_hex": "6c6c6f5f66726f6d5f74747953312c31343a30343a33390d0a"}}
+{"timestamp": "2025-06-08T14:04:40.939304", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30332c48656c6c6f5f66726f6d5f74747953302c31343a30343a34300d0a"}}
+{"timestamp": "2025-06-08T14:04:41.937163", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30332c48656c6c6f5f66726f6d5f74747953312c31343a30343a34310d0a"}}
+{"timestamp": "2025-06-08T14:04:42.933305", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "46524f4d5f54545953302c30342c4865"}}
+{"timestamp": "2025-06-08T14:04:42.935952", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "6c6c6f5f66726f6d5f74747953302c31"}}
+{"timestamp": "2025-06-08T14:04:42.940734", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30343a34320d0a"}}
+{"timestamp": "2025-06-08T14:04:43.947924", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30342c48656c6c6f5f66726f6d5f74747953312c31343a30343a34330d0a"}}
+{"timestamp": "2025-06-08T14:04:44.943844", "event_type": "data_received", "message": "Received 35 bytes", "details": {"length": 35, "raw_hex": "46524f4d5f54545953302c30352c48656c6c6f5f66726f6d5f74747953302c31343a30"}}
+{"timestamp": "2025-06-08T14:04:44.949202", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "343a34340d0a"}}
+{"timestamp": "2025-06-08T14:04:45.942119", "event_type": "data_received", "message": "Received 29 bytes", "details": {"length": 29, "raw_hex": "46524f4d5f54545953312c30352c48656c6c6f5f66726f6d5f74747953"}}
+{"timestamp": "2025-06-08T14:04:45.944892", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "312c31343a"}}
+{"timestamp": "2025-06-08T14:04:45.947908", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "30343a34"}}
+{"timestamp": "2025-06-08T14:04:45.950290", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "350d0a"}}
+{"timestamp": "2025-06-08T14:04:46.943468", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "4652"}}
+{"timestamp": "2025-06-08T14:04:46.950156", "event_type": "data_received", "message": "Received 12 bytes", "details": {"length": 12, "raw_hex": "4f4d5f54545953302c30362c"}}
+{"timestamp": "2025-06-08T14:04:46.955369", "event_type": "data_received", "message": "Received 26 bytes", "details": {"length": 26, "raw_hex": "48656c6c6f5f66726f6d5f74747953302c31343a30343a34360d"}}
+{"timestamp": "2025-06-08T14:04:46.960921", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:04:47.955311", "event_type": "data_received", "message": "Received 38 bytes", "details": {"length": 38, "raw_hex": "46524f4d5f54545953312c30362c48656c6c6f5f66726f6d5f74747953312c31343a30343a34"}}
+{"timestamp": "2025-06-08T14:04:47.959828", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "370d0a"}}
+{"timestamp": "2025-06-08T14:04:48.952192", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "46524f4d5f54545953302c30372c48656c6c"}}
+{"timestamp": "2025-06-08T14:04:48.956710", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T14:04:48.960358", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "74747953302c31343a30343a34380d0a"}}
+{"timestamp": "2025-06-08T14:04:49.965638", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30372c48656c6c6f5f66726f6d5f74747953312c31343a30343a34390d0a"}}
+{"timestamp": "2025-06-08T14:04:50.956803", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30382c48656c6c6f5f66726f6d5f74747953302c31343a30343a35300d0a"}}
+{"timestamp": "2025-06-08T14:04:51.967703", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30382c48656c6c6f5f66726f6d5f74747953312c31343a30343a35310d0a"}}
+{"timestamp": "2025-06-08T14:04:52.966031", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30392c48656c6c6f5f66726f6d5f74747953302c31343a30343a35320d0a"}}
+{"timestamp": "2025-06-08T14:04:53.960686", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30392c48656c6c6f5f66726f6d5f74747953312c31343a30343a35330d0a"}}
+{"timestamp": "2025-06-08T14:04:54.968972", "event_type": "data_received", "message": "Received 35 bytes", "details": {"length": 35, "raw_hex": "46524f4d5f54545953302c31302c48656c6c6f5f66726f6d5f74747953302c31343a30"}}
+{"timestamp": "2025-06-08T14:04:54.976613", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "343a35340d"}}
+{"timestamp": "2025-06-08T14:04:54.995965", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:04:55.980693", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31302c48656c6c6f5f66726f6d5f74747953312c31343a30343a35350d0a"}}
+{"timestamp": "2025-06-08T14:04:56.978467", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31312c48656c6c6f5f66726f6d5f74747953302c31343a30343a35360d0a"}}
+{"timestamp": "2025-06-08T14:04:57.979250", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31312c48656c6c6f5f66726f6d5f74747953312c31343a30343a35370d0a"}}
+{"timestamp": "2025-06-08T14:04:58.986901", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31322c48656c6c6f5f66726f6d5f74747953302c31343a30343a35380d0a"}}
+{"timestamp": "2025-06-08T14:04:59.999738", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31322c48656c6c6f5f66726f6d5f74747953312c31343a30343a35390d0a"}}
+{"timestamp": "2025-06-08T14:05:00.998718", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31332c48656c6c6f5f66726f6d5f74747953302c31343a30353a30300d0a"}}
+{"timestamp": "2025-06-08T14:05:01.991623", "event_type": "data_received", "message": "Received 32 bytes", "details": {"length": 32, "raw_hex": "46524f4d5f54545953312c31332c48656c6c6f5f66726f6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T14:05:01.992621", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "343a30353a3031"}}
+{"timestamp": "2025-06-08T14:05:01.994619", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "0d0a"}}
+{"timestamp": "2025-06-08T14:05:02.991209", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "46524f4d5f54545953302c31342c4865"}}
+{"timestamp": "2025-06-08T14:05:02.995617", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "6c6c6f5f66726f6d"}}
+{"timestamp": "2025-06-08T14:05:03.001509", "event_type": "data_received", "message": "Received 17 bytes", "details": {"length": 17, "raw_hex": "5f74747953302c31343a30353a30320d0a"}}
+{"timestamp": "2025-06-08T14:05:03.999781", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31342c48656c6c6f5f66726f6d5f74747953312c31343a30353a30330d0a"}}
+{"timestamp": "2025-06-08T14:05:04.997289", "event_type": "data_received", "message": "Received 25 bytes", "details": {"length": 25, "raw_hex": "46524f4d5f54545953302c31352c48656c6c6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T14:05:05.000254", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "74747953302c31"}}
+{"timestamp": "2025-06-08T14:05:05.025568", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30353a30340d0a"}}
+{"timestamp": "2025-06-08T14:05:06.006456", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31352c48656c6c6f5f66726f6d5f74747953312c31343a30353a30350d0a"}}
+{"timestamp": "2025-06-08T14:05:07.005238", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31362c48656c6c6f5f66726f6d5f74747953302c31343a30353a30360d0a"}}
+{"timestamp": "2025-06-08T14:05:08.000531", "event_type": "data_received", "message": "Received 27 bytes", "details": {"length": 27, "raw_hex": "46524f4d5f54545953312c31362c48656c6c6f5f66726f6d5f7474"}}
+{"timestamp": "2025-06-08T14:05:08.003607", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "7953312c3134"}}
+{"timestamp": "2025-06-08T14:05:08.004713", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "3a30353a30370d0a"}}
+{"timestamp": "2025-06-08T14:05:09.013162", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31372c48656c6c6f5f66726f6d5f74747953302c31343a30353a30380d0a"}}
+{"timestamp": "2025-06-08T14:05:10.004542", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31372c48656c6c6f5f66726f6d5f74747953312c31343a30353a30390d0a"}}
+{"timestamp": "2025-06-08T14:05:11.004795", "event_type": "data_received", "message": "Received 26 bytes", "details": {"length": 26, "raw_hex": "46524f4d5f54545953302c31382c48656c6c6f5f66726f6d5f74"}}
+{"timestamp": "2025-06-08T14:05:11.008143", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "747953302c31"}}
+{"timestamp": "2025-06-08T14:05:11.011066", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30353a31300d0a"}}
+{"timestamp": "2025-06-08T14:05:12.013003", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31382c48656c6c6f5f66726f6d5f74747953312c31343a30353a31310d0a"}}
+{"timestamp": "2025-06-08T14:05:13.018640", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31392c48656c6c6f5f66726f6d5f74747953302c31343a30353a31320d0a"}}
+{"timestamp": "2025-06-08T14:05:14.015345", "event_type": "data_received", "message": "Received 23 bytes", "details": {"length": 23, "raw_hex": "46524f4d5f54545953312c31392c48656c6c6f5f66726f"}}
+{"timestamp": "2025-06-08T14:05:14.017834", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "6d5f74"}}
+{"timestamp": "2025-06-08T14:05:14.019838", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "747953312c31"}}
+{"timestamp": "2025-06-08T14:05:14.020891", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "343a3035"}}
+{"timestamp": "2025-06-08T14:05:14.022656", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "3a31330d"}}
+{"timestamp": "2025-06-08T14:05:14.023215", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:05:15.025959", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c32302c48656c6c6f5f66726f6d5f74747953302c31343a30353a31340d0a"}}
+{"timestamp": "2025-06-08T14:05:16.025065", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c32302c48656c6c6f5f66726f6d5f74747953312c31343a30353a31350d0a"}}
+{"timestamp": "2025-06-08T14:06:18.174635", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30312c48656c6c6f5f66726f6d5f74747953302c31343a30363a31370d0a"}}
+{"timestamp": "2025-06-08T14:06:19.168701", "event_type": "data_received", "message": "Received 13 bytes", "details": {"length": 13, "raw_hex": "46524f4d5f54545953312c3031"}}
+{"timestamp": "2025-06-08T14:06:19.170573", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "2c48656c6c6f5f66726f"}}
+{"timestamp": "2025-06-08T14:06:19.171583", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "6d5f74747953312c"}}
+{"timestamp": "2025-06-08T14:06:19.171583", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "3134"}}
+{"timestamp": "2025-06-08T14:06:19.172994", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "3a"}}
+{"timestamp": "2025-06-08T14:06:19.174141", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "30363a31380d"}}
+{"timestamp": "2025-06-08T14:06:19.174645", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:06:20.183743", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30322c48656c6c6f5f66726f6d5f74747953302c31343a30363a31390d0a"}}
+{"timestamp": "2025-06-08T14:06:21.175907", "event_type": "data_received", "message": "Received 17 bytes", "details": {"length": 17, "raw_hex": "46524f4d5f54545953312c30322c48656c"}}
+{"timestamp": "2025-06-08T14:06:21.190814", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "6c6f5f66726f6d5f74747953312c31343a30363a32300d0a"}}
+{"timestamp": "2025-06-08T14:06:22.184780", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30332c48656c6c6f5f66726f6d5f74747953302c31343a30363a32310d0a"}}
+{"timestamp": "2025-06-08T14:06:23.177538", "event_type": "data_received", "message": "Received 15 bytes", "details": {"length": 15, "raw_hex": "46524f4d5f54545953312c30332c48"}}
+{"timestamp": "2025-06-08T14:06:23.179365", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "656c6c6f5f66726f6d"}}
+{"timestamp": "2025-06-08T14:06:23.179365", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "5f74747953"}}
+{"timestamp": "2025-06-08T14:06:23.180781", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "312c3134"}}
+{"timestamp": "2025-06-08T14:06:23.181782", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "3a30363a32320d0a"}}
+{"timestamp": "2025-06-08T14:06:24.190276", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30342c48656c6c6f5f66726f6d5f74747953302c31343a30363a32330d0a"}}
+{"timestamp": "2025-06-08T14:06:25.189021", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30342c48656c6c6f5f66726f6d5f74747953312c31343a30363a32340d0a"}}
+{"timestamp": "2025-06-08T14:06:26.186865", "event_type": "data_received", "message": "Received 12 bytes", "details": {"length": 12, "raw_hex": "46524f4d5f54545953302c30"}}
+{"timestamp": "2025-06-08T14:06:26.195379", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "352c48656c"}}
+{"timestamp": "2025-06-08T14:06:26.200245", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "6c6f5f66726f6d5f74747953302c31343a30363a32350d0a"}}
+{"timestamp": "2025-06-08T14:06:27.188150", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30352c48656c6c6f5f66726f6d5f74747953312c31343a30363a32360d0a"}}
+{"timestamp": "2025-06-08T14:06:28.200453", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30362c48656c6c6f5f66726f6d5f74747953302c31343a30363a32370d0a"}}
+{"timestamp": "2025-06-08T14:06:29.192212", "event_type": "data_received", "message": "Received 17 bytes", "details": {"length": 17, "raw_hex": "46524f4d5f54545953312c30362c48656c"}}
+{"timestamp": "2025-06-08T14:06:29.193969", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "6c6f5f66726f"}}
+{"timestamp": "2025-06-08T14:06:29.196041", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T14:06:29.196041", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "34"}}
+{"timestamp": "2025-06-08T14:06:29.198063", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "3a30"}}
+{"timestamp": "2025-06-08T14:06:29.198063", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "36"}}
+{"timestamp": "2025-06-08T14:06:29.199278", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "3a"}}
+{"timestamp": "2025-06-08T14:06:29.199278", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "3238"}}
+{"timestamp": "2025-06-08T14:06:29.200386", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "0d0a"}}
+{"timestamp": "2025-06-08T14:06:30.201209", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30372c48656c6c6f5f66726f6d5f74747953302c31343a30363a32390d0a"}}
+{"timestamp": "2025-06-08T14:06:31.194766", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30372c48656c6c6f5f66726f6d5f74747953312c31343a30363a33300d0a"}}
+{"timestamp": "2025-06-08T14:06:32.206584", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30382c48656c6c6f5f66726f6d5f74747953302c31343a30363a33310d0a"}}
+{"timestamp": "2025-06-08T14:06:33.201459", "event_type": "data_received", "message": "Received 20 bytes", "details": {"length": 20, "raw_hex": "46524f4d5f54545953312c30382c48656c6c6f5f"}}
+{"timestamp": "2025-06-08T14:06:33.205802", "event_type": "data_received", "message": "Received 12 bytes", "details": {"length": 12, "raw_hex": "66726f6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T14:06:33.207805", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30363a33320d0a"}}
+{"timestamp": "2025-06-08T14:06:34.210373", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30392c48656c6c6f5f66726f6d5f74747953302c31343a30363a33330d0a"}}
+{"timestamp": "2025-06-08T14:06:35.205288", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30392c48656c6c6f5f66726f6d5f74747953312c31343a30363a33340d0a"}}
+{"timestamp": "2025-06-08T14:06:36.213349", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31302c48656c6c6f5f66726f6d5f74747953302c31343a30363a33350d0a"}}
+{"timestamp": "2025-06-08T14:06:37.213315", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "46524f4d5f54545953312c31302c48656c6c"}}
+{"timestamp": "2025-06-08T14:06:37.215222", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "6f5f66726f6d5f747479"}}
+{"timestamp": "2025-06-08T14:06:37.216228", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "53312c31"}}
+{"timestamp": "2025-06-08T14:06:37.217293", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "343a30363a3336"}}
+{"timestamp": "2025-06-08T14:06:37.218268", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "0d0a"}}
+{"timestamp": "2025-06-08T14:06:38.224540", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31312c48656c6c6f5f66726f6d5f74747953302c31343a30363a33370d0a"}}
+{"timestamp": "2025-06-08T14:06:39.220400", "event_type": "data_received", "message": "Received 23 bytes", "details": {"length": 23, "raw_hex": "46524f4d5f54545953312c31312c48656c6c6f5f66726f"}}
+{"timestamp": "2025-06-08T14:06:39.221438", "event_type": "data_received", "message": "Received 11 bytes", "details": {"length": 11, "raw_hex": "6d5f74747953312c31343a"}}
+{"timestamp": "2025-06-08T14:06:39.222432", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "30363a33380d"}}
+{"timestamp": "2025-06-08T14:06:39.224960", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:06:40.218852", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31322c48656c6c6f5f66726f6d5f74747953302c31343a30363a33390d0a"}}
+{"timestamp": "2025-06-08T14:06:41.218257", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31322c48656c6c6f5f66726f6d5f74747953312c31343a30363a34300d0a"}}
+{"timestamp": "2025-06-08T14:06:42.228124", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31332c48656c6c6f5f66726f6d5f74747953302c31343a30363a34310d0a"}}
+{"timestamp": "2025-06-08T14:06:43.225207", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31332c48656c6c6f5f66726f6d5f74747953312c31343a30363a34320d0a"}}
+{"timestamp": "2025-06-08T14:06:44.231728", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31342c48656c6c6f5f66726f6d5f74747953302c31343a30363a34330d0a"}}
+{"timestamp": "2025-06-08T14:06:45.229472", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31342c48656c6c6f5f66726f6d5f74747953312c31343a30363a34340d0a"}}
+{"timestamp": "2025-06-08T14:06:46.237188", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31352c48656c6c6f5f66726f6d5f74747953302c31343a30363a34350d0a"}}
+{"timestamp": "2025-06-08T14:06:47.234827", "event_type": "data_received", "message": "Received 32 bytes", "details": {"length": 32, "raw_hex": "46524f4d5f54545953312c31352c48656c6c6f5f66726f6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T14:06:47.236618", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30363a34360d0a"}}
+{"timestamp": "2025-06-08T14:06:48.244803", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31362c48656c6c6f5f66726f6d5f74747953302c31343a30363a34370d0a"}}
+{"timestamp": "2025-06-08T14:06:49.240688", "event_type": "data_received", "message": "Received 33 bytes", "details": {"length": 33, "raw_hex": "46524f4d5f54545953312c31362c48656c6c6f5f66726f6d5f74747953312c3134"}}
+{"timestamp": "2025-06-08T14:06:49.240688", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "3a30363a34380d0a"}}
+{"timestamp": "2025-06-08T14:06:50.240150", "event_type": "data_received", "message": "Received 40 bytes", "details": {"length": 40, "raw_hex": "46524f4d5f54545953302c31372c48656c6c6f5f66726f6d5f74747953302c31343a30363a34390d"}}
+{"timestamp": "2025-06-08T14:06:50.243071", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:06:51.248575", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31372c48656c6c6f5f66726f6d5f74747953312c31343a30363a35300d0a"}}
+{"timestamp": "2025-06-08T14:06:52.242614", "event_type": "data_received", "message": "Received 36 bytes", "details": {"length": 36, "raw_hex": "46524f4d5f54545953302c31382c48656c6c6f5f66726f6d5f74747953302c31343a3036"}}
+{"timestamp": "2025-06-08T14:06:52.246089", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "3a35310d0a"}}
+{"timestamp": "2025-06-08T14:06:53.255528", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31382c48656c6c6f5f66726f6d5f74747953312c31343a30363a35320d0a"}}
+{"timestamp": "2025-06-08T14:06:54.253954", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31392c48656c6c6f5f66726f6d5f74747953302c31343a30363a35330d0a"}}
+{"timestamp": "2025-06-08T14:06:55.245682", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "46524f4d5f"}}
+{"timestamp": "2025-06-08T14:06:55.247128", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "54545953"}}
+{"timestamp": "2025-06-08T14:06:55.247128", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "312c31"}}
+{"timestamp": "2025-06-08T14:06:55.248418", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "392c48"}}
+{"timestamp": "2025-06-08T14:06:55.248418", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "656c"}}
+{"timestamp": "2025-06-08T14:06:55.249565", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "6c6f5f66"}}
+{"timestamp": "2025-06-08T14:06:55.250270", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "726f6d5f74747953312c"}}
+{"timestamp": "2025-06-08T14:06:55.250270", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "31343a30"}}
+{"timestamp": "2025-06-08T14:06:55.250270", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "363a"}}
+{"timestamp": "2025-06-08T14:06:55.250270", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "35340d0a"}}
+{"timestamp": "2025-06-08T14:06:56.265465", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c32302c48656c6c6f5f66726f6d5f74747953302c31343a30363a35350d0a"}}
+{"timestamp": "2025-06-08T14:06:57.258985", "event_type": "data_received", "message": "Received 40 bytes", "details": {"length": 40, "raw_hex": "46524f4d5f54545953312c32302c48656c6c6f5f66726f6d5f74747953312c31343a30363a35360d"}}
+{"timestamp": "2025-06-08T14:06:57.259995", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:07:27.047497", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30312c48656c6c6f5f66726f6d5f74747953302c31343a30373a32360d0a"}}
+{"timestamp": "2025-06-08T14:07:28.068501", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "46524f4d"}}
+{"timestamp": "2025-06-08T14:07:28.136393", "event_type": "data_received", "message": "Received 37 bytes", "details": {"length": 37, "raw_hex": "5f54545953312c30312c48656c6c6f5f66726f6d5f74747953312c31343a30373a32370d0a"}}
+{"timestamp": "2025-06-08T14:07:29.072575", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30322c48656c6c6f5f66726f6d5f74747953302c31343a30373a32380d0a"}}
+{"timestamp": "2025-06-08T14:07:30.069084", "event_type": "data_received", "message": "Received 25 bytes", "details": {"length": 25, "raw_hex": "46524f4d5f54545953312c30322c48656c6c6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T14:07:30.070324", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "747479"}}
+{"timestamp": "2025-06-08T14:07:30.072982", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "53312c3134"}}
+{"timestamp": "2025-06-08T14:07:30.074027", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "3a30373a3239"}}
+{"timestamp": "2025-06-08T14:07:30.074991", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "0d0a"}}
+{"timestamp": "2025-06-08T14:07:31.070147", "event_type": "data_received", "message": "Received 15 bytes", "details": {"length": 15, "raw_hex": "46524f4d5f54545953302c30332c48"}}
+{"timestamp": "2025-06-08T14:07:31.078534", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "65"}}
+{"timestamp": "2025-06-08T14:07:31.081741", "event_type": "data_received", "message": "Received 25 bytes", "details": {"length": 25, "raw_hex": "6c6c6f5f66726f6d5f74747953302c31343a30373a33300d0a"}}
+{"timestamp": "2025-06-08T14:07:32.076037", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30332c48656c6c6f5f66726f6d5f74747953312c31343a30373a33310d0a"}}
+{"timestamp": "2025-06-08T14:07:33.070403", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "46"}}
+{"timestamp": "2025-06-08T14:07:33.072622", "event_type": "data_received", "message": "Received 15 bytes", "details": {"length": 15, "raw_hex": "524f4d5f54545953302c30342c4865"}}
+{"timestamp": "2025-06-08T14:07:33.076506", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "6c6c6f5f66726f6d5f74747953302c31343a"}}
+{"timestamp": "2025-06-08T14:07:33.079719", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "30373a33320d0a"}}
+{"timestamp": "2025-06-08T14:07:34.085202", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30342c48656c6c6f5f66726f6d5f74747953312c31343a30373a33330d0a"}}
+{"timestamp": "2025-06-08T14:07:35.083764", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30352c48656c6c6f5f66726f6d5f74747953302c31343a30373a33340d0a"}}
+{"timestamp": "2025-06-08T14:07:36.076009", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "46"}}
+{"timestamp": "2025-06-08T14:07:36.079025", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "524f4d5f54545953312c30352c48656c6c6f"}}
+{"timestamp": "2025-06-08T14:07:36.080642", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "5f66726f6d5f"}}
+{"timestamp": "2025-06-08T14:07:36.082650", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "74747953312c"}}
+{"timestamp": "2025-06-08T14:07:36.083655", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "31343a3037"}}
+{"timestamp": "2025-06-08T14:07:36.084660", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "3a33350d"}}
+{"timestamp": "2025-06-08T14:07:36.085932", "event_type": "data_received", "message": "Received 1 bytes", "details": {"length": 1, "raw_hex": "0a"}}
+{"timestamp": "2025-06-08T14:07:37.083820", "event_type": "data_received", "message": "Received 36 bytes", "details": {"length": 36, "raw_hex": "46524f4d5f54545953302c30362c48656c6c6f5f66726f6d5f74747953302c31343a3037"}}
+{"timestamp": "2025-06-08T14:07:37.087784", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "3a33360d0a"}}
+{"timestamp": "2025-06-08T14:07:38.084750", "event_type": "data_received", "message": "Received 25 bytes", "details": {"length": 25, "raw_hex": "46524f4d5f54545953312c30362c48656c6c6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T14:07:38.087849", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "74747953312c31"}}
+{"timestamp": "2025-06-08T14:07:38.090760", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "343a30373a"}}
+{"timestamp": "2025-06-08T14:07:38.091856", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "33370d0a"}}
+{"timestamp": "2025-06-08T14:07:39.080686", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "46524f"}}
+{"timestamp": "2025-06-08T14:07:39.087130", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "4d5f54545953"}}
+{"timestamp": "2025-06-08T14:07:39.098296", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "302c30372c48656c6c6f5f66726f6d5f74747953302c3134"}}
+{"timestamp": "2025-06-08T14:07:39.110556", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "3a30373a33380d0a"}}
+{"timestamp": "2025-06-08T14:07:40.092068", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30372c48656c6c6f5f66726f6d5f74747953312c31343a30373a33390d0a"}}
+{"timestamp": "2025-06-08T14:07:41.086083", "event_type": "data_received", "message": "Received 20 bytes", "details": {"length": 20, "raw_hex": "46524f4d5f54545953302c30382c48656c6c6f5f"}}
+{"timestamp": "2025-06-08T14:07:41.091085", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "66726f"}}
+{"timestamp": "2025-06-08T14:07:41.095294", "event_type": "data_received", "message": "Received 18 bytes", "details": {"length": 18, "raw_hex": "6d5f74747953302c31343a30373a34300d0a"}}
+{"timestamp": "2025-06-08T14:07:42.098803", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30382c48656c6c6f5f66726f6d5f74747953312c31343a30373a34310d0a"}}
+{"timestamp": "2025-06-08T14:07:43.091709", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c30392c48656c6c6f5f66726f6d5f74747953302c31343a30373a34320d0a"}}
+{"timestamp": "2025-06-08T14:07:44.098459", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c30392c48656c6c6f5f66726f6d5f74747953312c31343a30373a34330d0a"}}
+{"timestamp": "2025-06-08T14:07:45.094537", "event_type": "data_received", "message": "Received 12 bytes", "details": {"length": 12, "raw_hex": "46524f4d5f54545953302c31"}}
+{"timestamp": "2025-06-08T14:07:45.104842", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "302c48656c"}}
+{"timestamp": "2025-06-08T14:07:45.108608", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "6c6f5f66726f6d5f74747953302c31343a30373a34340d0a"}}
+{"timestamp": "2025-06-08T14:07:46.102952", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31302c48656c6c6f5f66726f6d5f74747953312c31343a30373a34350d0a"}}
+{"timestamp": "2025-06-08T14:07:47.104240", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31312c48656c6c6f5f66726f6d5f74747953302c31343a30373a34360d0a"}}
+{"timestamp": "2025-06-08T14:07:48.114898", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31312c48656c6c6f5f66726f6d5f74747953312c31343a30373a34370d0a"}}
+{"timestamp": "2025-06-08T14:07:49.117563", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31322c48656c6c6f5f66726f6d5f74747953302c31343a30373a34380d0a"}}
+{"timestamp": "2025-06-08T14:07:50.118196", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31322c48656c6c6f5f66726f6d5f74747953312c31343a30373a34390d0a"}}
+{"timestamp": "2025-06-08T14:07:51.119038", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31332c48656c6c6f5f66726f6d5f74747953302c31343a30373a35300d0a"}}
+{"timestamp": "2025-06-08T14:07:52.111336", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "46524f4d5f54545953312c31332c4865"}}
+{"timestamp": "2025-06-08T14:07:52.113728", "event_type": "data_received", "message": "Received 16 bytes", "details": {"length": 16, "raw_hex": "6c6c6f5f66726f6d5f74747953312c31"}}
+{"timestamp": "2025-06-08T14:07:52.114728", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30373a35310d0a"}}
+{"timestamp": "2025-06-08T14:07:53.119530", "event_type": "data_received", "message": "Received 32 bytes", "details": {"length": 32, "raw_hex": "46524f4d5f54545953302c31342c48656c6c6f5f66726f6d5f74747953302c31"}}
+{"timestamp": "2025-06-08T14:07:53.134435", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30373a35320d0a"}}
+{"timestamp": "2025-06-08T14:07:54.114345", "event_type": "data_received", "message": "Received 17 bytes", "details": {"length": 17, "raw_hex": "46524f4d5f54545953312c31342c48656c"}}
+{"timestamp": "2025-06-08T14:07:54.115357", "event_type": "data_received", "message": "Received 13 bytes", "details": {"length": 13, "raw_hex": "6c6f5f66726f6d5f7474795331"}}
+{"timestamp": "2025-06-08T14:07:54.119239", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "2c3134"}}
+{"timestamp": "2025-06-08T14:07:54.122774", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "3a30373a3533"}}
+{"timestamp": "2025-06-08T14:07:54.122774", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "0d0a"}}
+{"timestamp": "2025-06-08T14:07:55.124981", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31352c48656c6c6f5f66726f6d5f74747953302c31343a30373a35340d0a"}}
+{"timestamp": "2025-06-08T14:07:56.119864", "event_type": "data_received", "message": "Received 21 bytes", "details": {"length": 21, "raw_hex": "46524f4d5f54545953312c31352c48656c6c6f5f66"}}
+{"timestamp": "2025-06-08T14:07:56.122370", "event_type": "data_received", "message": "Received 5 bytes", "details": {"length": 5, "raw_hex": "726f6d5f74"}}
+{"timestamp": "2025-06-08T14:07:56.123373", "event_type": "data_received", "message": "Received 4 bytes", "details": {"length": 4, "raw_hex": "74795331"}}
+{"timestamp": "2025-06-08T14:07:56.124375", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "2c31"}}
+{"timestamp": "2025-06-08T14:07:56.135450", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30373a35350d0a"}}
+{"timestamp": "2025-06-08T14:07:57.128458", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31362c48656c6c6f5f66726f6d5f74747953302c31343a30373a35360d0a"}}
+{"timestamp": "2025-06-08T14:07:58.139877", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31362c48656c6c6f5f66726f6d5f74747953312c31343a30373a35370d0a"}}
+{"timestamp": "2025-06-08T14:07:59.137242", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953302c31372c48656c6c6f5f66726f6d5f74747953302c31343a30373a35380d0a"}}
+{"timestamp": "2025-06-08T14:08:00.136180", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "4652"}}
+{"timestamp": "2025-06-08T14:08:00.146739", "event_type": "data_received", "message": "Received 39 bytes", "details": {"length": 39, "raw_hex": "4f4d5f54545953312c31372c48656c6c6f5f66726f6d5f74747953312c31343a30373a35390d0a"}}
+{"timestamp": "2025-06-08T14:08:01.143013", "event_type": "data_received", "message": "Received 25 bytes", "details": {"length": 25, "raw_hex": "46524f4d5f54545953302c31382c48656c6c6f5f66726f6d5f"}}
+{"timestamp": "2025-06-08T14:08:01.147073", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "74747953302c"}}
+{"timestamp": "2025-06-08T14:08:01.150324", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "31343a30383a30300d0a"}}
+{"timestamp": "2025-06-08T14:08:02.136933", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "46524f4d5f5454"}}
+{"timestamp": "2025-06-08T14:08:02.138276", "event_type": "data_received", "message": "Received 10 bytes", "details": {"length": 10, "raw_hex": "5953312c31382c48656c"}}
+{"timestamp": "2025-06-08T14:08:02.151994", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "6c6f5f66726f6d5f74747953312c31343a30383a30310d0a"}}
+{"timestamp": "2025-06-08T14:08:03.146521", "event_type": "data_received", "message": "Received 26 bytes", "details": {"length": 26, "raw_hex": "46524f4d5f54545953302c31392c48656c6c6f5f66726f6d5f74"}}
+{"timestamp": "2025-06-08T14:08:03.148893", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "747953302c3134"}}
+{"timestamp": "2025-06-08T14:08:03.153435", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "3a30383a30320d0a"}}
+{"timestamp": "2025-06-08T14:08:04.162803", "event_type": "data_received", "message": "Received 41 bytes", "details": {"length": 41, "raw_hex": "46524f4d5f54545953312c31392c48656c6c6f5f66726f6d5f74747953312c31343a30383a30330d0a"}}
+{"timestamp": "2025-06-08T14:08:05.160576", "event_type": "data_received", "message": "Received 24 bytes", "details": {"length": 24, "raw_hex": "46524f4d5f54545953302c32302c48656c6c6f5f66726f6d"}}
+{"timestamp": "2025-06-08T14:08:05.167135", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "5f74747953302c31"}}
+{"timestamp": "2025-06-08T14:08:05.173516", "event_type": "data_received", "message": "Received 9 bytes", "details": {"length": 9, "raw_hex": "343a30383a30340d0a"}}
+{"timestamp": "2025-06-08T14:08:06.158135", "event_type": "data_received", "message": "Received 2 bytes", "details": {"length": 2, "raw_hex": "4652"}}
+{"timestamp": "2025-06-08T14:08:06.161734", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "4f4d5f54545953"}}
+{"timestamp": "2025-06-08T14:08:06.162741", "event_type": "data_received", "message": "Received 7 bytes", "details": {"length": 7, "raw_hex": "312c32302c4865"}}
+{"timestamp": "2025-06-08T14:08:06.163829", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "6c6c6f5f66726f6d"}}
+{"timestamp": "2025-06-08T14:08:06.165136", "event_type": "data_received", "message": "Received 8 bytes", "details": {"length": 8, "raw_hex": "5f74747953312c31"}}
+{"timestamp": "2025-06-08T14:08:06.167163", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "343a30383a30"}}
+{"timestamp": "2025-06-08T14:08:06.168144", "event_type": "data_received", "message": "Received 3 bytes", "details": {"length": 3, "raw_hex": "350d0a"}}
+{"timestamp": "2025-06-08T14:09:16.858459", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "746573740d0a"}}
+{"timestamp": "2025-06-08T14:10:46.911994", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "746573740d0a"}}
+{"timestamp": "2025-06-08T14:11:41.691131", "event_type": "data_received", "message": "Received 6 bytes", "details": {"length": 6, "raw_hex": "746573740d0a"}}
+{"timestamp": "2025-06-08T14:12:45.526925", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.527952", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.527952", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.527952", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.528994", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.528994", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.528994", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.528994", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.530188", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.530188", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.531191", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.531191", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.532191", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.532191", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.532191", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.532191", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.532191", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.532191", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.537184", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T14:12:45.537184", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}
+{"timestamp": "2025-06-08T18:54:36.092591", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T18:54:36.094172", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T18:54:36.095182", "event_type": "config_loaded", "message": "Serial settings loaded: Port: COM2, Baud: 9600, Size: 8, Parity: N, Stopbits: 1, Timeout: 1.0", "details": {}}
+{"timestamp": "2025-06-08T18:54:36.096181", "event_type": "connecting", "message": "Attempting to connect to COM2 at 9600 bps", "details": {}}
+{"timestamp": "2025-06-08T18:54:36.102359", "event_type": "connected", "message": "Successfully connected to COM2", "details": {}}
+{"timestamp": "2025-06-08T18:54:36.102359", "event_type": "read_loop_start", "message": "Read loop started.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.411788", "event_type": "disconnect_start", "message": "Starting disconnect procedure.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.411788", "event_type": "disconnect_info", "message": "Cancelling receive_task...", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.411788", "event_type": "read_loop_cancelled", "message": "Read loop was cancelled.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.412790", "event_type": "read_loop_exit", "message": "Exiting read loop.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.412790", "event_type": "disconnect_info", "message": "Receive_task awaited or timed out.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.412790", "event_type": "disconnect_info", "message": "Closing writer.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.413788", "event_type": "disconnect_info", "message": "Aborting transport (Windows).", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.413788", "event_type": "disconnect_info", "message": "Writer was already closing.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.414186", "event_type": "disconnect_info", "message": "Writer closed successfully or timed out.", "details": {}}
+{"timestamp": "2025-06-08T18:54:49.414186", "event_type": "disconnected", "message": "Serial connection resources released.", "details": {}}

@@ -1,33 +1,28 @@
 #!/usr/bin/env python3
 """
-Enhanced Serial Communication Dashboard
-ポート自動検出・選択機能付き
+Simple Enhanced Serial Communication Dashboard
+Input + ポート検出機能付き（Selectウィジェット不使用版）
 """
 
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import (
     DataTable, Header, Footer, Static, 
-    Button, Input, Label, Log, Sparkline, RichLog, Select
+    Button, Input, Label, RichLog, Sparkline
 )
-from textual.reactive import reactive
-from textual import events
 from textual.binding import Binding
 import asyncio
-import json
 import sys
 import glob
 import os
 from datetime import datetime
 from typing import List, Dict, Any
-from pathlib import Path
 
-# 先ほど作成したライブラリをインポート
+# ライブラリインポート
 try:
     from modern_serial_comm import ModernSerialComm, SerialConfig
 except ImportError:
     print("Error: modern_serial_comm.py が見つかりません")
-    print("同じディレクトリに配置してください")
     sys.exit(1)
 
 
@@ -38,82 +33,127 @@ def detect_available_ports() -> List[tuple]:
     try:
         import serial.tools.list_ports
         for port in serial.tools.list_ports.comports():
-            description = f"{port.device} - {port.description}"
-            ports.append((port.device, description))
+            ports.append((port.device, port.description or "Unknown"))
     except ImportError:
-        # pyserial.tools.list_ports が使えない場合の手動検出
+        # 手動検出
         if sys.platform == "win32":
-            # Windows COM ポート
             for i in range(1, 21):
-                port_name = f"COM{i}"
-                ports.append((port_name, f"COM Port {i}"))
+                ports.append((f"COM{i}", f"COM Port {i}"))
         else:
-            # Linux/Unix シリアルポート
-            patterns = ['/dev/ttyS*', '/dev/ttyUSB*', '/dev/ttyACM*', '/dev/ttyAMA*']
+            patterns = ['/dev/ttyS*', '/dev/ttyUSB*', '/dev/ttyACM*']
             for pattern in patterns:
                 for device in glob.glob(pattern):
                     if os.path.exists(device):
                         ports.append((device, f"Serial Device {os.path.basename(device)}"))
     
-    # テスト用ループバック追加
+    # テスト用追加
     ports.append(("loop://", "Loop back (テスト用)"))
-    
     return ports
 
 
-class PortSelector(Container):
-    """ポート選択ウィジェット"""
+class PortInfo(Static):
+    """ポート情報表示ウィジェット"""
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.available_ports = detect_available_ports()
+        self.update_port_list()
     
-    def compose(self) -> ComposeResult:
-        yield Label("🔌 ポート選択", classes="panel-title")
+    def update_port_list(self):
+        """ポート一覧更新"""
+        ports = detect_available_ports()
         
-        # 利用可能ポートの選択肢作成 (表示名, 値) の形式
-        port_options = [(f"{port} - {desc}", port) for port, desc in self.available_ports]
+        content = "🔌 利用可能ポート:\n"
+        content += "━━━━━━━━━━━━━━━━\n"
         
-        if port_options:
-            # デフォルト選択（プラットフォーム別）
-            default_port = "/dev/ttyS0" if sys.platform != "win32" else "COM2"
+        if ports:
+            for i, (port, desc) in enumerate(ports[:8]):  # 最初の8つを表示
+                content += f"{i+1:2d}. {port}\n"
+                if len(desc) > 20:
+                    content += f"    {desc[:20]}...\n"
+                else:
+                    content += f"    {desc}\n"
             
-            # デフォルトが利用可能ポートにあるか確認
-            default_value = None
-            for port, desc in self.available_ports:
-                if port == default_port:
-                    default_value = port  # 値部分を設定
-                    break
-            
-            # デフォルトが見つからない場合は最初のポート
-            if not default_value and self.available_ports:
-                default_value = self.available_ports[0][0]
-            
-            yield Select(
-                port_options,
-                value=default_value,
-                id="port_select"
-            )
+            if len(ports) > 8:
+                content += f"... +{len(ports)-8} more\n"
         else:
-            yield Label("❌ 利用可能なポートが見つかりません")
+            content += "❌ ポートなし\n"
         
-        yield Label("または手動入力:", classes="small-label")
-        yield Input(placeholder="手動でポート名を入力...", id="manual_port_input")
+        self.update(content)
 
 
-class ConnectionPanel(Container):
-    """接続制御パネル"""
+class SimpleConnectionPanel(Container):
+    """シンプル接続制御パネル"""
     
     def compose(self) -> ComposeResult:
-        yield PortSelector(id="port_selector")
+        yield Label("🔌 接続制御", classes="panel-title")
+        
+        # プラットフォーム別デフォルトポート
+        default_port = "/dev/ttyS0" if sys.platform != "win32" else "COM2"
+        
+        yield Input(
+            placeholder=f"ポート名 (例: {default_port})", 
+            id="port_input", 
+            value=default_port
+        )
+        
         with Horizontal(classes="button-row"):
             yield Button("接続", id="connect_btn", variant="success")
             yield Button("切断", id="disconnect_btn", variant="error", disabled=True)
-            yield Button("ポート更新", id="refresh_ports_btn", variant="default")
+        
+        with Horizontal(classes="button-row"):
+            yield Button("ポート検出", id="detect_ports_btn", variant="default")
+            yield Button("設定値", id="preset_btn", variant="default")
 
 
-class EnhancedSerialDashboard(App):
-    """拡張版シリアルダッシュボード"""
+class SendPanel(Container):
+    """データ送信パネル"""
+    
+    def compose(self) -> ComposeResult:
+        yield Label("📤 データ送信", classes="panel-title")
+        yield Input(placeholder="送信データを入力...", id="send_input")
+        with Horizontal(classes="button-row"):
+            yield Button("送信", id="send_btn", variant="primary")
+            yield Button("クリア", id="clear_btn", variant="default")
+
+
+class SerialStats(Static):
+    """統計情報表示ウィジェット"""
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.rx_count = 0
+        self.tx_count = 0
+        self.rx_bytes = 0
+        self.tx_bytes = 0
+        self.start_time = datetime.now()
+        self.update_display()
+    
+    def update_stats(self, direction: str, byte_count: int):
+        if direction == "RX":
+            self.rx_count += 1
+            self.rx_bytes += byte_count
+        elif direction == "TX":
+            self.tx_count += 1
+            self.tx_bytes += byte_count
+        self.update_display()
+    
+    def update_display(self):
+        elapsed = datetime.now() - self.start_time
+        elapsed_str = str(elapsed).split('.')[0]
+        rate = self.rx_count / max(elapsed.total_seconds(), 1)
+        
+        content = f"""📊 統計情報
+━━━━━━━━━━━━━━━━
+📥 受信: {self.rx_count:,} ({self.rx_bytes:,} B)
+📤 送信: {self.tx_count:,} ({self.tx_bytes:,} B)
+⏱️  時間: {elapsed_str}
+📈 速度: {rate:.1f} pkt/s"""
+        
+        self.update(content)
+
+
+class SimpleEnhancedDashboard(App):
+    """シンプル版拡張ダッシュボード"""
     
     CSS = """
     Screen {
@@ -121,7 +161,7 @@ class EnhancedSerialDashboard(App):
     }
     
     #left_panel {
-        width: 40;
+        width: 45;
         height: 100%;
         layout: vertical;
         margin: 0 1;
@@ -137,11 +177,6 @@ class EnhancedSerialDashboard(App):
         text-style: bold;
         color: $accent;
         margin: 1 0 0 0;
-    }
-    
-    .small-label {
-        margin: 1 0 0 0;
-        color: $text-muted;
     }
     
     .button-row {
@@ -175,6 +210,13 @@ class EnhancedSerialDashboard(App):
         margin-bottom: 1;
     }
     
+    #port_info_panel {
+        height: auto;
+        border: solid $primary;
+        padding: 1;
+        margin-bottom: 1;
+    }
+    
     #data_table {
         height: 50%;
         border: solid $primary;
@@ -192,7 +234,7 @@ class EnhancedSerialDashboard(App):
         overflow-y: scroll;
     }
     
-    Select, Input {
+    Input {
         margin: 1 0;
     }
     """
@@ -201,10 +243,10 @@ class EnhancedSerialDashboard(App):
         Binding("q", "quit", "Quit", show=True),
         Binding("c", "clear_data", "Clear Data", show=True),
         Binding("s", "save_data", "Save CSV", show=True),
-        Binding("r", "refresh_ports", "Refresh Ports", show=True),
+        Binding("d", "detect_ports", "Detect Ports", show=True),
     ]
     
-    TITLE = "📡 Enhanced Serial Communication Dashboard"
+    TITLE = "📡 Simple Enhanced Serial Dashboard"
     SUB_TITLE = "Auto-detect ports & Cross-platform support"
     
     def __init__(self, **kwargs):
@@ -215,77 +257,38 @@ class EnhancedSerialDashboard(App):
         self.connected = False
     
     def compose(self) -> ComposeResult:
-        """UI構成"""
         yield Header()
         
         with Horizontal():
             # 左側パネル
             with Vertical(id="left_panel"):
-                yield ConnectionPanel(id="connection_panel")
+                yield SimpleConnectionPanel(id="connection_panel")
                 yield SendPanel(id="send_panel")
                 yield SerialStats(id="stats_panel")
+                yield PortInfo(id="port_info_panel")
             
             # 右側メインエリア
             with Vertical(id="main_area"):
-                # データテーブル
                 yield DataTable(id="data_table")
-                
-                # スパークライン
-                yield Sparkline(
-                    id="sparkline",
-                    data=[],
-                    summary_function=max
-                )
-                
-                # ログビュー
+                yield Sparkline(id="sparkline", data=[], summary_function=max)
                 yield RichLog(id="log_view", highlight=True)
         
         yield Footer()
     
     def on_mount(self) -> None:
         """アプリ起動時の初期化"""
-        # データテーブルの列設定
+        # データテーブル初期化
         table = self.query_one("#data_table", DataTable)
         table.add_columns("時刻", "方向", "データ", "長さ")
         table.cursor_type = "row"
         
         # ログ初期化
         log = self.query_one("#log_view", RichLog)
-        log.write("📡 Enhanced Serial Dashboard 起動完了\n")
-        log.write("🔍 利用可能ポートを自動検出しました\n")
-        log.write("💡 'q'で終了、'c'でデータクリア、's'でCSV保存、'r'でポート更新\n")
+        log.write("📡 Simple Enhanced Serial Dashboard 起動完了\n")
+        log.write("💡 'd'でポート検出、'q'で終了、'c'でデータクリア、's'でCSV保存\n")
         
-        # 検出されたポート表示
-        ports = detect_available_ports()
-        log.write(f"🔌 検出されたポート: {len(ports)} 個\n")
-        for port, desc in ports[:5]:  # 最初の5つを表示
-            log.write(f"   • {port} - {desc}\n")
-        
-        # スパークライン初期化
-        sparkline = self.query_one("#sparkline", Sparkline)
-        sparkline.data = []
-    
-    def get_selected_port(self) -> str:
-        """選択されたポートを取得"""
-        try:
-            # Select ウィジェットから選択されたポート
-            port_select = self.query_one("#port_select", Select)
-            selected_port = port_select.value
-            
-            # 手動入力があるかチェック
-            manual_input = self.query_one("#manual_port_input", Input)
-            manual_port = manual_input.value.strip()
-            
-            if manual_port:
-                return manual_port
-            elif selected_port:
-                return selected_port
-            else:
-                return ""
-                
-        except Exception as e:
-            self.log_message(f"❌ ポート取得エラー: {e}")
-            return ""
+        # ポート検出実行
+        self.action_detect_ports()
     
     async def on_button_pressed(self, event: Button.Pressed) -> None:
         """ボタンクリック処理"""
@@ -295,44 +298,49 @@ class EnhancedSerialDashboard(App):
             await self.connect_serial()
         elif button_id == "disconnect_btn":
             await self.disconnect_serial()
-        elif button_id == "refresh_ports_btn":
-            await self.refresh_ports()
+        elif button_id == "detect_ports_btn":
+            self.action_detect_ports()
+        elif button_id == "preset_btn":
+            self.set_preset_port()
         elif button_id == "send_btn":
             await self.send_data()
         elif button_id == "clear_btn":
             self.query_one("#send_input", Input).value = ""
     
-    async def refresh_ports(self):
-        """ポート一覧を更新"""
-        self.log_message("🔄 ポート一覧を更新中...")
+    def action_detect_ports(self) -> None:
+        """ポート検出アクション"""
+        self.log_message("🔍 ポート検出中...")
         
-        # 新しいポート一覧取得
+        # ポート情報更新
+        port_info = self.query_one("#port_info_panel", PortInfo)
+        port_info.update_port_list()
+        
+        # 検出結果をログに出力
         ports = detect_available_ports()
+        self.log_message(f"🔌 {len(ports)} 個のポートを検出しました")
         
-        # Select ウィジェット更新
-        try:
-            port_select = self.query_one("#port_select", Select)
-            port_options = [(desc, port) for port, desc in ports]
-            
-            # 現在の選択を保持
-            current_value = port_select.value
-            
-            # オプション更新（Textualの制限により、新しいSelectを作成する必要がある場合）
-            self.log_message(f"🔌 {len(ports)} 個のポートを検出しました")
-            
-        except Exception as e:
-            self.log_message(f"❌ ポート更新エラー: {e}")
+        for port, desc in ports[:5]:  # 最初の5つをログに
+            self.log_message(f"   • {port} - {desc}")
     
-    def action_refresh_ports(self) -> None:
-        """ポート更新アクション"""
-        asyncio.create_task(self.refresh_ports())
+    def set_preset_port(self) -> None:
+        """プリセットポート設定"""
+        # プラットフォーム別推奨ポート
+        if sys.platform == "win32":
+            preset_port = "COM2"
+        else:
+            preset_port = "/dev/ttyS0"
+        
+        port_input = self.query_one("#port_input", Input)
+        port_input.value = preset_port
+        self.log_message(f"🎯 プリセットポート設定: {preset_port}")
     
     async def connect_serial(self):
         """シリアル接続"""
-        port = self.get_selected_port()
+        port_input = self.query_one("#port_input", Input)
+        port = port_input.value.strip()
         
         if not port:
-            self.log_message("❌ ポートを選択してください")
+            self.log_message("❌ ポートを入力してください")
             return
         
         try:
@@ -342,12 +350,21 @@ class EnhancedSerialDashboard(App):
             else:
                 config_file = "serial_config_linux.ini"
             
-            # シリアル通信オブジェクト作成
-            self.serial_comm = ModernSerialComm(config_file)
-            
-            # 選択されたポートを設定
-            self.serial_comm.config_manager.config.set('SERIAL', 'port', port)
-            self.serial_comm._load_settings_from_config()
+            # 設定ファイルが存在しない場合は手動作成
+            if not os.path.exists(config_file):
+                self.log_message(f"⚠️ {config_file} が見つかりません。手動設定を使用します")
+                config = SerialConfig()
+                config.config.set('SERIAL', 'port', port)
+                config.config.set('SERIAL', 'baudrate', '9600')
+                
+                self.serial_comm = ModernSerialComm()
+                self.serial_comm.config_manager = config
+                self.serial_comm._load_settings_from_config()
+            else:
+                # 設定ファイル使用
+                self.serial_comm = ModernSerialComm(config_file)
+                self.serial_comm.config_manager.config.set('SERIAL', 'port', port)
+                self.serial_comm._load_settings_from_config()
             
             # コールバック設定
             self.serial_comm.set_receive_callback(self.on_data_received)
@@ -360,7 +377,6 @@ class EnhancedSerialDashboard(App):
                 # ボタン状態更新
                 self.query_one("#connect_btn", Button).disabled = True
                 self.query_one("#disconnect_btn", Button).disabled = False
-                
             else:
                 self.log_message(f"❌ {port} への接続に失敗しました")
                 
@@ -377,11 +393,6 @@ class EnhancedSerialDashboard(App):
             # ボタン状態更新
             self.query_one("#connect_btn", Button).disabled = False
             self.query_one("#disconnect_btn", Button).disabled = True
-    
-    # [残りのメソッドは元のSerialDashboardと同じ]
-    # send_data, on_data_received, _handle_received_data, 
-    # add_to_data_table, update_sparkline, log_message,
-    # action_clear_data, action_save_data, action_quit
     
     async def send_data(self):
         """データ送信"""
@@ -429,7 +440,6 @@ class EnhancedSerialDashboard(App):
                 stats.update_stats("RX", len(data))
                 
                 self.update_sparkline(len(data))
-                
         except Exception as e:
             self.log_message(f"❌ データ処理エラー: {str(e)}")
     
@@ -514,69 +524,13 @@ class EnhancedSerialDashboard(App):
         self.exit()
 
 
-# SendPanel と SerialStats は元のコードと同じ
-class SendPanel(Container):
-    """データ送信パネル"""
-    
-    def compose(self) -> ComposeResult:
-        yield Label("📤 データ送信", classes="panel-title")
-        yield Input(placeholder="送信データを入力...", id="send_input")
-        with Horizontal(classes="button-row"):
-            yield Button("送信", id="send_btn", variant="primary")
-            yield Button("クリア", id="clear_btn", variant="default")
-
-
-class SerialStats(Static):
-    """統計情報表示ウィジェット"""
-    
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.rx_count = 0
-        self.tx_count = 0
-        self.rx_bytes = 0
-        self.tx_bytes = 0
-        self.start_time = datetime.now()
-        self.update_display()
-    
-    def update_stats(self, direction: str, byte_count: int):
-        """統計更新"""
-        if direction == "RX":
-            self.rx_count += 1
-            self.rx_bytes += byte_count
-        elif direction == "TX":
-            self.tx_count += 1
-            self.tx_bytes += byte_count
-        
-        self.update_display()
-    
-    def update_display(self):
-        """表示更新"""
-        elapsed = datetime.now() - self.start_time
-        elapsed_str = str(elapsed).split('.')[0]
-        
-        rate = self.rx_count / max(elapsed.total_seconds(), 1)
-        
-        content = f"""📊 統計情報
-━━━━━━━━━━━━━━━━
-📥 受信: {self.rx_count:,} ({self.rx_bytes:,} B)
-📤 送信: {self.tx_count:,} ({self.tx_bytes:,} B)
-⏱️  時間: {elapsed_str}
-📈 速度: {rate:.1f} pkt/s"""
-        
-        self.update(content)
-
-
 def main():
     """メイン実行関数"""
-    import sys
-    
-    # Windowsイベントループ設定
     if sys.platform == "win32":
         import asyncio
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     
-    # アプリ実行
-    app = EnhancedSerialDashboard()
+    app = SimpleEnhancedDashboard()
     app.run()
 
 
