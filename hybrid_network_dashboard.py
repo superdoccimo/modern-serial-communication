@@ -598,14 +598,26 @@ class HybridDashboard(App):
             self.log_message("❌ 受信ポートを入力してください")
             return
         
-        # シリアル接続処理（前回と同様）
-        config = SerialConfig()
-        config.config.set('SERIAL', 'port', rx_port)
-        config.config.set('SERIAL', 'baudrate', '9600')
-        
-        self.serial_comm = ModernSerialComm()
-        self.serial_comm.config_manager = config
-        self.serial_comm._load_settings_from_config()
+        # プラットフォーム別設定ファイルを選択
+        if sys.platform == "win32":
+            config_file = "serial_config_windows.ini"
+        else:
+            config_file = "serial_config_linux.ini"
+
+        if not os.path.exists(config_file):
+            # 設定ファイルが無い場合は手動設定
+            config = SerialConfig()
+            config.config.set('SERIAL', 'port', rx_port)
+            config.config.set('SERIAL', 'baudrate', '9600')
+
+            self.serial_comm = ModernSerialComm()
+            self.serial_comm.config_manager = config
+            self.serial_comm._load_settings_from_config()
+        else:
+            # 既存設定ファイルを使用
+            self.serial_comm = ModernSerialComm(config_file)
+            self.serial_comm.config_manager.config.set('SERIAL', 'port', rx_port)
+            self.serial_comm._load_settings_from_config()
         self.serial_comm.set_receive_callback(self.on_data_received)
         
         if await self.serial_comm.connect():
