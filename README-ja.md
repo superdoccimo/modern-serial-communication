@@ -101,6 +101,11 @@ python simple_dashboard.py
 #### 3. リアルタイム双方向通信テスト
 両方のダッシュボードでメッセージ送受信！
 
+### ハイブリッドダッシュボードとリモートクライアント
+`hybrid_network_dashboard.py` をホスト側で実行し、別PCから
+`remote_client_dashboard.py` を使って接続することで、シリアル通信を
+ネットワーク経由で操作できます。
+
 ## 📦 プロジェクト構成
 
 ```
@@ -110,6 +115,8 @@ modern-serial-communication/
 ├── modern_serial_comm.py       # コアライブラリ
 ├── async_serial_debug.py       # 診断ツール
 ├── linux_port_checker.py      # Linux用ポートチェッカー
+├── hybrid_network_dashboard.py  # ハイブリッド通信サーバー
+├── remote_client_dashboard.py   # リモート接続クライアント
 ├── serial_config_windows.ini   # Windows用設定
 ├── serial_config_linux.ini     # Linux用設定
 ├── requirements.txt            # 依存関係

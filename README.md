@@ -157,6 +157,11 @@ python serial_dashboard.py
 - No GUI dependencies
 - Lightweight and responsive
 
+### Hybrid Network Dashboard & Remote Client
+Run `hybrid_network_dashboard.py` on the machine with the serial hardware and
+connect from another PC using `remote_client_dashboard.py`. This pair allows
+you to operate the serial port remotely over TCP.
+
 ## 📦 Project Structure
 
 ```
@@ -167,6 +172,8 @@ modern-serial-communication/
 ├── async_serial_debug.py       # Diagnostic tool
 ├── linux_port_checker.py       # Linux port checker
 ├── port_checker.py             # Port discovery tool
+├── hybrid_network_dashboard.py  # Serial+TCP dashboard server
+├── remote_client_dashboard.py   # Connects to the hybrid dashboard
 ├── test_data_sender.py         # Example sender (Windows)
 ├── test_data_sender_linux.py   # Example sender (Linux)
 ├── serial_config_windows.ini   # Windows config
