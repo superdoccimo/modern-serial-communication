@@ -18,6 +18,7 @@ import json
 import sys
 from datetime import datetime
 from typing import Optional
+import time
 
 
 def get_local_ip():
@@ -33,12 +34,14 @@ def get_local_ip():
 class RemoteClientManager:
     """リモート接続管理クラス"""
     
-    def __init__(self, on_data_received=None, on_connection_status=None):
+    def __init__(self, on_data_received=None, on_connection_status=None, heartbeat_interval: float = 30.0):
         self.on_data_received = on_data_received
         self.on_connection_status = on_connection_status
         self.socket = None
         self.connected = False
         self.receive_thread = None
+        self.heartbeat_thread = None
+        self.heartbeat_interval = heartbeat_interval
         self.target_host = None
         self.target_port = None
     
@@ -48,6 +51,7 @@ class RemoteClientManager:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket.settimeout(10.0)
             self.socket.connect((host, port))
+            self.socket.settimeout(None)
             
             self.target_host = host
             self.target_port = port
@@ -56,6 +60,10 @@ class RemoteClientManager:
             # 受信スレッド開始
             self.receive_thread = threading.Thread(target=self._receive_loop, daemon=True)
             self.receive_thread.start()
+
+            # ハートビートスレッド開始
+            self.heartbeat_thread = threading.Thread(target=self._heartbeat_loop, daemon=True)
+            self.heartbeat_thread.start()
             
             if self.on_connection_status:
                 self.on_connection_status(True, f"{host}:{port}")
@@ -94,6 +102,20 @@ class RemoteClientManager:
         self.connected = False
         if self.on_connection_status:
             self.on_connection_status(False, "接続が切断されました")
+
+    def _heartbeat_loop(self):
+        """接続維持のため定期的にハートビートを送信"""
+        while self.connected and self.socket:
+            time.sleep(self.heartbeat_interval)
+            if not self.connected or not self.socket:
+                break
+            try:
+                self.socket.send(b"HEARTBEAT\n")
+            except Exception as e:
+                if self.connected:
+                    if self.on_connection_status:
+                        self.on_connection_status(False, f"ハートビートエラー: {str(e)}")
+                break
     
     async def send_data(self, data: str):
         """データ送信"""
@@ -122,7 +144,10 @@ class RemoteClientManager:
             except:
                 pass
             self.socket = None
-        
+
+        if self.heartbeat_thread and self.heartbeat_thread.is_alive():
+            self.heartbeat_thread.join(timeout=1.0)
+
         if self.receive_thread and self.receive_thread.is_alive():
             self.receive_thread.join(timeout=1.0)
         
