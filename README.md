@@ -57,15 +57,16 @@ cd modern-serial-communication
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the dashboard
-python serial_dashboard.py
+# Run the dashboard (simplified)
+python simple_dashboard.py
 ```
 
 ### Basic Usage
 
 1. **Launch Dashboard**
    ```bash
-   python serial_dashboard.py
+   python simple_dashboard.py  # recommended
+   # python serial_dashboard.py  # full version
    ```
 
 2. **Connect to Serial Port**
@@ -94,7 +95,8 @@ python serial_dashboard.py
 
 ## 🔧 Configuration
 
-The tool uses `serial_config.ini` for configuration:
+Use the OS-specific `.ini` file for configuration:
+`serial_config_windows.ini` on Windows or `serial_config_linux.ini` on Linux.
 
 ```ini
 [SERIAL]
@@ -159,13 +161,18 @@ python serial_dashboard.py
 
 ```
 modern-serial-communication/
-├── serial_dashboard.py      # Main TUI application
-├── modern_serial_comm.py    # Core library
-├── port_checker.py          # Port discovery tool
-├── test_data_sender.py      # Testing utilities
-├── requirements.txt         # Dependencies
-├── serial_config.ini        # Configuration
-└── README.md               # This file
+├── simple_dashboard.py         # Simplified dashboard
+├── serial_dashboard.py         # Full-featured dashboard
+├── modern_serial_comm.py       # Core library
+├── async_serial_debug.py       # Diagnostic tool
+├── linux_port_checker.py       # Linux port checker
+├── port_checker.py             # Port discovery tool
+├── test_data_sender.py         # Example sender (Windows)
+├── test_data_sender_linux.py   # Example sender (Linux)
+├── serial_config_windows.ini   # Windows config
+├── serial_config_linux.ini     # Linux config
+├── requirements.txt            # Dependencies
+└── README.md                   # Documentation
 ```
 
 ## 🚧 Roadmap
