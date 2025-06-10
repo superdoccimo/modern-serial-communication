@@ -54,7 +54,8 @@ class DualPipeComm:
                 win32file.CloseHandle(self.tx_pipe)
                 self.tx_pipe = None
                 print("📤 送信パイプクローズ")
-        except:
+        except (pywintypes.error, OSError):
+            # Ignore errors when closing a pipe
             pass
         
         try:
@@ -62,7 +63,8 @@ class DualPipeComm:
                 win32file.CloseHandle(self.rx_pipe)
                 self.rx_pipe = None
                 print("📥 受信パイプクローズ")
-        except:
+        except (pywintypes.error, OSError):
+            # Ignore errors when closing a pipe
             pass
     
     def connect_pipe_safe(self, pipe_name, timeout=5000):
@@ -86,7 +88,7 @@ class DualPipeComm:
             print(f"✅ 接続成功: {pipe_name}")
             return handle
             
-        except Exception as e:
+        except pywintypes.error as e:
             print(f"❌ 接続失敗 {pipe_name}: {e}")
             return None
     
@@ -177,7 +179,7 @@ class DualPipeComm:
                         
                         win32api.CloseHandle(overlapped.hEvent)
                         
-                    except Exception as e:
+                    except pywintypes.error as e:
                         print(f"❌ 送信エラー: {e}")
                         break
                 
@@ -221,8 +223,8 @@ class DualPipeComm:
                                         if msg:
                                             timestamp = datetime.now().strftime('%H:%M:%S.%f')[:-3]
                                             print(f"[RX {timestamp}] Linux → Windows: {msg}")
-                            except:
-                                # ReadFileが重複する場合の対処
+                            except pywintypes.error:
+                                # Ignore overlapped read errors when multiple reads overlap
                                 pass
                     
                     win32api.CloseHandle(overlapped.hEvent)
@@ -236,7 +238,7 @@ class DualPipeComm:
                 
                 time.sleep(0.01)
                 
-        except Exception as e:
+        except Exception as e:  # Catch unexpected issues to avoid thread crash
             print(f"❌ 受信エラー: {e}")
         finally:
             print("📥 Linux受信終了")
@@ -265,7 +267,7 @@ class DualPipeComm:
                 else:
                     print(f"   ❌ 接続テスト失敗")
                     
-            except Exception as e:
+            except pywintypes.error as e:
                 print(f"   ❌ パイプ未検出: {e}")
                 print(f"   💡 VMware設定確認が必要")
 

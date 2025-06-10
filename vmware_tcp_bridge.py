@@ -55,12 +55,12 @@ class VMwareTCPSerialBridge:
                         
                     except socket.timeout:
                         continue
-                    except Exception as e:
+                    except OSError as e:
                         print(f"接続エラー: {e}")
                         
         except serial.SerialException as e:
             print(f"シリアルポートエラー: {e}")
-        except Exception as e:
+        except OSError as e:
             print(f"エラー: {e}")
         finally:
             server_socket.close()
@@ -76,7 +76,7 @@ class VMwareTCPSerialBridge:
                     try:
                         client_socket.send(data)
                         print(f"転送 → {addr}: {len(data)} bytes")
-                    except:
+                    except OSError:
                         break
                 
                 # TCPからデータ受信（双方向通信）
@@ -88,12 +88,12 @@ class VMwareTCPSerialBridge:
                         print(f"受信 ← {addr}: {len(tcp_data)} bytes")
                 except socket.timeout:
                     pass
-                except:
+                except OSError:
                     break
                 
                 time.sleep(0.01)
                 
-        except Exception as e:
+        except (serial.SerialException, OSError) as e:
             print(f"クライアント処理エラー {addr}: {e}")
         finally:
             client_socket.close()
@@ -148,7 +148,7 @@ class VMwareTCPSerialBridge:
         except serial.SerialException as e:
             print(f"シリアルデバイスエラー: {e}")
             print("デバイスの権限を確認してください: sudo chmod 666 /dev/ttyS0")
-        except Exception as e:
+        except OSError as e:
             print(f"エラー: {e}")
         finally:
             tcp_socket.close()
@@ -181,7 +181,7 @@ class VMwareTCPSerialBridge:
                     
         except KeyboardInterrupt:
             print("送信停止")
-        except Exception as e:
+        except serial.SerialException as e:
             print(f"エラー: {e}")
     
     def monitor_serial_linux(self, serial_device="/dev/ttyS0", baudrate=9600):
@@ -204,7 +204,7 @@ class VMwareTCPSerialBridge:
                     
         except KeyboardInterrupt:
             print("監視停止")
-        except Exception as e:
+        except serial.SerialException as e:
             print(f"エラー: {e}")
     
     def get_ip_info(self):
@@ -213,7 +213,7 @@ class VMwareTCPSerialBridge:
             hostname = socket.gethostname()
             ip = socket.gethostbyname(hostname)
             return ip
-        except:
+        except OSError:
             return "取得失敗"
 
 def main():

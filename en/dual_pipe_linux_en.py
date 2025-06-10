@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-改良版Linux用シリアル通信ツール
-VMwareデュアルパイプ対応・双方向通信
+Enhanced Linux serial communication tool
+Supports VMware dual-pipe bidirectional mode
 """
 
 import serial
@@ -19,13 +19,13 @@ class LinuxSerialComm:
         self.threads = []
     
     def check_serial_devices(self):
-        """シリアルデバイス確認"""
+        """Check available serial devices"""
         devices = {
-            '/dev/ttyS0': 'Windows→Linux受信用',
-            '/dev/ttyS1': 'Linux→Windows送信用'
+            '/dev/ttyS0': 'receive Windows -> Linux',
+            '/dev/ttyS1': 'send Linux -> Windows'
         }
         
-        print("🔍 シリアルデバイス確認:")
+        print("🔍 Checking serial devices:")
         status = {}
         
         for device, purpose in devices.items():
@@ -36,41 +36,41 @@ class LinuxSerialComm:
                 
                 status_icon = "✅" if status[device] else "❌"
                 print(f"  {status_icon} {device}: {purpose}")
-                print(f"      読み取り={readable}, 書き込み={writable}")
+                print(f"      read={readable}, write={writable}")
                 
                 if not status[device]:
-                    print(f"      💡 権限修正: sudo chmod 666 {device}")
+                    print(f"      💡 Fix permissions: sudo chmod 666 {device}")
             else:
                 status[device] = False
-                print(f"  ❌ {device}: デバイスが存在しません")
-                print(f"      💡 VMware設定を確認してください")
+                print(f"  ❌ {device}: device not found")
+                print(f"      💡 Check VMware settings")
         
         all_ready = all(status.values())
         
         if not all_ready:
-            print("\n⚠️ 権限修正方法:")
+            print("\n⚠️ How to adjust permissions:")
             print("  sudo usermod -a -G dialout $USER")
-            print("  logout && login  # 再ログイン必要")
-            print("または")
+            print("  logout && login  # re-login required")
+            print("or")
             print("  sudo chmod 666 /dev/ttyS*")
         
         return all_ready
     
     def send_to_windows(self, device='/dev/ttyS1', test_mode=True):
-        """Linux→Windows送信"""
-        description = f"Linux→Windows送信 ({device})"
+        """Send data from Linux to Windows"""
+        description = f"Linux->Windows send ({device})"
         
         try:
-            print(f"📤 {description}開始...")
+            print(f"📤 Starting {description}...")
             if test_mode:
-                print("🧪 テストモード: Ctrl+Cで停止")
+                print("🧪 Test mode: Ctrl+C to stop")
             
             with serial.Serial(device, 9600, timeout=1) as ser:
                 counter = 1
                 
                 while self.running:
                     if test_mode:
-                        # テストデータパターン
+                        # Test data patterns
                         test_patterns = [
                             f"LINUX_TO_WIN,{counter},{random.randint(20, 30)}.{random.randint(0, 99):02d},CPU_TEMP",
                             f"UBUNTU_STATUS,{counter},RUNNING,{datetime.now().strftime('%H:%M:%S')}",
@@ -99,15 +99,15 @@ class LinuxSerialComm:
                         
                         message = random.choice(test_patterns) + "\r\n"
                     else:
-                        # 手動入力モード
-                        message = input(f"[{counter:03d}] メッセージ: ").strip()
+                        # Manual input mode
+                        message = input(f"[{counter:03d}] Message: ").strip()
                         if message.lower() == 'quit':
                             break
                         message = f"MANUAL,{counter},{message},{datetime.now().strftime('%H:%M:%S')}\r\n"
                     
-                    # 送信実行
+                    # Perform send
                     ser.write(message.encode('utf-8'))
-                    print(f"[TX {counter:03d}] Linux → Windows: {message.strip()}")
+                    print(f"[TX {counter:03d}] Linux -> Windows: {message.strip()}")
                     
                     counter += 1
                     
@@ -115,19 +115,19 @@ class LinuxSerialComm:
                         time.sleep(random.uniform(1.5, 3.0))
                     
         except KeyboardInterrupt:
-            print(f"\n✅ {description}を停止")
+            print(f"\n✅ Stopped {description}")
         except serial.SerialException as e:
-            print(f"❌ シリアルエラー ({device}): {e}")
-            print("💡 デバイス権限・VMware設定を確認してください")
+            print(f"❌ Serial error ({device}): {e}")
+            print("💡 Check device permissions or VMware settings")
         except Exception as e:
-            print(f"❌ 予期しないエラー: {e}")
+            print(f"❌ Unexpected error: {e}")
         finally:
             self.running = False
     
     def receive_from_windows(self, device='/dev/ttyS0'):
-        """Windows→Linux受信監視"""
+        """Monitor data from Windows"""
         try:
-            print(f"📥 Windows→Linux受信監視開始 ({device})")
+            print(f"📥 Start monitoring Windows -> Linux ({device})")
             
             with serial.Serial(device, 9600, timeout=1) as ser:
                 buffer = ""
@@ -137,29 +137,29 @@ class LinuxSerialComm:
                         data = ser.read(ser.in_waiting).decode('utf-8', errors='ignore')
                         buffer += data
                         
-                        # 行単位処理
+                        # Process by line
                         while '\n' in buffer:
                             line, buffer = buffer.split('\n', 1)
                             line = line.strip()
                             if line:
                                 timestamp = datetime.now().strftime('%H:%M:%S.%f')[:-3]
-                                print(f"[RX {timestamp}] Windows → Linux: {line}")
+                                print(f"[RX {timestamp}] Windows -> Linux: {line}")
                     
                     time.sleep(0.01)
                     
         except serial.SerialException as e:
-            print(f"❌ 受信エラー ({device}): {e}")
+            print(f"❌ Receive error ({device}): {e}")
         except Exception as e:
-            print(f"❌ 予期しない受信エラー: {e}")
+            print(f"❌ Unexpected receive error: {e}")
         finally:
-            print(f"📥 受信監視終了 ({device})")
+            print(f"📥 Monitoring stopped ({device})")
     
     def bidirectional_test(self):
-        """双方向通信テスト"""
-        print("🔄 双方向通信テスト開始")
-        print("📤 /dev/ttyS1 → Windows送信")
-        print("📥 /dev/ttyS0 ← Windows受信")
-        print("Ctrl+Cで停止")
+        """Bidirectional communication test"""
+        print("🔄 Starting bidirectional test")
+        print("📤 /dev/ttyS1 -> Windows")
+        print("📥 /dev/ttyS0 <- Windows")
+        print("Ctrl+C to stop")
         print("=" * 40)
         
         self.running = True
@@ -178,11 +178,11 @@ class LinuxSerialComm:
         self.send_to_windows('/dev/ttyS1', test_mode=True)
     
     def manual_communication(self):
-        """手動通信モード"""
-        print("💬 手動通信モード")
-        print("📤 送信: /dev/ttyS1 → Windows")
-        print("📥 受信: /dev/ttyS0 ← Windows")
-        print("メッセージ入力で送信、'quit'で終了")
+        """Manual communication mode"""
+        print("💬 Manual communication mode")
+        print("📤 Send: /dev/ttyS1 -> Windows")
+        print("📥 Receive: /dev/ttyS0 <- Windows")
+        print("Type messages to send, 'quit' to exit")
         print("=" * 40)
         
         self.running = True
@@ -201,8 +201,8 @@ class LinuxSerialComm:
         self.send_to_windows('/dev/ttyS1', test_mode=False)
     
     def performance_test(self):
-        """性能テスト"""
-        print("⚡ 性能テスト開始")
+        """Performance test"""
+        print("⚡ Starting performance test")
         device = '/dev/ttyS1'
         duration = 30
         
@@ -212,7 +212,7 @@ class LinuxSerialComm:
                 bytes_sent = 0
                 packets_sent = 0
                 
-                print(f"📊 {duration}秒間の性能測定...")
+                print(f"📊 Measuring for {duration} seconds...")
                 
                 while time.time() - start_time < duration:
                     test_data = f"PERF_{packets_sent:06d}_" + "L" * 80 + "\r\n"
@@ -224,61 +224,61 @@ class LinuxSerialComm:
                     if packets_sent % 50 == 0:
                         elapsed = time.time() - start_time
                         bps = bytes_sent / elapsed if elapsed > 0 else 0
-                        print(f"📈 進行: {packets_sent} packets, {bps:.1f} bytes/sec")
+                        print(f"📈 Progress: {packets_sent} packets, {bps:.1f} bytes/sec")
                     
                     time.sleep(0.02)  # 50Hz
                 
                 # 結果
                 elapsed = time.time() - start_time
-                print(f"\n📊 性能テスト結果:")
-                print(f"  送信パケット: {packets_sent:,}")
-                print(f"  送信バイト: {bytes_sent:,}")
-                print(f"  実測時間: {elapsed:.2f}秒")
-                print(f"  平均スループット: {bytes_sent/elapsed:.1f} bytes/sec")
-                print(f"  理論値 (9600baud): {9600/10:.1f} bytes/sec")
-                print(f"  効率: {(bytes_sent/elapsed)/(9600/10)*100:.1f}%")
+                print(f"\n📊 Performance result:")
+                print(f"  Packets sent: {packets_sent:,}")
+                print(f"  Bytes sent: {bytes_sent:,}")
+                print(f"  Elapsed: {elapsed:.2f}s")
+                print(f"  Avg throughput: {bytes_sent/elapsed:.1f} bytes/sec")
+                print(f"  Theoretical (9600baud): {9600/10:.1f} bytes/sec")
+                print(f"  Efficiency: {(bytes_sent/elapsed)/(9600/10)*100:.1f}%")
                 
         except Exception as e:
-            print(f"❌ 性能テストエラー: {e}")
+            print(f"❌ Performance test error: {e}")
     
     def stop_all(self):
-        """全通信停止"""
+        """Stop all communication"""
         self.running = False
         
         for thread in self.threads:
             if thread.is_alive():
                 thread.join(timeout=1.0)
         
-        print("✅ 全通信停止完了")
+        print("✅ All communication stopped")
 
 def main():
-    """メイン実行"""
+    """Main execution"""
     comm = LinuxSerialComm()
     
     print("=== Linux Serial Communication Tool (Enhanced) ===")
-    print("🐧 VMware Guest - デュアルパイプ対応")
+    print("🐧 VMware Guest - dual-pipe ready")
     print(f"📅 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 55)
     
-    # 初期チェック
+    # Initial check
     if not comm.check_serial_devices():
-        print("\n❌ シリアルデバイス準備未完了")
-        print("上記の対処方法を実行してから再度お試しください")
+        print("\n❌ Serial devices not ready")
+        print("Please resolve the issues above and try again")
         return
     
     try:
         while True:
-            print("\n🎛️ メニュー:")
-            print("1. デバイス状態確認")
-            print("2. Linux→Windows送信テスト")
-            print("3. Windows→Linux受信監視")
-            print("4. 双方向通信テスト")
-            print("5. 手動通信モード")
-            print("6. 性能テスト")
-            print("7. VMware設定ガイド")
-            print("8. 終了")
+            print("\n🎛️ Menu:")
+            print("1. Check devices")
+            print("2. Send test Linux->Windows")
+            print("3. Monitor Windows->Linux")
+            print("4. Bidirectional test")
+            print("5. Manual communication")
+            print("6. Performance test")
+            print("7. VMware setup guide")
+            print("8. Exit")
             
-            choice = input("\n選択してください (1-8): ").strip()
+            choice = input("\nSelect an option (1-8): ").strip()
             
             if choice == "1":
                 comm.check_serial_devices()
@@ -301,30 +301,30 @@ def main():
                 comm.performance_test()
             
             elif choice == "7":
-                print("\n=== VMware設定ガイド ===")
-                print("【必要な設定】")
-                print("シリアルポート1:")
-                print("  パイプ名: \\\\.\\\pipe\\\\win_to_linux")
-                print("  用途: Windows→Linux (/dev/ttyS0)")
+                print("\n=== VMware setup guide ===")
+                print("[Required settings]")
+                print("Serial port 1:")
+                print("  Pipe name: \\\\.\\\pipe\\\\win_to_linux")
+                print("  Purpose: Windows->Linux (/dev/ttyS0)")
                 print()
-                print("シリアルポート2:")
-                print("  パイプ名: \\\\.\\\pipe\\\\linux_to_win")
-                print("  用途: Linux→Windows (/dev/ttyS1)")
+                print("Serial port 2:")
+                print("  Pipe name: \\\\.\\\pipe\\\\linux_to_win")
+                print("  Purpose: Linux->Windows (/dev/ttyS1)")
                 print()
-                print("【Linux側権限設定】")
+                print("[Linux permissions]")
                 print("sudo usermod -a -G dialout $USER && logout")
-                print("または")
+                print("or")
                 print("sudo chmod 666 /dev/ttyS*")
             
             elif choice == "8":
-                print("👋 終了します")
+                print("👋 Exiting")
                 break
             
             else:
-                print("❌ 1-8を選択してください")
+                print("❌ Please choose 1-8")
                 
     except KeyboardInterrupt:
-        print("\n👋 終了します")
+        print("\n👋 Exiting")
     finally:
         comm.stop_all()
 

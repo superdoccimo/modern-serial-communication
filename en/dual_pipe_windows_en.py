@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-VMware デュアルパイプ双方向通信 - Windows側
-真の双方向通信を実現
+VMware dual-pipe communication - Windows side
+Provides true bidirectional transfer
 """
 
 import win32pipe
@@ -20,40 +20,40 @@ import pywintypes
 class DualPipeComm:
     def __init__(self):
         self.running = False
-        self.tx_pipe = None  # Windows→Linux（送信）
-        self.rx_pipe = None  # Linux→Windows（受信）
+        self.tx_pipe = None  # Windows->Linux (TX)
+        self.rx_pipe = None  # Linux->Windows (RX)
         self.threads = []
         
-        # 安全終了設定
+        # Graceful shutdown setup
         atexit.register(self.cleanup)
         signal.signal(signal.SIGINT, self.signal_handler)
     
     def signal_handler(self, signum, frame):
-        """安全終了処理"""
-        print(f"\n⚠️ 終了シグナル受信")
+        """Handle shutdown signal"""
+        print(f"\n⚠️ Received termination signal")
         self.safe_shutdown()
         sys.exit(0)
     
     def safe_shutdown(self):
-        """安全な終了"""
-        print("🛑 安全終了処理...")
+        """Graceful shutdown"""
+        print("🛑 Performing graceful shutdown...")
         self.running = False
         
-        # スレッド終了待ち
+        # Wait for threads
         for thread in self.threads:
             if thread.is_alive():
                 thread.join(timeout=1.0)
         
         self.cleanup()
-        print("✅ 終了完了")
+        print("✅ Shutdown complete")
     
     def cleanup(self):
-        """リソースクリーンアップ"""
+        """Clean up resources"""
         try:
             if self.tx_pipe:
                 win32file.CloseHandle(self.tx_pipe)
                 self.tx_pipe = None
-                print("📤 送信パイプクローズ")
+                print("📤 TX pipe closed")
         except:
             pass
         
@@ -61,19 +61,19 @@ class DualPipeComm:
             if self.rx_pipe:
                 win32file.CloseHandle(self.rx_pipe)
                 self.rx_pipe = None
-                print("📥 受信パイプクローズ")
+                print("📥 RX pipe closed")
         except:
             pass
     
     def connect_pipe_safe(self, pipe_name, timeout=5000):
-        """安全なパイプ接続"""
-        print(f"🔌 接続試行: {pipe_name}")
+        """Safely connect to a named pipe"""
+        print(f"🔌 Connecting: {pipe_name}")
         
         try:
-            # パイプ待機
+            # Wait for pipe
             win32pipe.WaitNamedPipe(pipe_name, timeout)
             
-            # 非同期モードで接続
+            # Connect in overlapped mode
             handle = win32file.CreateFile(
                 pipe_name,
                 win32file.GENERIC_READ | win32file.GENERIC_WRITE,
@@ -83,43 +83,43 @@ class DualPipeComm:
                 None
             )
             
-            print(f"✅ 接続成功: {pipe_name}")
+            print(f"✅ Connected: {pipe_name}")
             return handle
             
         except Exception as e:
-            print(f"❌ 接続失敗 {pipe_name}: {e}")
+            print(f"❌ Connection failed {pipe_name}: {e}")
             return None
     
     def dual_pipe_communication(self):
-        """デュアルパイプ双方向通信"""
-        print("=== VMware デュアルパイプ双方向通信 ===")
-        print("📤 送信用: \\\\.\\\pipe\\\\win_to_linux")
-        print("📥 受信用: \\\\.\\\pipe\\\\linux_to_win")
-        print("💡 Ctrl+Cで安全終了")
+        """Bidirectional communication using two pipes"""
+        print("=== VMware dual-pipe communication ===")
+        print("📤 TX: \\\\.\\\pipe\\\\win_to_linux")
+        print("📥 RX: \\\\.\\\pipe\\\\linux_to_win")
+        print("💡 Press Ctrl+C to exit")
         print("=" * 50)
         
-        # パイプ接続
+        # Connect pipes
         self.tx_pipe = self.connect_pipe_safe(r"\\.\pipe\win_to_linux")
         self.rx_pipe = self.connect_pipe_safe(r"\\.\pipe\linux_to_win")
         
         if not self.tx_pipe:
-            print("❌ 送信パイプ接続失敗")
-            print("💡 VMware設定確認:")
-            print("   シリアルポート1: \\\\.\\\pipe\\\\win_to_linux")
+            print("❌ Failed to connect TX pipe")
+            print("💡 Check VMware settings:")
+            print("   Serial port 1: \\\\.\\\pipe\\\\win_to_linux")
             return False
         
         if not self.rx_pipe:
-            print("❌ 受信パイプ接続失敗") 
-            print("💡 VMware設定確認:")
-            print("   シリアルポート2: \\\\.\\\pipe\\\\linux_to_win")
+            print("❌ Failed to connect RX pipe")
+            print("💡 Check VMware settings:")
+            print("   Serial port 2: \\\\.\\\pipe\\\\linux_to_win")
             return False
         
-        print("✅ デュアルパイプ接続成功")
-        print("🚀 双方向通信開始...")
+        print("✅ Dual pipe connected")
+        print("🚀 Starting bidirectional transfer...")
         
         self.running = True
         
-        # 受信スレッド起動
+        # Start RX thread
         rx_thread = threading.Thread(
             target=self.receive_from_linux,
             name="Linux_RX_Thread"
@@ -128,23 +128,23 @@ class DualPipeComm:
         rx_thread.start()
         self.threads.append(rx_thread)
         
-        # 送信メインループ
+        # Start sending loop
         self.send_to_linux()
         
         return True
     
     def send_to_linux(self):
-        """Windows→Linux送信"""
+        """Send data from Windows to Linux"""
         counter = 1
         last_send = time.time()
         
-        print("📤 Windows→Linux送信開始")
+        print("📤 Windows -> Linux TX start")
         
         try:
             while self.running:
                 current_time = time.time()
                 
-                # 2秒間隔で送信
+                # Send every 2 seconds
                 if current_time - last_send >= 2.0:
                     message = {
                         "id": counter,
@@ -161,7 +161,7 @@ class DualPipeComm:
                     try:
                         data = (json.dumps(message) + "\n").encode('utf-8')
                         
-                        # 非同期送信
+                        # Asynchronous send
                         overlapped = pywintypes.OVERLAPPED()
                         overlapped.hEvent = win32event.CreateEvent(None, True, False, None)
                         
@@ -169,16 +169,16 @@ class DualPipeComm:
                         result = win32event.WaitForSingleObject(overlapped.hEvent, 1000)
                         
                         if result == win32event.WAIT_OBJECT_0:
-                            print(f"[TX {counter:03d}] Windows → Linux: {message['data']}")
+                            print(f"[TX {counter:03d}] Windows -> Linux: {message['data']}")
                             counter += 1
                             last_send = current_time
                         else:
-                            print(f"⚠️ 送信タイムアウト: {counter}")
+                            print(f"⚠️ Send timeout: {counter}")
                         
                         win32api.CloseHandle(overlapped.hEvent)
                         
                     except Exception as e:
-                        print(f"❌ 送信エラー: {e}")
+                        print(f"❌ Send error: {e}")
                         break
                 
                 time.sleep(0.1)
@@ -186,13 +186,13 @@ class DualPipeComm:
         except KeyboardInterrupt:
             pass
         finally:
-            print("📤 Windows送信終了")
+            print("📤 Windows TX ended")
     
     def receive_from_linux(self):
-        """Linux→Windows受信"""
+        """Receive data from Linux"""
         buffer = b""
         
-        print("📥 Linux→Windows受信待機")
+        print("📥 Waiting for Linux -> Windows")
         
         try:
             while self.running:
@@ -200,126 +200,126 @@ class DualPipeComm:
                     overlapped = pywintypes.OVERLAPPED()
                     overlapped.hEvent = win32event.CreateEvent(None, True, False, None)
                     
-                    # 非同期読み取り
+                    # Asynchronous read
                     win32file.ReadFile(self.rx_pipe, 1024, overlapped)
                     result = win32event.WaitForSingleObject(overlapped.hEvent, 100)
                     
                     if result == win32event.WAIT_OBJECT_0:
                         bytes_read = win32file.GetOverlappedResult(self.rx_pipe, overlapped, False)
                         if bytes_read > 0:
-                            # データ取得（実際の読み取り）
+                            # Get actual data
                             try:
-                                # overlappedから実際のデータを取得
+                                # Retrieve data from overlapped
                                 _, data = win32file.ReadFile(self.rx_pipe, bytes_read)
                                 buffer += data
                                 
-                                # 行単位処理
+                                # Process per line
                                 while b"\n" in buffer:
                                     line, buffer = buffer.split(b"\n", 1)
                                     if line:
                                         msg = line.decode('utf-8', errors='ignore').strip()
                                         if msg:
                                             timestamp = datetime.now().strftime('%H:%M:%S.%f')[:-3]
-                                            print(f"[RX {timestamp}] Linux → Windows: {msg}")
+                                            print(f"[RX {timestamp}] Linux -> Windows: {msg}")
                             except:
-                                # ReadFileが重複する場合の対処
+                                # Handle overlapping ReadFile
                                 pass
                     
                     win32api.CloseHandle(overlapped.hEvent)
                     
                 except pywintypes.error as e:
                     if e.args[0] == 109:  # ERROR_BROKEN_PIPE
-                        print("⚠️ Linux側パイプ切断")
+                        print("⚠️ Linux side pipe closed")
                         break
                     elif e.args[0] == 232:  # ERROR_NO_DATA
-                        pass  # データなし（正常）
+                        pass  # No data (normal)
                 
                 time.sleep(0.01)
                 
         except Exception as e:
-            print(f"❌ 受信エラー: {e}")
+            print(f"❌ Receive error: {e}")
         finally:
-            print("📥 Linux受信終了")
+            print("📥 Linux RX ended")
     
     def test_pipes(self):
-        """パイプ接続テスト"""
-        print("=== デュアルパイプ接続テスト ===")
+        """Test pipe connections"""
+        print("=== Dual pipe connection test ===")
         
         pipes = [
-            (r"\\.\pipe\win_to_linux", "Windows→Linux"),
-            (r"\\.\pipe\linux_to_win", "Linux→Windows")
+            (r"\\.\pipe\win_to_linux", "Windows->Linux"),
+            (r"\\.\pipe\linux_to_win", "Linux->Windows")
         ]
         
         for pipe_name, description in pipes:
-            print(f"\n🔍 テスト: {description}")
-            print(f"   パイプ: {pipe_name}")
+            print(f"\n🔍 Test: {description}")
+            print(f"   Pipe: {pipe_name}")
             
             try:
                 win32pipe.WaitNamedPipe(pipe_name, 1000)
-                print(f"   ✅ パイプ検出成功")
+                print(f"   ✅ Pipe detected")
                 
                 handle = self.connect_pipe_safe(pipe_name, 2000)
                 if handle:
-                    print(f"   ✅ 接続テスト成功")
+                    print(f"   ✅ Connection test passed")
                     win32file.CloseHandle(handle)
                 else:
-                    print(f"   ❌ 接続テスト失敗")
+                    print(f"   ❌ Connection test failed")
                     
             except Exception as e:
-                print(f"   ❌ パイプ未検出: {e}")
-                print(f"   💡 VMware設定確認が必要")
+                print(f"   ❌ Pipe not found: {e}")
+                print(f"   💡 Check VMware settings")
 
 def main():
-    """メイン実行"""
+    """Main execution"""
     comm = DualPipeComm()
     
-    print("🔧 VMware デュアルパイプ通信ツール")
+    print("🔧 VMware dual-pipe communication tool")
     print("=" * 40)
-    print("1. パイプ接続テスト")
-    print("2. 双方向通信開始")  
-    print("3. VMware設定ガイド")
-    print("4. 終了")
+    print("1. Test pipe connections")
+    print("2. Start communication")
+    print("3. VMware configuration guide")
+    print("4. Exit")
     
     while True:
         try:
-            choice = input("\n選択してください (1-4): ").strip()
+            choice = input("\nSelect an option (1-4): ").strip()
             
             if choice == "1":
                 comm.test_pipes()
             
             elif choice == "2":
                 if comm.dual_pipe_communication():
-                    print("✅ 通信セッション終了")
+                    print("✅ Communication session ended")
                 else:
-                    print("❌ 通信開始失敗")
+                    print("❌ Failed to start communication")
             
             elif choice == "3":
-                print("\n=== VMware設定ガイド ===")
-                print("【シリアルポート1設定】")
-                print("  接続方法: 名前付きパイプを使用")
-                print("  パイプ名: \\\\.\\\pipe\\\\win_to_linux")
-                print("  パイプの端: サーバー")
-                print("  I/Oモード: アプリケーション")
+                print("\n=== VMware configuration guide ===")
+                print("[Serial Port 1]")
+                print("  Connection: Named pipe")
+                print("  Pipe name: \\\\.\\\pipe\\\\win_to_linux")
+                print("  End: Server")
+                print("  I/O mode: Application")
                 print()
-                print("【シリアルポート2設定】")
-                print("  接続方法: 名前付きパイプを使用")
-                print("  パイプ名: \\\\.\\\pipe\\\\linux_to_win")
-                print("  パイプの端: サーバー")
-                print("  I/Oモード: アプリケーション")
+                print("[Serial Port 2]")
+                print("  Connection: Named pipe")
+                print("  Pipe name: \\\\.\\\pipe\\\\linux_to_win")
+                print("  End: Server")
+                print("  I/O mode: Application")
                 print()
-                print("【Linux側対応】")
-                print("  /dev/ttyS0 ← Windows送信を受信")
-                print("  /dev/ttyS1 → Windowsへ送信")
+                print("[Linux mapping]")
+                print("  /dev/ttyS0 : receive from Windows")
+                print("  /dev/ttyS1 : send to Windows")
             
             elif choice == "4":
-                print("👋 終了します")
+                print("👋 Exiting")
                 break
             
             else:
-                print("❌ 1-4を選択してください")
+                print("❌ Please choose 1-4")
                 
         except KeyboardInterrupt:
-            print("\n👋 終了します")
+            print("\n👋 Exiting")
             break
     
     comm.cleanup()
