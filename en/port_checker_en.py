@@ -10,48 +10,48 @@ import sys
 
 def list_serial_ports():
     """List available serial ports"""
-    print("=== 利用可能なシリアルポート ===")
+    print("=== Available Serial Ports ===")
     
     ports = serial.tools.list_ports.comports()
     
     if not ports:
-        print("利用可能なシリアルポートが見つかりません。")
-        print("\nテスト用の設定:")
-        print("- loop://  : ループバック（テスト用）")
-        print("- spy://COM1 : 既存ポートの監視")
+        print("No serial ports found.")
+        print("\nTest configuration:")
+        print("- loop://  : loopback (for testing)")
+        print("- spy://COM1 : monitor an existing port")
         return []
     
     for i, port in enumerate(ports, 1):
         print(f"{i}. {port.device}")
-        print(f"   説明: {port.description}")
-        print(f"   ハードウェアID: {port.hwid}")
+        print(f"   Description: {port.description}")
+        print(f"   HW ID: {port.hwid}")
         if hasattr(port, 'manufacturer') and port.manufacturer:
-            print(f"   製造元: {port.manufacturer}")
+            print(f"   Manufacturer: {port.manufacturer}")
         print()
     
     return [port.device for port in ports]
 
 
 def test_port_connection(port_name: str):
-    """指定ポートへの接続テスト"""
+    """Connection test for the specified port"""
     try:
         import serial
-        print(f"\n=== {port_name} 接続テスト ===")
+        print(f"\n=== Testing connection to {port_name} ===")
         
         # Basic connection test
         with serial.Serial(port_name, 9600, timeout=1) as ser:
-            print(f"✅ {port_name} への接続に成功しました")
-            print(f"   ボーレート: {ser.baudrate}")
-            print(f"   データビット: {ser.bytesize}")
-            print(f"   ストップビット: {ser.stopbits}")
-            print(f"   パリティ: {ser.parity}")
+            print(f"✅ Connected to {port_name}")
+            print(f"   Baudrate: {ser.baudrate}")
+            print(f"   Data bits: {ser.bytesize}")
+            print(f"   Stop bits: {ser.stopbits}")
+            print(f"   Parity: {ser.parity}")
             return True
             
     except serial.SerialException as e:
-        print(f"❌ {port_name} への接続に失敗: {e}")
+        print(f"❌ Failed to connect to {port_name}: {e}")
         return False
     except Exception as e:
-        print(f"❌ 予期しないエラー: {e}")
+        print(f"❌ Unexpected error: {e}")
         return False
 
 
@@ -68,10 +68,10 @@ def create_test_config(port_name: str = None):
         selected_port = port_name
     elif available_ports:
         selected_port = available_ports[0]
-        print(f"\n最初に見つかったポート {selected_port} を使用します")
+        print(f"\nUsing the first port found: {selected_port}")
     else:
         selected_port = 'loop://'
-        print("\n実際のポートが見つからないため、テスト用ループバックを使用します")
+        print("\nNo real ports found, using loopback for testing")
     
     config['SERIAL'] = {
         'port': selected_port,
@@ -99,14 +99,14 @@ def create_test_config(port_name: str = None):
     with open(config_path, 'w', encoding='utf-8') as f:
         config.write(f)
     
-    print(f"\n設定ファイル '{config_path}' を作成しました")
-    print(f"使用ポート: {selected_port}")
+    print(f"\nCreated config file '{config_path}'")
+    print(f"Port: {selected_port}")
     
     return config_path
 
 
 if __name__ == "__main__":
-    print("Python Serial Communication - ポート確認ツール")
+    print("Python Serial Communication - Port Checker")
     print("=" * 50)
     
     # List available ports
@@ -114,8 +114,8 @@ if __name__ == "__main__":
     
     # Interactive port selection
     if available_ports:
-        print(f"\n{len(available_ports)}個のポートが見つかりました。")
-        print("テストしたいポート番号を入力してください（Enterでスキップ）:")
+        print(f"\n{len(available_ports)} ports found.")
+        print("Enter the number of the port to test (press Enter to skip):")
         
         try:
             choice = input("> ").strip()
@@ -126,16 +126,16 @@ if __name__ == "__main__":
                     test_port_connection(selected_port)
                     create_test_config(selected_port)
                 else:
-                    print("無効な番号です。デフォルト設定を作成します。")
+                    print("Invalid number. Creating default configuration.")
                     create_test_config()
             else:
-                print("デフォルト設定を作成します。")
+                print("Creating default configuration.")
                 create_test_config()
         except KeyboardInterrupt:
-            print("\n中断されました。")
+            print("\nInterrupted.")
             sys.exit(1)
     else:
         create_test_config()
     
-    print("\n次のコマンドでメインプログラムを実行してください:")
+    print("\nRun the main program with the following command:")
     print("python modern_serial_comm.py")
