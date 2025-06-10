@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Linux用シリアルポート確認・診断ツール (堅牢版)
-エラーハンドリング強化・出力保証
+Robust Linux serial port verification and diagnostics tool.
+Enhanced error handling with guaranteed output.
 """
 
 import os
@@ -10,29 +10,29 @@ import subprocess
 import glob
 
 def safe_print(message):
-    """安全な出力関数"""
+    """Safe print function"""
     try:
         print(message)
         sys.stdout.flush()
     except Exception as e:
-        # 最悪の場合でもエラーを出力
+        # Ensure error output even in worst case
         sys.stderr.write(f"Print error: {e}\n")
         sys.stderr.flush()
 
 def check_python_environment():
-    """Python環境の確認"""
-    safe_print("=== Python環境確認 ===")
+    """Check Python environment"""
+    safe_print("=== Checking Python environment ===")
     safe_print(f"Python version: {sys.version}")
     safe_print(f"Platform: {sys.platform}")
     safe_print(f"Executable: {sys.executable}")
     safe_print("")
 
 def check_basic_system():
-    """基本システム情報"""
-    safe_print("=== 基本システム情報 ===")
+    """Basic system information"""
+    safe_print("=== Basic system information ===")
     
     try:
-        # ユーザー情報
+        # User information
         import pwd
         current_user = pwd.getpwuid(os.getuid()).pw_name
         safe_print(f"Current user: {current_user}")
@@ -41,12 +41,12 @@ def check_basic_system():
         safe_print(f"User info error: {e}")
     
     try:
-        # グループ情報
+        # Group information
         import grp
         groups = [grp.getgrgid(g).gr_name for g in os.getgroups()]
         safe_print(f"Groups: {', '.join(groups)}")
         
-        # dialout チェック
+        # dialout group check
         if 'dialout' in groups:
             safe_print("✅ dialout group: YES")
         else:
@@ -59,10 +59,10 @@ def check_basic_system():
     safe_print("")
 
 def check_devices_manual():
-    """手動でデバイスファイル確認"""
-    safe_print("=== デバイスファイル確認 ===")
+    """Manually inspect device files"""
+    safe_print("=== Checking device files ===")
     
-    # 確認するデバイスリスト
+    # List of devices to check
     devices_to_check = [
         '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2',
         '/dev/ttyUSB0', '/dev/ttyUSB1', '/dev/ttyUSB2',
@@ -74,11 +74,11 @@ def check_devices_manual():
     for device in devices_to_check:
         try:
             if os.path.exists(device):
-                # 詳細情報取得
+                # Get detailed info
                 stat_info = os.stat(device)
                 permissions = oct(stat_info.st_mode)[-3:]
                 
-                # アクセステスト
+                # Access test
                 readable = os.access(device, os.R_OK)
                 writable = os.access(device, os.W_OK)
                 
@@ -98,8 +98,8 @@ def check_devices_manual():
     safe_print("")
 
 def check_with_glob():
-    """globパターンでデバイス検索"""
-    safe_print("=== Glob パターン検索 ===")
+    """Search devices with glob patterns"""
+    safe_print("=== Glob pattern search ===")
     
     patterns = [
         '/dev/ttyS*',
@@ -125,8 +125,8 @@ def check_with_glob():
     safe_print("")
 
 def check_pyserial():
-    """pyserial確認"""
-    safe_print("=== pyserial確認 ===")
+    """Check pyserial installation"""
+    safe_print("=== Checking pyserial ===")
     
     try:
         import serial
@@ -136,7 +136,7 @@ def check_pyserial():
             import serial.tools.list_ports
             safe_print("✅ serial.tools.list_ports available")
             
-            # ポート一覧取得
+            # Get list of ports
             ports = list(serial.tools.list_ports.comports())
             safe_print(f"Found {len(ports)} ports via pyserial")
             
@@ -157,8 +157,8 @@ def check_pyserial():
     safe_print("")
 
 def check_system_commands():
-    """システムコマンド確認"""
-    safe_print("=== システムコマンド確認 ===")
+    """Verify system commands"""
+    safe_print("=== Checking system commands ===")
     
     commands = [
         ['ls', '/dev/tty*'],
@@ -172,7 +172,7 @@ def check_system_commands():
             safe_print(f"Running: {' '.join(cmd)}")
             
             if '|' in cmd:
-                # パイプ含むコマンドは shell=True で実行
+                # Commands with pipes need shell=True
                 result = subprocess.run(' '.join(cmd), shell=True, 
                                       capture_output=True, text=True, timeout=5)
             else:
@@ -181,7 +181,7 @@ def check_system_commands():
             if result.returncode == 0:
                 output = result.stdout.strip()
                 if output:
-                    safe_print(f"  Output: {output[:200]}...")  # 最初の200文字
+                    safe_print(f"  Output: {output[:200]}...")  # first 200 chars
                 else:
                     safe_print("  Output: (empty)")
             else:
@@ -197,15 +197,15 @@ def check_system_commands():
     safe_print("")
 
 def test_simple_access():
-    """シンプルなアクセステスト"""
-    safe_print("=== シンプルアクセステスト ===")
+    """Simple access test"""
+    safe_print("=== Simple access test ===")
     
     test_devices = ['/dev/ttyS0', '/dev/ttyUSB0', '/dev/ttyACM0']
     
     for device in test_devices:
         if os.path.exists(device):
             try:
-                # 読み取り専用で開いてみる
+                # Try opening read-only
                 with open(device, 'rb') as f:
                     safe_print(f"✅ {device} - opened successfully (read)")
             except PermissionError:
@@ -220,22 +220,22 @@ def test_simple_access():
     safe_print("")
 
 def show_recommendations():
-    """推奨事項表示"""
-    safe_print("=== 推奨事項 ===")
-    safe_print("1. 権限問題の場合:")
+    """Display recommendations"""
+    safe_print("=== Recommendations ===")
+    safe_print("1. If you have permission issues:")
     safe_print("   sudo usermod -a -G dialout $USER")
     safe_print("   logout && login")
     safe_print("")
-    safe_print("2. /dev/ttyS0 が見つからない場合:")
-    safe_print("   - USB-シリアル変換器を使用: /dev/ttyUSB0")
-    safe_print("   - Arduino等: /dev/ttyACM0")
+    safe_print("2. If /dev/ttyS0 cannot be found:")
+    safe_print("   - Use a USB-to-serial adapter: /dev/ttyUSB0")
+    safe_print("   - For Arduino etc.: /dev/ttyACM0")
     safe_print("")
-    safe_print("3. pyserial未インストールの場合:")
+    safe_print("3. If pyserial is not installed:")
     safe_print("   pip3 install pyserial")
     safe_print("")
 
 def main():
-    """メイン実行"""
+    """Main execution"""
     safe_print("🔍 Linux Serial Port Diagnostics Tool")
     safe_print("=" * 60)
     
@@ -260,7 +260,7 @@ def main():
         safe_print(traceback.format_exc())
 
 if __name__ == "__main__":
-    # 確実に実行されるようにする
+    # Ensure execution when run directly
     safe_print("🚀 Starting diagnostics...")
     main()
     safe_print("🏁 Script finished.")

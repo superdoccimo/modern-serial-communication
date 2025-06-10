@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-汎用シリアル通信テストツール
-実機同士、VirtualBox、VMware（名前付きパイプ）対応
+Universal serial communication test tool.
+Supports real devices, VirtualBox, and VMware (named pipes).
 """
 
 import serial
@@ -19,7 +19,7 @@ class UniversalSerialTester:
         self.running = False
         
     def detect_environment(self):
-        """実行環境の自動検出"""
+        """Automatically detect the execution environment"""
         env_info = {
             "system": self.system,
             "virtual": False,
@@ -28,7 +28,7 @@ class UniversalSerialTester:
         }
         
         if self.system == "Linux":
-            # 仮想環境検出
+            # Detect virtualization
             try:
                 with open('/proc/cpuinfo', 'r') as f:
                     cpuinfo = f.read().lower()
@@ -36,75 +36,75 @@ class UniversalSerialTester:
                 if 'vmware' in cpuinfo:
                     env_info["virtual"] = True
                     env_info["vm_type"] = "VMware"
-                    env_info["recommended_method"] = "名前付きパイプ または TCP/IP"
+                    env_info["recommended_method"] = "Named pipe or TCP/IP"
                 elif 'virtualbox' in cpuinfo:
                     env_info["virtual"] = True  
                     env_info["vm_type"] = "VirtualBox"
-                    env_info["recommended_method"] = "仮想シリアルポート"
+                    env_info["recommended_method"] = "Virtual serial port"
                 else:
-                    env_info["recommended_method"] = "物理シリアルポート"
+                    env_info["recommended_method"] = "Physical serial port"
                     
             except:
                 pass
                 
         elif self.system == "Windows":
-            # Windows環境チェック
+            # Windows environment check
             try:
                 import subprocess
                 result = subprocess.run(['systeminfo'], capture_output=True, text=True)
                 if 'VMware' in result.stdout:
                     env_info["virtual"] = True
                     env_info["vm_type"] = "VMware Host"
-                    env_info["recommended_method"] = "名前付きパイプ"
+                    env_info["recommended_method"] = "Named pipe"
                 elif 'VirtualBox' in result.stdout:
                     env_info["virtual"] = True
                     env_info["vm_type"] = "VirtualBox Host"
-                    env_info["recommended_method"] = "COM-COMブリッジ"
+                    env_info["recommended_method"] = "COM-COM bridge"
                 else:
-                    env_info["recommended_method"] = "物理シリアルポート"
+                    env_info["recommended_method"] = "Physical serial port"
             except:
                 pass
         
         return env_info
     
     def show_environment_guide(self):
-        """環境別設定ガイド表示"""
+        """Show configuration guide for each environment"""
         env = self.detect_environment()
         
-        print("=== 実行環境情報 ===")
+        print("=== Environment Information ===")
         print(f"OS: {env['system']}")
-        print(f"仮想環境: {'Yes' if env['virtual'] else 'No'}")
+        print(f"Virtualized: {'Yes' if env['virtual'] else 'No'}")
         if env['vm_type']:
-            print(f"VM種類: {env['vm_type']}")
-        print(f"推奨方法: {env['recommended_method']}")
+            print(f"VM Type: {env['vm_type']}")
+        print(f"Recommended method: {env['recommended_method']}")
         print()
         
-        # 環境別詳細ガイド
+        # Detailed guide per environment
         if env['vm_type'] == "VMware":
-            print("🔧 VMware設定ガイド:")
-            print("1. VM設定 → シリアルポート追加")
-            print("2. 接続方法: 名前付きパイプを使用")
-            print("3. パイプ名: \\\\.\\pipe\\vmware_serial")
-            print("4. パイプの端: サーバー")
-            print("5. I/Oモード: アプリケーション")
+            print("🔧 VMware setup guide:")
+            print("1. VM settings → Add serial port")
+            print("2. Connection type: Use named pipe")
+            print("3. Pipe name: \\.\pipe\vmware_serial")
+            print("4. Pipe endpoint: Server")
+            print("5. I/O mode: Application")
             
         elif env['vm_type'] == "VirtualBox":
-            print("🔧 VirtualBox設定ガイド:")
-            print("1. VM設定 → シリアルポート")
-            print("2. ポート1有効化")
-            print("3. ポートモード: ホストパイプ")
-            print("4. パス/アドレス: \\\\.\\pipe\\vbox_serial")
+            print("🔧 VirtualBox setup guide:")
+            print("1. VM settings → Serial Ports")
+            print("2. Enable Port 1")
+            print("3. Port Mode: Host Pipe")
+            print("4. Path/Address: \\.\pipe\vbox_serial")
             
         elif not env['virtual']:
-            print("🔧 物理環境設定ガイド:")
-            print("1. USBシリアル変換器を使用")
-            print("2. または RS232C ケーブル接続")
-            print("3. 両端のボーレート設定を統一")
+            print("🔧 Physical environment guide:")
+            print("1. Use a USB serial adapter")
+            print("2. Or connect via RS232C cable")
+            print("3. Match baud rate on both ends")
             
         print()
     
     def smart_port_detection(self):
-        """インテリジェントポート検出"""
+        """Intelligent port detection"""
         ports = serial.tools.list_ports.comports()
         
         categorized_ports = {
@@ -127,29 +127,29 @@ class UniversalSerialTester:
             else:
                 categorized_ports["unknown"].append(port)
         
-        print("=== インテリジェントポート検出結果 ===")
+        print("=== Intelligent port detection results ===")
         
         for category, port_list in categorized_ports.items():
             if port_list:
                 category_names = {
-                    "physical": "物理シリアルポート",
-                    "virtual": "仮想シリアルポート", 
-                    "usb": "USBシリアル変換器",
-                    "unknown": "その他"
+                    "physical": "Physical serial ports",
+                    "virtual": "Virtual serial ports",
+                    "usb": "USB serial adapters",
+                    "unknown": "Other"
                 }
                 
                 print(f"\n📌 {category_names[category]}:")
                 for i, port in enumerate(port_list, 1):
                     print(f"  {i}. {port.device}")
-                    print(f"     説明: {port.description}")
+                    print(f"     Description: {port.description}")
                     if hasattr(port, 'manufacturer') and port.manufacturer:
-                        print(f"     製造者: {port.manufacturer}")
+                        print(f"     Manufacturer: {port.manufacturer}")
         
         return categorized_ports
     
     def bidirectional_test_wizard(self):
-        """双方向テストウィザード"""
-        print("=== 双方向通信テストウィザード ===")
+        """Bidirectional test wizard"""
+        print("=== Bidirectional communication test wizard ===")
         
         categorized = self.smart_port_detection()
         all_ports = []
@@ -157,51 +157,51 @@ class UniversalSerialTester:
             all_ports.extend(port_list)
         
         if len(all_ports) < 2:
-            print("⚠️ 双方向テストには2つ以上のポートが必要です")
-            print("💡 解決策:")
-            print("1. com0com等で仮想ポートペア作成")
-            print("2. USBシリアル変換器を2つ接続") 
-            print("3. TCP/IPブリッジを使用")
+            print("⚠️ At least two ports are required for the test")
+            print("💡 Suggestions:")
+            print("1. Create a virtual port pair with com0com, etc.")
+            print("2. Connect two USB serial adapters")
+            print("3. Use a TCP/IP bridge")
             return
         
-        print(f"\n利用可能ポート: {len(all_ports)}個")
+        print(f"\nAvailable ports: {len(all_ports)}")
         for i, port in enumerate(all_ports, 1):
             print(f"{i}. {port.device} - {port.description}")
         
         try:
-            # 送信ポート選択
-            tx_choice = int(input("\n送信ポート選択 (1-{}): ".format(len(all_ports)))) - 1
+            # Select transmit port
+            tx_choice = int(input("\nSelect transmit port (1-{}): ".format(len(all_ports)))) - 1
             tx_port = all_ports[tx_choice].device
             
-            # 受信ポート選択
-            rx_choice = int(input("受信ポート選択 (1-{}): ".format(len(all_ports)))) - 1
+            # Select receive port
+            rx_choice = int(input("Select receive port (1-{}): ".format(len(all_ports)))) - 1
             rx_port = all_ports[rx_choice].device
             
             if tx_port == rx_port:
-                print("❌ 異なるポートを選択してください")
+                print("❌ Please choose different ports")
                 return
             
-            # ボーレート設定
-            baudrate = int(input("ボーレート (9600): ") or "9600")
+            # Baud rate setting
+            baudrate = int(input("Baud rate (9600): ") or "9600")
             
-            print(f"\n🔄 双方向テスト開始")
-            print(f"送信: {tx_port}")
-            print(f"受信: {rx_port}")
-            print(f"ボーレート: {baudrate}")
-            print("Ctrl+Cで停止")
+            print(f"\n🔄 Starting bidirectional test")
+            print(f"Transmit: {tx_port}")
+            print(f"Receive: {rx_port}")
+            print(f"Baud rate: {baudrate}")
+            print("Press Ctrl+C to stop")
             
             self.run_bidirectional_test(tx_port, rx_port, baudrate)
             
         except (ValueError, IndexError):
-            print("❌ 無効な選択です")
+            print("❌ Invalid selection")
         except KeyboardInterrupt:
-            print("\n✅ テスト終了")
+            print("\n✅ Test finished")
     
     def run_bidirectional_test(self, tx_port, rx_port, baudrate):
-        """双方向テスト実行"""
+        """Execute the bidirectional test"""
         self.running = True
         
-        # 受信スレッド開始
+        # Start receive thread
         rx_thread = threading.Thread(
             target=self.receive_monitor,
             args=(rx_port, baudrate)
@@ -209,12 +209,12 @@ class UniversalSerialTester:
         rx_thread.daemon = True
         rx_thread.start()
         
-        # 送信開始
+        # Begin transmitting
         try:
             with serial.Serial(tx_port, baudrate, timeout=1) as ser:
                 counter = 1
                 while self.running:
-                    # テストデータ作成
+                    # Create test data
                     test_data = {
                         "id": counter,
                         "timestamp": datetime.now().isoformat(),
@@ -231,14 +231,14 @@ class UniversalSerialTester:
                     time.sleep(2)
                     
         except serial.SerialException as e:
-            print(f"❌ 送信エラー: {e}")
+            print(f"❌ Send error: {e}")
         except KeyboardInterrupt:
             pass
         finally:
             self.running = False
     
     def receive_monitor(self, port, baudrate):
-        """受信監視"""
+        """Receive monitor"""
         try:
             with serial.Serial(port, baudrate, timeout=1) as ser:
                 buffer = ""
@@ -257,14 +257,14 @@ class UniversalSerialTester:
                     time.sleep(0.01)
                     
         except serial.SerialException as e:
-            print(f"❌ 受信エラー: {e}")
+            print(f"❌ Receive error: {e}")
     
     def performance_test(self, port, baudrate=9600, duration=30):
-        """性能テスト"""
-        print(f"=== 性能テスト開始 ===")
-        print(f"ポート: {port}")
-        print(f"ボーレート: {baudrate}")
-        print(f"テスト時間: {duration}秒")
+        """Performance test"""
+        print(f"=== Starting performance test ===")
+        print(f"Port: {port}")
+        print(f"Baud rate: {baudrate}")
+        print(f"Duration: {duration} seconds")
         
         try:
             with serial.Serial(port, baudrate, timeout=1) as ser:
@@ -273,7 +273,7 @@ class UniversalSerialTester:
                 packets_sent = 0
                 
                 while time.time() - start_time < duration:
-                    # 100バイトのテストデータ
+                    # 100-byte test data
                     test_data = f"PERF_TEST_{packets_sent:06d}_" + "X" * 80 + "\r\n"
                     ser.write(test_data.encode('utf-8'))
                     
@@ -283,40 +283,40 @@ class UniversalSerialTester:
                     if packets_sent % 100 == 0:
                         elapsed = time.time() - start_time
                         bps = bytes_sent / elapsed
-                        print(f"進行状況: {packets_sent} packets, {bps:.1f} bytes/sec")
+                        print(f"Progress: {packets_sent} packets, {bps:.1f} bytes/sec")
                     
                     time.sleep(0.01)  # 100Hz
                 
-                # 結果表示
+                # Show results
                 elapsed = time.time() - start_time
-                print(f"\n=== 性能テスト結果 ===")
-                print(f"送信パケット: {packets_sent}")
-                print(f"送信バイト: {bytes_sent:,}")
-                print(f"実測時間: {elapsed:.2f}秒")
-                print(f"スループット: {bytes_sent/elapsed:.1f} bytes/sec")
-                print(f"理論値: {baudrate/10:.1f} bytes/sec")
-                print(f"効率: {(bytes_sent/elapsed)/(baudrate/10)*100:.1f}%")
+                print(f"\n=== Performance test results ===")
+                print(f"Packets sent: {packets_sent}")
+                print(f"Bytes sent: {bytes_sent:,}")
+                print(f"Elapsed time: {elapsed:.2f} sec")
+                print(f"Throughput: {bytes_sent/elapsed:.1f} bytes/sec")
+                print(f"Theoretical: {baudrate/10:.1f} bytes/sec")
+                print(f"Efficiency: {(bytes_sent/elapsed)/(baudrate/10)*100:.1f}%")
                 
         except Exception as e:
-            print(f"❌ 性能テストエラー: {e}")
+            print(f"❌ Performance test error: {e}")
     
     def run(self):
-        """メインメニュー"""
+        """Main menu"""
         while True:
             print("\n" + "="*50)
-            print("🔧 汎用シリアル通信テストツール")
+            print("🔧 Universal Serial Communication Tester")
             print("="*50)
             
-            print("1. 環境情報・設定ガイド")
-            print("2. インテリジェントポート検出")  
-            print("3. 双方向通信テストウィザード")
-            print("4. 単方向送信テスト")
-            print("5. 受信監視")
-            print("6. 性能テスト")
-            print("7. 終了")
+            print("1. Environment info & setup guide")
+            print("2. Intelligent port detection")
+            print("3. Bidirectional test wizard")
+            print("4. One-way send test")
+            print("5. Receive monitor")
+            print("6. Performance test")
+            print("7. Exit")
             
             try:
-                choice = input("\n選択してください (1-7): ").strip()
+                choice = input("\nSelect an option (1-7): ").strip()
                 
                 if choice == "1":
                     self.show_environment_guide()
@@ -330,73 +330,73 @@ class UniversalSerialTester:
                 elif choice == "4":
                     ports = list(serial.tools.list_ports.comports())
                     if ports:
-                        print("\n利用可能ポート:")
+                        print("\nAvailable ports:")
                         for i, port in enumerate(ports, 1):
                             print(f"{i}. {port.device}")
                         
                         try:
-                            port_choice = int(input("ポート選択: ")) - 1
+                            port_choice = int(input("Select port: ")) - 1
                             if 0 <= port_choice < len(ports):
                                 port = ports[port_choice].device
-                                baudrate = int(input("ボーレート (9600): ") or "9600")
+                                baudrate = int(input("Baud rate (9600): ") or "9600")
                                 
-                                # 単方向送信テスト
+                                # One-way send test
                                 self.running = True
                                 self.run_bidirectional_test(port, port, baudrate)
                         except:
-                            print("❌ 無効な選択")
+                            print("❌ Invalid selection")
                 
                 elif choice == "5":
                     ports = list(serial.tools.list_ports.comports())
                     if ports:
-                        print("\n利用可能ポート:")
+                        print("\nAvailable ports:")
                         for i, port in enumerate(ports, 1):
                             print(f"{i}. {port.device}")
                         
                         try:
-                            port_choice = int(input("ポート選択: ")) - 1
+                            port_choice = int(input("Select port: ")) - 1
                             if 0 <= port_choice < len(ports):
                                 port = ports[port_choice].device
-                                baudrate = int(input("ボーレート (9600): ") or "9600")
+                                baudrate = int(input("Baud rate (9600): ") or "9600")
                                 
-                                print(f"受信監視開始: {port}")
-                                print("Ctrl+Cで停止")
+                                print(f"Starting receive monitor: {port}")
+                                print("Press Ctrl+C to stop")
                                 
                                 self.running = True
                                 self.receive_monitor(port, baudrate)
                         except KeyboardInterrupt:
                             self.running = False
-                            print("\n受信監視停止")
+                            print("\nReceive monitoring stopped")
                         except:
-                            print("❌ 無効な選択")
+                            print("❌ Invalid selection")
                 
                 elif choice == "6":
                     ports = list(serial.tools.list_ports.comports())
                     if ports:
-                        print("\n利用可能ポート:")
+                        print("\nAvailable ports:")
                         for i, port in enumerate(ports, 1):
                             print(f"{i}. {port.device}")
                         
                         try:
-                            port_choice = int(input("ポート選択: ")) - 1
+                            port_choice = int(input("Select port: ")) - 1
                             if 0 <= port_choice < len(ports):
                                 port = ports[port_choice].device
-                                baudrate = int(input("ボーレート (9600): ") or "9600")
-                                duration = int(input("テスト時間[秒] (30): ") or "30")
+                                baudrate = int(input("Baud rate (9600): ") or "9600")
+                                duration = int(input("Test duration[s] (30): ") or "30")
                                 
                                 self.performance_test(port, baudrate, duration)
                         except:
-                            print("❌ 無効な選択")
+                            print("❌ Invalid selection")
                 
                 elif choice == "7":
-                    print("終了します")
+                    print("Exiting")
                     break
                 
                 else:
-                    print("❌ 1-7を選択してください")
+                    print("❌ Please select 1-7")
                     
             except KeyboardInterrupt:
-                print("\n\n終了します")
+                print("\n\nExiting")
                 self.running = False
                 break
 
