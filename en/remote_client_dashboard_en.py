@@ -114,7 +114,7 @@ class RemoteClientManager:
             except Exception as e:
                 if self.connected:
                     if self.on_connection_status:
-                        self.on_connection_status(False, f"ハートビートエラー: {str(e)}")
+                        self.on_connection_status(False, f"Heartbeat error: {str(e)}")
                 break
     
     async def send_data(self, data: str):
@@ -131,7 +131,7 @@ class RemoteClientManager:
             
         except Exception as e:
             if self.on_connection_status:
-                self.on_connection_status(False, f"送信エラー: {str(e)}")
+                self.on_connection_status(False, f"Send error: {str(e)}")
             return False
     
     def disconnect(self):
@@ -152,63 +152,63 @@ class RemoteClientManager:
             self.receive_thread.join(timeout=1.0)
         
         if self.on_connection_status:
-            self.on_connection_status(False, "Disconnectしました")
+            self.on_connection_status(False, "Disconnected")
 
 
 class RemoteConnectionPanel(Container):
     """Remote connection panel"""
     
     def compose(self) -> ComposeResult:
-        yield Label("🌐 リモートConnect設定", classes="panel-title")
+        yield Label("🌐 Remote Connection Settings", classes="panel-title")
         
         yield Label("📍 Server address:", classes="port-label")
         yield Input(
-            placeholder="例: 192.168.1.100", 
+            placeholder="e.g., 192.168.1.100", 
             id="server_host_input", 
             value="192.168.1.100"
         )
         
         yield Label("🌐 Port number:", classes="port-label")
         yield Input(
-            placeholder="例: 9999", 
+            placeholder="e.g., 9999", 
             id="server_port_input", 
             value="9999"
         )
         
-        # Connectボタン
+        # Connect button
         with Horizontal(classes="button-row"):
             yield Button("Connect", id="connect_btn", variant="success")
             yield Button("Disconnect", id="disconnect_btn", variant="error", disabled=True)
         
-        # 操作ボタン
+        # Action buttons
         with Horizontal(classes="button-row"):
             yield Button("IP Info", id="ip_info_btn", variant="default")
-            yield Button("Connectテスト", id="ping_btn", variant="default")
+            yield Button("Test Connection", id="ping_btn", variant="default")
 
 
 class RemoteConnectionStatus(Static):
-    """リモートConnect状態表示"""
+    """Remote connection status"""
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.update_status(False, "未Connect")
+        self.update_status(False, "Not connected")
     
     def update_status(self, connected: bool, details: str):
-        """Connect状態更新"""
+        """Update status"""
         local_ip = get_local_ip()
         
         if connected:
-            content = f"""🔗 Connect状態: ✅ 接続中
+            content = f"""🔗 Status: ✅ Connected
 ━━━━━━━━━━━━━━━━
 🎯 Server: {details}
 📍 Local IP: {local_ip}
 📊 Mode: Remote client
-🔄 データ受信中"""
+🔄 Receiving data"""
         else:
-            content = f"""🔗 Connect状態: ❌ Disconnected
+            content = f"""🔗 Status: ❌ Disconnected
 ━━━━━━━━━━━━━━━━
 📍 Local IP: {local_ip}
-📊 Mode: 待機中
+📊 Mode: Idle
 🔄 Communication stopped
 💡 Details: {details}"""
         
@@ -222,8 +222,8 @@ class RemoteSendPanel(Container):
         yield Label("📤 Send data", classes="panel-title")
         yield Input(placeholder="Enter data to send...", id="send_input")
         with Horizontal(classes="button-row"):
-            yield Button("送信", id="send_btn", variant="primary")
-            yield Button("クリア", id="clear_btn", variant="default")
+            yield Button("Send", id="send_btn", variant="primary")
+            yield Button("Clear", id="clear_btn", variant="default")
 
 
 class RemoteStats(Static):
@@ -272,7 +272,7 @@ class RemoteStats(Static):
 
 
 class RemoteClientDashboard(App):
-    """Remote clientダッシュボード"""
+    """Remote Client Dashboard"""
     
     CSS = """
     Screen {
@@ -391,14 +391,14 @@ class RemoteClientDashboard(App):
         yield Header()
         
         with Horizontal():
-            # 左側パネル
+            # Left panel
             with Vertical(id="left_panel"):
                 yield RemoteConnectionPanel(id="connection_panel")
                 yield RemoteSendPanel(id="send_panel")
                 yield RemoteStats(id="stats_panel")
                 yield RemoteConnectionStatus(id="status_panel")
             
-            # 右側メインエリア
+            # Right main area
             with Vertical(id="main_area"):
                 yield DataTable(id="data_table")
                 yield Sparkline(id="sparkline", data=[], summary_function=max)
@@ -407,21 +407,21 @@ class RemoteClientDashboard(App):
         yield Footer()
     
     def on_mount(self) -> None:
-        """アプリ起動時の初期化"""
-        # データテーブル初期化
+        """Initialize on startup"""
+        # Initialize data table
         table = self.query_one("#data_table", DataTable)
-        table.add_columns("時刻", "方向", "データ", "長さ", "送信元")
+        table.add_columns("Time", "Direction", "Data", "Length", "Source")
         table.cursor_type = "row"
         
-        # ログ初期化
+        # Initialize logs
         log = self.query_one("#log_view", RichLog)
-        log.write("📡 Remote Client Dashboard 起動完了\n")
-        log.write("🌐 別PCのハイブリッドダッシュボードにConnect可能\n")
+        log.write("📡 Remote Client Dashboard started\n")
+        log.write("🌐 Can connect to hybrid dashboard on another PC\n")
         log.write(f"📍 Local IP: {get_local_ip()}\n")
-        log.write("💡 'r'で再Connect、'i'でIP Info表示\n")
+        log.write("💡 Press 'r' to reconnect, 'i' for IP info\n")
     
     async def on_button_pressed(self, event: Button.Pressed) -> None:
-        """ボタンクリック処理"""
+        """Handle button clicks"""
         button_id = event.button.id
         
         if button_id == "connect_btn":
@@ -452,27 +452,26 @@ class RemoteClientDashboard(App):
             self.log_message("❌ Please enter a valid port number")
             return
         
-        self.log_message(f"🔄 {host}:{port} にConnect中...")
-        
+        self.log_message(f"🔄 Connecting to {host}:{port}...")
         if await self.client_manager.connect(host, port):
             self.connected = True
             self.update_button_states()
-            self.log_message(f"✅ {host}:{port} にConnectしました")
+            self.log_message(f"✅ Connected to {host}:{port}")
             
             # Reset stats
             stats = self.query_one("#stats_panel", RemoteStats)
             stats.reset_stats()
         else:
-            self.log_message(f"❌ {host}:{port} へのConnectに失敗しました")
+            self.log_message(f"❌ Failed to connect to {host}:{port}")
     
     async def disconnect_from_server(self):
-        """サーバーからDisconnect"""
+        """Disconnect from server"""
         self.client_manager.disconnect()
         self.connected = False
         self.update_button_states()
     
     async def test_connection(self):
-        """Connectテスト"""
+        """Test Connection"""
         host = self.query_one("#server_host_input", Input).value.strip()
         port_str = self.query_one("#server_port_input", Input).value.strip()
         
@@ -485,7 +484,7 @@ class RemoteClientDashboard(App):
         except ValueError:
             port = 9999
         
-        self.log_message(f"🔍 {host}:{port} へのConnectテスト中...")
+        self.log_message(f"🔍 Testing connection to {host}:{port}...")
         
         try:
             test_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -494,36 +493,36 @@ class RemoteClientDashboard(App):
             test_socket.close()
             
             if result == 0:
-                self.log_message(f"✅ {host}:{port} へのConnectテスト成功")
+                self.log_message(f"✅ Connection test successful to {host}:{port}")
             else:
-                self.log_message(f"❌ {host}:{port} へのConnectテスト失敗 (エラーコード: {result})")
+                self.log_message(f"❌ Connection test failed to {host}:{port} (Error code: {result})")
                 
         except Exception as e:
-            self.log_message(f"❌ Connectテストエラー: {str(e)}")
+            self.log_message(f"❌ Connection test error: {str(e)}")
     
     def update_button_states(self):
-        """ボタン状態更新"""
+        """Update button states"""
         self.query_one("#connect_btn", Button).disabled = self.connected
         self.query_one("#disconnect_btn", Button).disabled = not self.connected
     
     def on_connection_status(self, connected: bool, details: str):
-        """Connect状態変更時の処理"""
+        """Handle connection status changes"""
         self.call_later(self._update_connection_status, connected, details)
     
     def _update_connection_status(self, connected: bool, details: str):
-        """Connect状態更新（UIスレッド）"""
+        """Update status (UI thread)"""
         self.connected = connected
         status = self.query_one("#status_panel", RemoteConnectionStatus)
         status.update_status(connected, details)
         self.update_button_states()
-        self.log_message(f"🔗 Connect状態変更: {details}")
+        self.log_message(f"🔗 Connection status changed: {details}")
     
     def on_data_received(self, data: bytes, source: str):
-        """データ受信処理"""
+        """Data receive handler"""
         self.call_later(self._handle_received_data, data, source)
     
     def _handle_received_data(self, data: bytes, source: str):
-        """データ受信処理（UIスレッド）"""
+        """Handle received data (UI thread)"""
         try:
             data_str = data.decode('utf-8', errors='replace').strip()
             
@@ -531,7 +530,7 @@ class RemoteClientDashboard(App):
                 self.log_message(f"📥 Received ({source}): {data_str}")
                 self.add_to_data_table("RX", data_str, len(data), source)
                 
-                # 統計更新
+                # Update stats
                 stats = self.query_one("#stats_panel", RemoteStats)
                 stats.update_stats("RX", len(data))
                 
@@ -543,7 +542,7 @@ class RemoteClientDashboard(App):
     async def send_data(self):
         """Send data"""
         if not self.connected:
-            self.log_message("❌ Connect to serverされていません")
+            self.log_message("❌ Not connected to server")
             return
         
         send_input = self.query_one("#send_input", Input)
@@ -556,17 +555,17 @@ class RemoteClientDashboard(App):
             self.log_message(f"📤 Sent: {data}")
             send_input.value = ""
             
-            # 統計更新
+            # Update stats
             stats = self.query_one("#stats_panel", RemoteStats)
             stats.update_stats("TX", len(data.encode()))
             
-            # データテーブルに追加
+            # Add to data table
             self.add_to_data_table("TX", data, len(data.encode()), "Local")
         else:
             self.log_message("❌ Send failed")
     
     def add_to_data_table(self, direction: str, data: str, length: int, source: str):
-        """データテーブルに行追加"""
+        """Add row to data table"""
         table = self.query_one("#data_table", DataTable)
         timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]
         
@@ -587,7 +586,7 @@ class RemoteClientDashboard(App):
             table.remove_row(0)
     
     def update_sparkline(self, data_length: int):
-        """スパークライン更新"""
+        """Update sparkline"""
         sparkline = self.query_one("#sparkline", Sparkline)
         self.sparkline_data.append(data_length)
         
@@ -597,21 +596,21 @@ class RemoteClientDashboard(App):
         sparkline.data = self.sparkline_data
     
     def log_message(self, message: str):
-        """ログメッセージ出力"""
+        """Output log message"""
         log = self.query_one("#log_view", RichLog)
         timestamp = datetime.now().strftime("%H:%M:%S")
         log.write(f"[{timestamp}] {message}\n")
     
     def action_ip_info(self) -> None:
-        """IP Info表示"""
+        """Show IP info"""
         local_ip = get_local_ip()
         self.log_message(f"📍 Local IP: {local_ip}")
         
         if self.connected:
             target = f"{self.client_manager.target_host}:{self.client_manager.target_port}"
-            self.log_message(f"🎯 Connect先: {target}")
+            self.log_message(f"🎯 Connected target: {target}")
         
-        # ネットワーク情報取得試行
+        # Attempt to get network info
         try:
             hostname = socket.gethostname()
             self.log_message(f"🖥️ Host name: {hostname}")
@@ -619,16 +618,16 @@ class RemoteClientDashboard(App):
             pass
     
     async def action_reconnect(self) -> None:
-        """再Connect"""
+        """Reconnect"""
         if self.connected:
             await self.disconnect_from_server()
-            # 少し待機
+            # Wait a moment
             await asyncio.sleep(1)
         
         await self.connect_to_server()
     
     def action_clear_data(self) -> None:
-        """データクリア"""
+        """Clear data"""
         table = self.query_one("#data_table", DataTable)
         table.clear()
         
@@ -645,7 +644,7 @@ class RemoteClientDashboard(App):
         self.log_message("🗑️ Data cleared")
     
     def action_save_data(self) -> None:
-        """CSV保存"""
+        """Save CSV"""
         if not self.data_buffer:
             self.log_message("💾 No data to save")
             return
@@ -672,7 +671,7 @@ class RemoteClientDashboard(App):
             self.log_message(f"❌ Save error: {str(e)}")
     
     async def action_quit(self) -> None:
-        """アプリ終了"""
+        """Exit application"""
         if self.connected:
             self.client_manager.disconnect()
         self.exit()

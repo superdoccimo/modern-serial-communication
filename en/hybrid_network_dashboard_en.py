@@ -22,7 +22,7 @@ import json
 from datetime import datetime
 from typing import List, Dict, Any, Optional
 
-# ライブラリインポート
+# Import libraries
 try:
     from modern_serial_comm import ModernSerialComm, SerialConfig
 except ImportError:
@@ -52,7 +52,7 @@ def detect_available_ports() -> List[tuple]:
                         ports.append((device, f"Serial Device {os.path.basename(device)}"))
     
     # Test use
-    ports.append(("loop://", "Loop back (テスト用)"))
+    ports.append(("loop://", "Loop back (for testing)"))
     return ports
 
 
@@ -90,7 +90,7 @@ class NetworkManager:
             
             return True
         except Exception as e:
-            print(f"サーバー開始エラー: {e}")
+            print(f"Server start error: {e}")
             return False
     
     def _server_loop(self):
@@ -100,7 +100,7 @@ class NetworkManager:
                 client_socket, addr = self.server_socket.accept()
                 self.client_connections.append((client_socket, addr))
                 
-                # Client handlingスレッド開始
+                # Start client handling thread
                 client_thread = threading.Thread(
                     target=self._handle_client,
                     args=(client_socket, addr),
@@ -125,7 +125,7 @@ class NetworkManager:
                     self.on_data_received(data, f"NET_RX_{addr[0]}")
                     
         except Exception as e:
-            print(f"Client handlingエラー {addr}: {e}")
+            print(f"Client handling error {addr}: {e}")
         finally:
             client_socket.close()
             self.client_connections = [
@@ -133,7 +133,7 @@ class NetworkManager:
             ]
     
     async def send_to_tcp_client(self, host: str, port: int, data: bytes):
-        """TCPクライアントとして送信"""
+        """Send as TCP client"""
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(5.0)
@@ -145,7 +145,7 @@ class NetworkManager:
             return False
     
     def broadcast_to_clients(self, data: bytes):
-        """接続中のクライアントに一斉送信"""
+        """Broadcast to connected clients"""
         disconnected = []
         for client_socket, addr in self.client_connections:
             try:
@@ -153,7 +153,7 @@ class NetworkManager:
             except:
                 disconnected.append((client_socket, addr))
         
-        # 切断されたクライアントを削除
+        # Remove disconnected clients
         for client_socket, addr in disconnected:
             try:
                 client_socket.close()
@@ -167,7 +167,7 @@ class NetworkManager:
         """Stop server"""
         self.is_server_running = False
         
-        # クライアント接続をクローズ
+        # Close client connections
         for client_socket, addr in self.client_connections:
             try:
                 client_socket.close()
@@ -175,7 +175,7 @@ class NetworkManager:
                 pass
         self.client_connections.clear()
         
-        # サーバーソケットクローズ
+        # Close server socket
         if self.server_socket:
             try:
                 self.server_socket.close()
@@ -185,44 +185,44 @@ class NetworkManager:
 
 
 class HybridConnectionPanel(Container):
-    """Hybrid Connectionパネル（シリアル+ネットワーク）"""
+    """Hybrid connection panel (Serial + Network)"""
     
     def compose(self) -> ComposeResult:
         yield Label("🔌 Connection Settings", classes="panel-title")
         
-        # Communication Type選択
+        # Select communication type
         yield Label("📡 Communication Type:", classes="port-label")
         yield Select(
             [
                 ("Serial Communication", "serial"),
                 ("Network (Server)", "network_server"),
                 ("Network (Client)", "network_client"),
-                ("ハイブリッド（シリアル+ネットワーク）", "hybrid")
+                ("Hybrid (Serial + Network)", "hybrid")
             ],
             id="comm_type_select",
             allow_blank=False
         )
         
-        # シリアルポート設定
+        # Serial port settings
         yield Label("📥 RX Port/IP:", classes="port-label")
         yield Input(
-            placeholder="COM2 または 0.0.0.0", 
+            placeholder="COM2 or 0.0.0.0", 
             id="rx_port_input", 
             value="COM2" if sys.platform == "win32" else "/dev/ttyS0"
         )
         
-        # 送受信分離チェックボックス
+        # Separate TX/RX checkbox
         yield Checkbox("Separate TX/RX", id="separate_ports_checkbox")
         
-        # 送信ポート/宛先設定
+        # TX port/destination settings
         yield Label("📤 TX Port/Destination:", classes="port-label", id="tx_port_label")
         yield Input(
-            placeholder="COM1 または 192.168.1.100:9999", 
+            placeholder="COM1 or 192.168.1.100:9999", 
             id="tx_port_input", 
             value="COM1" if sys.platform == "win32" else "/dev/ttyS1"
         )
         
-        # ネットワークポート設定
+        # Network port setting
         yield Label("🌐 Network Port:", classes="port-label", id="network_port_label")
         yield Input(
             placeholder="9999", 
@@ -230,12 +230,12 @@ class HybridConnectionPanel(Container):
             value="9999"
         )
         
-        # 接続ボタン
+        # Connect button
         with Horizontal(classes="button-row"):
-            yield Button("接続", id="connect_btn", variant="success")
-            yield Button("切断", id="disconnect_btn", variant="error", disabled=True)
+            yield Button("Connect", id="connect_btn", variant="success")
+            yield Button("Disconnect", id="disconnect_btn", variant="error", disabled=True)
         
-        # 操作ボタン
+        # Action buttons
         with Horizontal(classes="button-row"):
             yield Button("Detect Ports", id="detect_ports_btn", variant="default")
             yield Button("IP Info", id="ip_info_btn", variant="default")
@@ -257,15 +257,15 @@ class HybridConnectionStatus(Static):
                 if rx_port == tx_port:
                     content = f"""🔗 Status: ✅ Serial Connected
 ━━━━━━━━━━━━━━━━
-📍 ポート: {rx_port}
-📊 Mode: 単一ポート
-🔄 双方向通信"""
+📍 Port: {rx_port}
+📊 Mode: Single port
+🔄 Bidirectional"""
                 else:
                     content = f"""🔗 Status: ✅ Serial Connected
 ━━━━━━━━━━━━━━━━
-📥 受信: {rx_port}
-📤 送信: {tx_port}
-📊 Mode: デュアルポート"""
+📥 RX: {rx_port}
+📤 TX: {tx_port}
+📊 Mode: Dual port"""
             
             elif comm_type == "network_server":
                 port = details.get('port', 'N/A')
@@ -283,7 +283,7 @@ class HybridConnectionStatus(Static):
 ━━━━━━━━━━━━━━━━
 🎯 Destination: {target}
 📊 Mode: TCP Client
-🔄 送信専用"""
+🔄 Transmit only"""
             
             elif comm_type == "hybrid":
                 serial_port = details.get('serial_port', 'N/A')
@@ -291,15 +291,15 @@ class HybridConnectionStatus(Static):
                 clients = details.get('clients', 0)
                 content = f"""🔗 Status: ✅ Hybrid Connection
 ━━━━━━━━━━━━━━━━
-🔌 シリアル: {serial_port}
-🌐 ネットワーク: :{network_port}
+🔌 Serial: {serial_port}
+🌐 Network: :{network_port}
 👥 Clients: {clients}
 📊 Mode: Serial + Network"""
         else:
-            content = """🔗 Status: ❌ 未接続
+            content = """🔗 Status: ❌ Disconnected
 ━━━━━━━━━━━━━━━━
-📍 ポート: なし
-📊 Mode: 待機中
+📍 Port: None
+📊 Mode: Idle
 🔄 Communication stopped"""
         
         self.update(content)
@@ -311,12 +311,12 @@ class HybridSendPanel(Container):
     def compose(self) -> ComposeResult:
         yield Label("📤 Send Data", classes="panel-title")
         
-        # Destination選択
+        # Select destination
         yield Label("🎯 Destination:", classes="port-label")
         yield Select(
             [
-                ("シリアルポート", "serial"),
-                ("ネットワーク", "network"),
+                ("Serial port", "serial"),
+                ("Network", "network"),
                 ("All (Broadcast)", "broadcast")
             ],
             id="send_target_select",
@@ -325,8 +325,8 @@ class HybridSendPanel(Container):
         
         yield Input(placeholder="Enter data to send...", id="send_input")
         with Horizontal(classes="button-row"):
-            yield Button("送信", id="send_btn", variant="primary")
-            yield Button("クリア", id="clear_btn", variant="default")
+            yield Button("Send", id="send_btn", variant="primary")
+            yield Button("Clear", id="clear_btn", variant="default")
 
 
 class HybridDashboard(App):
@@ -465,13 +465,13 @@ class HybridDashboard(App):
         yield Header()
         
         with Horizontal():
-            # 左側パネル
+            # Left panel
             with Vertical(id="left_panel"):
                 yield HybridConnectionPanel(id="connection_panel")
                 yield HybridSendPanel(id="send_panel")
                 yield HybridConnectionStatus(id="status_panel")
             
-            # 右側メインエリア
+            # Right main area
             with Vertical(id="main_area"):
                 yield DataTable(id="data_table")
                 yield Sparkline(id="sparkline", data=[], summary_function=max)
@@ -480,36 +480,36 @@ class HybridDashboard(App):
         yield Footer()
     
     def on_mount(self) -> None:
-        """アプリ起動時の初期化"""
-        # データテーブル初期化
+        """Initialize on startup"""
+        # Initialize data table
         table = self.query_one("#data_table", DataTable)
-        table.add_columns("時刻", "方向", "データ", "長さ", "送信元/先")
+        table.add_columns("Time", "Direction", "Data", "Length", "Source/Dest")
         table.cursor_type = "row"
         
-        # ログ初期化
+        # Initialize logs
         log = self.query_one("#log_view", RichLog)
-        log.write("🌐 Hybrid Communication Dashboard 起動完了\n")
-        log.write("💡 Serial Communicationとネットワーク通信の両方に対応\n")
-        log.write("🎯 Communication Typeを選択して別PCとの通信も可能\n")
+        log.write("🌐 Hybrid Communication Dashboard started\n")
+        log.write("💡 Supports both serial and network communication\n")
+        log.write("🎯 Select communication type to communicate with another PC\n")
         log.write(f"📍 Local IP: {get_local_ip()}\n")
         
-        # 初期表示設定
+        # Initial display settings
         self.update_ui_visibility("serial")
     
     def on_select_changed(self, event: Select.Changed) -> None:
-        """セレクトボックス変更処理"""
+        """Handle select box changes"""
         if event.select.id == "comm_type_select":
             self.communication_type = event.value
             self.update_ui_visibility(event.value)
-            self.log_message(f"🔄 Communication Type変更: {event.value}")
+            self.log_message(f"🔄 Communication type changed: {event.value}")
     
     def on_checkbox_changed(self, event: Checkbox.Changed) -> None:
-        """チェックボックス変更処理"""
+        """Handle checkbox changes"""
         if event.checkbox.id == "separate_ports_checkbox":
             self.update_port_separation_ui(event.value)
     
     def update_ui_visibility(self, comm_type: str):
-        """Communication Typeに応じたUI表示制御"""
+        """Update UI based on communication type"""
         tx_label = self.query_one("#tx_port_label", Label)
         tx_input = self.query_one("#tx_port_input", Input)
         net_label = self.query_one("#network_port_label", Label)
@@ -525,8 +525,8 @@ class HybridDashboard(App):
         if comm_type == "network_client":
             tx_label.styles.display = "block"
             tx_input.styles.display = "block"
-            # プレースホルダー更新
-            tx_input.placeholder = "Destination (例: 192.168.1.100:9999)"
+            # Update placeholder
+            tx_input.placeholder = "Destination (e.g., 192.168.1.100:9999)"
         elif comm_type == "serial":
             separate_checkbox = self.query_one("#separate_ports_checkbox", Checkbox)
             if separate_checkbox.value:
@@ -535,13 +535,13 @@ class HybridDashboard(App):
             else:
                 tx_label.styles.display = "none"
                 tx_input.styles.display = "none"
-            tx_input.placeholder = "送信ポート (例: COM1)"
+            tx_input.placeholder = "TX port (e.g., COM1)"
         else:
             tx_label.styles.display = "none"
             tx_input.styles.display = "none"
     
     def update_port_separation_ui(self, separate: bool):
-        """ポート分離UI更新"""
+        """Update port separation UI"""
         if self.communication_type == "serial":
             tx_label = self.query_one("#tx_port_label", Label)
             tx_input = self.query_one("#tx_port_input", Input)
@@ -554,7 +554,7 @@ class HybridDashboard(App):
                 tx_input.styles.display = "none"
     
     async def on_button_pressed(self, event: Button.Pressed) -> None:
-        """ボタンクリック処理"""
+        """Handle button clicks"""
         button_id = event.button.id
         
         if button_id == "connect_btn":
@@ -585,27 +585,27 @@ class HybridDashboard(App):
                 await self.connect_hybrid()
                 
         except Exception as e:
-            self.log_message(f"❌ 接続エラー: {str(e)}")
+            self.log_message(f"❌ Connection error: {str(e)}")
     
     async def connect_serial(self):
         """Serial Connected"""
         if not ModernSerialComm:
-            self.log_message("❌ modern_serial_comm.py が必要です")
+            self.log_message("❌ modern_serial_comm.py is required")
             return
         
         rx_port = self.query_one("#rx_port_input", Input).value.strip()
         if not rx_port:
-            self.log_message("❌ 受信ポートを入力してください")
+            self.log_message("❌ Please enter RX port")
             return
         
-        # プラットフォーム別設定ファイルを選択
+        # Choose config file by platform
         if sys.platform == "win32":
             config_file = "serial_config_windows.ini"
         else:
             config_file = "serial_config_linux.ini"
 
         if not os.path.exists(config_file):
-            # 設定ファイルが無い場合は手動設定
+            # Manual settings if no config file
             config = SerialConfig()
             config.config.set('SERIAL', 'port', rx_port)
             config.config.set('SERIAL', 'baudrate', '9600')
@@ -614,7 +614,7 @@ class HybridDashboard(App):
             self.serial_comm.config_manager = config
             self.serial_comm._load_settings_from_config()
         else:
-            # 既存設定ファイルを使用
+            # Use existing config file
             self.serial_comm = ModernSerialComm(config_file)
             self.serial_comm.config_manager.config.set('SERIAL', 'port', rx_port)
             self.serial_comm._load_settings_from_config()
@@ -624,17 +624,17 @@ class HybridDashboard(App):
             self.connected = True
             self.connection_details = {'rx_port': rx_port, 'tx_port': rx_port}
             self.update_connection_status()
-            self.log_message(f"✅ シリアルポート {rx_port} に接続しました")
+            self.log_message(f"✅ Connected to serial port {rx_port}")
         else:
-            self.log_message(f"❌ シリアルポート {rx_port} への接続に失敗")
+            self.log_message(f"❌ Failed to connect to serial port {rx_port}")
     
     async def connect_network_server(self):
-        """Network Server接続"""
+        """Connect as network server"""
         port_str = self.query_one("#network_port_input", Input).value.strip()
         try:
             port = int(port_str) if port_str else 9999
         except ValueError:
-            self.log_message("❌ 有効なポート番号を入力してください")
+            self.log_message("❌ Please enter a valid port number")
             return
         
         if await self.network_manager.start_server(port):
@@ -646,21 +646,21 @@ class HybridDashboard(App):
                 'clients': 0
             }
             self.update_connection_status()
-            self.log_message(f"✅ Network Server開始: {local_ip}:{port}")
+            self.log_message(f"✅ Network server started: {local_ip}:{port}")
         else:
-            self.log_message(f"❌ Network Server開始に失敗")
+            self.log_message(f"❌ Failed to start network server")
     
     async def connect_network_client(self):
-        """Network Client設定"""
+        """Set up network client"""
         target = self.query_one("#tx_port_input", Input).value.strip()
         if not target:
-            self.log_message("❌ Destinationを入力してください（例: 192.168.1.100:9999）")
+            self.log_message("❌ Please enter destination (e.g., 192.168.1.100:9999)")
             return
         
         self.connected = True
         self.connection_details = {'target': target}
         self.update_connection_status()
-        self.log_message(f"✅ Network Client設定完了: {target}")
+        self.log_message(f"✅ Network client configured: {target}")
     
     async def connect_hybrid(self):
         """Hybrid Connection"""
@@ -669,7 +669,7 @@ class HybridDashboard(App):
         if not self.connected:
             return
         
-        # Network Server追加
+        # Add network server
         port_str = self.query_one("#network_port_input", Input).value.strip()
         try:
             port = int(port_str) if port_str else 9999
@@ -684,9 +684,9 @@ class HybridDashboard(App):
                 'clients': 0
             }
             self.update_connection_status()
-            self.log_message(f"✅ Hybrid Connection完了: シリアル({serial_port}) + ネットワーク(:{port})")
+            self.log_message(f"✅ Hybrid connection ready: Serial({serial_port}) + Network(:{port})")
         else:
-            self.log_message("⚠️ ネットワーク部分の開始に失敗（シリアルのみで継続）")
+            self.log_message("⚠️ Failed to start network portion (continuing with serial only)")
     
     async def disconnect_communication(self):
         """Disconnect communication"""
@@ -699,14 +699,14 @@ class HybridDashboard(App):
         self.connected = False
         self.connection_details = {}
         self.update_connection_status()
-        self.log_message("🔌 通信を切断しました")
+        self.log_message("🔌 Communication disconnected")
     
     def update_connection_status(self):
         """Update connection status"""
         status = self.query_one("#status_panel", HybridConnectionStatus)
         status.update_status(self.connected, self.communication_type, self.connection_details)
         
-        # ボタンStatus更新
+        # Update button status
         self.query_one("#connect_btn", Button).disabled = self.connected
         self.query_one("#disconnect_btn", Button).disabled = not self.connected
     
@@ -722,7 +722,7 @@ class HybridDashboard(App):
         if not data:
             return
         
-        # 改行コード追加
+        # Append newline
         if not data.endswith(('\r\n', '\r', '\n')):
             data += '\r\n'
         
@@ -733,40 +733,40 @@ class HybridDashboard(App):
             if send_target == "serial" and self.serial_comm:
                 success = await self.serial_comm.send_string(data)
                 if success:
-                    self.log_message(f"📤 シリアル送信: {data.strip()}")
+                    self.log_message(f"📤 Serial sent: {data.strip()}")
                     self.add_to_data_table("TX", data.strip(), len(data.encode()), "Serial")
             
             elif send_target == "network":
                 if self.communication_type == "network_client":
-                    # クライアントとして送信
+                    # Send as client
                     target = self.connection_details.get('target', '')
                     if ':' in target:
                         host, port_str = target.rsplit(':', 1)
                         port = int(port_str)
                         success = await self.network_manager.send_to_tcp_client(host, port, data.encode())
                         if success:
-                            self.log_message(f"📤 ネットワーク送信: {data.strip()} → {target}")
+                            self.log_message(f"📤 Network send: {data.strip()} → {target}")
                             self.add_to_data_table("TX", data.strip(), len(data.encode()), target)
                 else:
-                    # サーバーとして接続クライアントに送信
+                    # Send to connected clients as server
                     self.network_manager.broadcast_to_clients(data.encode())
                     clients = len(self.network_manager.client_connections)
                     success = clients > 0
                     if success:
-                        self.log_message(f"📤 ネットワーク配信: {data.strip()} → {clients}台")
+                        self.log_message(f"📤 Network broadcast: {data.strip()} → {clients} clients")
                         self.add_to_data_table("TX", data.strip(), len(data.encode()), f"Network({clients})")
             
             elif send_target == "broadcast":
-                # 全Destinationに配信
+                # Broadcast to all destinations
                 if self.serial_comm:
                     await self.serial_comm.send_string(data)
-                    self.log_message(f"📤 シリアル送信: {data.strip()}")
+                    self.log_message(f"📤 Serial sent: {data.strip()}")
                 
                 if self.network_manager.is_server_running:
                     self.network_manager.broadcast_to_clients(data.encode())
                     clients = len(self.network_manager.client_connections)
                     if clients > 0:
-                        self.log_message(f"📤 ネットワーク配信: {data.strip()} → {clients}台")
+                        self.log_message(f"📤 Network broadcast: {data.strip()} → {clients} clients")
                 
                 success = True
                 self.add_to_data_table("TX", data.strip(), len(data.encode()), "Broadcast")
@@ -780,32 +780,32 @@ class HybridDashboard(App):
             self.log_message(f"❌ Send error: {str(e)}")
     
     def on_data_received(self, data: bytes, source: str):
-        """データ受信処理"""
+        """Data receive handler"""
         self.call_later(self._handle_received_data, data, source)
     
     def _handle_received_data(self, data: bytes, source: str):
-        """データ受信処理（UIスレッド）"""
+        """Handle received data (UI thread)"""
         try:
             data_str = data.decode('utf-8', errors='replace').strip()
             
             if source.startswith("NET_RX_"):
-                # ネットワーク受信
+                # Network RX
                 client_ip = source.replace("NET_RX_", "")
-                self.log_message(f"📥 ネットワーク受信 ({client_ip}): {data_str}")
+                self.log_message(f"📥 Network RX ({client_ip}): {data_str}")
                 self.add_to_data_table("RX", data_str, len(data), f"Net_{client_ip}")
             else:
-                # シリアル受信
+                # Serial RX
                 port = self.serial_comm.port if self.serial_comm else "unknown"
-                self.log_message(f"📥 シリアル受信 ({port}): {data_str}")
+                self.log_message(f"📥 Serial RX ({port}): {data_str}")
                 self.add_to_data_table("RX", data_str, len(data), f"Serial_{port}")
             
             self.update_sparkline(len(data))
             
         except Exception as e:
-            self.log_message(f"❌ データ処理エラー: {str(e)}")
+            self.log_message(f"❌ Data processing error: {str(e)}")
     
     def add_to_data_table(self, direction: str, data: str, length: int, source: str):
-        """データテーブルに行追加"""
+        """Add row to data table"""
         table = self.query_one("#data_table", DataTable)
         timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]
         
@@ -826,7 +826,7 @@ class HybridDashboard(App):
             table.remove_row(0)
     
     def update_sparkline(self, data_length: int):
-        """スパークライン更新"""
+        """Update sparkline"""
         sparkline = self.query_one("#sparkline", Sparkline)
         self.sparkline_data.append(data_length)
         
@@ -836,14 +836,14 @@ class HybridDashboard(App):
         sparkline.data = self.sparkline_data
     
     def log_message(self, message: str):
-        """ログメッセージ出力"""
+        """Output log message"""
         log = self.query_one("#log_view", RichLog)
         timestamp = datetime.now().strftime("%H:%M:%S")
         log.write(f"[{timestamp}] {message}\n")
     
     def action_detect_ports(self) -> None:
-        """Detect Portsアクション"""
-        self.log_message("🔍 Detect Ports中...")
+        """Detect Ports action"""
+        self.log_message("🔍 Detecting ports...")
         ports = detect_available_ports()
         self.log_message(f"🔌 {len(ports)} ports detected")
         
@@ -851,18 +851,18 @@ class HybridDashboard(App):
             self.log_message(f"   • {port} - {desc}")
     
     def action_ip_info(self) -> None:
-        """IP情報表示"""
+        """Show IP info"""
         local_ip = get_local_ip()
         self.log_message(f"📍 Local IP: {local_ip}")
         
-        # ネットワーク接続情報
+        # Network connection info
         if self.network_manager.is_server_running:
             clients = len(self.network_manager.client_connections)
             self.log_message(f"👥 Connected clients: {clients}")
             for client_socket, addr in self.network_manager.client_connections:
                 self.log_message(f"   • {addr[0]}:{addr[1]}")
         
-        # システム情報
+        # System info
         try:
             hostname = socket.gethostname()
             self.log_message(f"🖥️ Host name: {hostname}")
@@ -870,7 +870,7 @@ class HybridDashboard(App):
             pass
     
     def action_clear_data(self) -> None:
-        """データクリア"""
+        """Clear data"""
         table = self.query_one("#data_table", DataTable)
         table.clear()
         
@@ -882,7 +882,7 @@ class HybridDashboard(App):
         self.log_message("🗑️ Data cleared")
     
     def action_save_data(self) -> None:
-        """CSV保存"""
+        """Save CSV"""
         if not self.data_buffer:
             self.log_message("💾 No data to save")
             return
@@ -909,7 +909,7 @@ class HybridDashboard(App):
             self.log_message(f"❌ Save error: {str(e)}")
     
     async def action_quit(self) -> None:
-        """アプリ終了"""
+        """Exit application"""
         if self.connected:
             await self.disconnect_communication()
         self.exit()
