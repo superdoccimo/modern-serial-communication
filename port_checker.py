@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-シリアルポート確認ツール
-利用可能なシリアルポートを一覧表示
+Serial port checker
+Displays a list of available serial ports
 """
 
 import serial.tools.list_ports
@@ -9,7 +9,7 @@ import sys
 
 
 def list_serial_ports():
-    """利用可能なシリアルポートを一覧表示"""
+    """List available serial ports"""
     print("=== 利用可能なシリアルポート ===")
     
     ports = serial.tools.list_ports.comports()
@@ -38,7 +38,7 @@ def test_port_connection(port_name: str):
         import serial
         print(f"\n=== {port_name} 接続テスト ===")
         
-        # 基本的な接続テスト
+        # Basic connection test
         with serial.Serial(port_name, 9600, timeout=1) as ser:
             print(f"✅ {port_name} への接続に成功しました")
             print(f"   ボーレート: {ser.baudrate}")
@@ -56,12 +56,12 @@ def test_port_connection(port_name: str):
 
 
 def create_test_config(port_name: str = None):
-    """テスト用設定ファイル作成"""
+    """Create configuration file for testing"""
     import configparser
     
     config = configparser.ConfigParser()
     
-    # 利用可能なポートを取得
+    # Get available ports
     available_ports = list_serial_ports()
     
     if port_name:
@@ -94,7 +94,7 @@ def create_test_config(port_name: str = None):
         'output_file': 'serial_log.jsonl'
     }
     
-    # 設定ファイル保存
+    # Save configuration file
     config_path = 'serial_config.ini'
     with open(config_path, 'w', encoding='utf-8') as f:
         config.write(f)
@@ -109,10 +109,10 @@ if __name__ == "__main__":
     print("Python Serial Communication - ポート確認ツール")
     print("=" * 50)
     
-    # 利用可能ポート一覧
+    # List available ports
     available_ports = list_serial_ports()
     
-    # 対話的にポート選択
+    # Interactive port selection
     if available_ports:
         print(f"\n{len(available_ports)}個のポートが見つかりました。")
         print("テストしたいポート番号を入力してください（Enterでスキップ）:")

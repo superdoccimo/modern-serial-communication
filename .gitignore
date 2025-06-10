@@ -1,0 +1,16 @@
+# Log files
+*.log
+
+# Temporary configuration files
+*.cfg
+*.conf
+*.tmp
+*.temp
+*.bak
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/

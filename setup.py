@@ -3,7 +3,7 @@
 Setup script for Modern Serial Communication
 """
 
-from setuptools import setup, find_packages
+from setuptools import setup
 import pathlib
 
 # プロジェクトルートディレクトリ
@@ -44,7 +44,28 @@ setup(
         "Environment :: Console :: Curses",
     ],
     keywords="serial communication monitoring hardware embedded iot dashboard",
-    packages=find_packages(),
+    py_modules=[
+        "async_serial_debug",
+        "compact_dual_port_dashboard",
+        "dual_pipe_linux",
+        "dual_pipe_windows",
+        "dual_port_dashboard",
+        "h_checker",
+        "hybrid_network_dashboard",
+        "linux_port_checker",
+        "modern_serial_comm",
+        "pipe_access",
+        "port_checker",
+        "quick_fix_test",
+        "remote_client_dashboard",
+        "serial_dashboard",
+        "simple_dashboard",
+        "test_data_sender",
+        "test_data_sender_linux",
+        "ultra_compact_dashboard",
+        "vmware_serial_checker",
+        "vmware_tcp_bridge",
+    ],
     python_requires=">=3.8",
     install_requires=[
         "pyserial>=3.5",

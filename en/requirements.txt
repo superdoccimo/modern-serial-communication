@@ -1,15 +1,15 @@
 # Modern Serial Communication - Dependencies
 # Python Serial Communication Library Requirements
 
-# 基本的な依存関係
+# Core dependencies
 setuptools>=65.0.0
 pyserial>=3.5
 pyserial-asyncio>=0.6
-textual>=0.41.0,<0.50.0  # バージョンを制限
+textual>=0.41.0,<0.50.0  # Version range for compatibility
 rich>=13.0.0
 
-# Windows環境での推奨
-# colorama>=0.4.4  # Windows環境でのカラー出力
+# Recommended for Windows
+# colorama>=0.4.4  # Enables colored output on Windows
 
 # Optional: For future MQTT support
 # asyncio-mqtt>=0.11.1
@@ -19,5 +19,5 @@ rich>=13.0.0
 # uvicorn>=0.15.0
 # websockets>=10.0
 
-# Optional: Windows向けWin32 APIサポート
+# Optional: Win32 API support for Windows
 pywin32>=306

@@ -5,7 +5,7 @@ Python replacement for Serial (Cross-platform)
 """
 
 import asyncio
-import serial_asyncio  # pyserial-asyncio が必要
+import serial_asyncio  # Requires pyserial-asyncio
 import json
 import configparser
 import logging
@@ -13,17 +13,17 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional, Callable, Dict, Any, List
 import sys
-import serial  # serial.SerialException をキャッチするためにインポート
+import serial  # Imported to catch serial.SerialException
 import os
 
-# Windows では grp/pwd が存在しないため、プラットフォーム判別してインポート
+# grp and pwd are only available on Linux; import conditionally
 if sys.platform.startswith("linux"):
     import grp
     import pwd
 
 
 class EventLogger:
-    """イベントロギング用クラス"""
+    """Class for event logging."""
     def __init__(self, log_file_path: Optional[str] = "serial_events.log"):
         self.log_entries: List[Dict[str, Any]] = []
         self.log_file_path = Path(log_file_path) if log_file_path else None
@@ -56,7 +56,7 @@ class EventLogger:
         return self.log_entries
 
     def flush_logs_to_file(self):
-        """メモリ上のログを指定されたファイルに書き出す（追記）"""
+        """Write in-memory logs to the specified file (append)."""
         if not self.log_file_path or not self.log_entries:
             return
         try:
@@ -69,7 +69,7 @@ class EventLogger:
 
 
 class SerialConfig:
-    """シリアル通信設定管理"""
+    """Serial communication settings manager."""
     def __init__(self, config_path: str = "serial_config.ini"):
         self.config_path = Path(config_path)
         self.config = configparser.ConfigParser()
@@ -77,7 +77,7 @@ class SerialConfig:
         self.load_config()
 
     def load_config(self):
-        """設定ファイル読み込み"""
+        """Load settings from file."""
         if self.config_path.exists():
             try:
                 self.config.read(self.config_path, encoding='utf-8')
@@ -91,7 +91,7 @@ class SerialConfig:
             self.save_config()
 
     def create_default_config(self):
-        """デフォルト設定作成"""
+        """Create default configuration."""
         self.config['SERIAL'] = {
             'port': 'loop://',
             'baudrate': '9600',
@@ -110,7 +110,7 @@ class SerialConfig:
         self.logger.info("Default configuration created.")
 
     def save_config(self):
-        """設定ファイル保存"""
+        """Save configuration to file."""
         try:
             with open(self.config_path, 'w', encoding='utf-8') as configfile:
                 self.config.write(configfile)
@@ -119,18 +119,18 @@ class SerialConfig:
             self.logger.error(f"Error saving config file {self.config_path}: {e}")
 
     def get_setting(self, section: str, key: str, fallback: Optional[Any] = None) -> Optional[Any]:
-        """設定値取得"""
+        """Get a configuration value."""
         return self.config.get(section, key, fallback=fallback)
 
     def set_setting(self, section: str, key: str, value: str):
-        """設定値設定"""
+        """Set a configuration value."""
         if not self.config.has_section(section):
             self.config.add_section(section)
         self.config.set(section, key, value)
 
 
 class ModernSerialComm:
-    """非同期シリアル通信管理クラス"""
+    """Asynchronous serial communication manager."""
     def __init__(self, config_path: str = "serial_config.ini"):
         self.config_manager = SerialConfig(config_path)
         self.port: Optional[str] = None
@@ -154,7 +154,7 @@ class ModernSerialComm:
         self._load_settings_from_config()
 
     def _load_settings_from_config(self):
-        """設定ファイルからシリアルパラメータをロード"""
+        """Load serial parameters from the configuration file."""
         s = 'SERIAL'
         self.port = self.config_manager.get_setting(s, 'port', 'loop://')
 
@@ -184,7 +184,7 @@ class ModernSerialComm:
             self.logger.log_event("config_loaded", f"Serial settings loaded: {self.get_config_summary()}")
         except Exception as e:
             self.logger.log_event("config_error", f"Error loading serial settings: {e}. Using defaults.")
-            # 戻り値はデフォルトのまま
+            # Keep return values as defaults
             self.baudrate = 9600
             self.bytesize = serial.EIGHTBITS
             self.parity = serial.PARITY_NONE
@@ -250,7 +250,7 @@ class ModernSerialComm:
             self.logger.log_event("read_loop_exit", "Exiting read loop.")
 
     async def connect(self) -> bool:
-        """シリアル接続開始（Linux 権限チェック対応）"""
+        """Establish serial connection (with Linux permission checks)."""
         if self.is_connected:
             self.logger.log_event("connect_attempt_while_connected", "Already connected.")
             return True
@@ -262,7 +262,7 @@ class ModernSerialComm:
                 self.error_callback("Port not specified.")
             return False
 
-        # Linux 環境での権限チェック
+        # Permission check on Linux
         if sys.platform.startswith('linux') and self.port.startswith('/dev/'):
             if os.path.exists(self.port):
                 if not os.access(self.port, os.R_OK | os.W_OK):
@@ -281,7 +281,7 @@ class ModernSerialComm:
                         self.error_callback(error_msg)
                     return False
             else:
-                # デバイスが存在しない場合、利用可能なポートを提案
+                # Suggest available ports if device does not exist
                 available_ports = []
                 for prefix in ['/dev/ttyUSB', '/dev/ttyACM', '/dev/ttyS']:
                     for i in range(10):
@@ -301,7 +301,7 @@ class ModernSerialComm:
         try:
             self.logger.log_event("connecting", f"Attempting to connect to {self.port} at {self.baudrate} bps")
 
-            # シリアル接続設定
+            # Serial connection parameters
             kwargs = {
                 'url': self.port,
                 'baudrate': self.baudrate,
@@ -313,7 +313,7 @@ class ModernSerialComm:
                 'dsrdtr': self.dsrdtr,
                 'xonxoff': self.xonxoff
             }
-            # Linux 環境の場合は exclusive=True を追加（他プロセス排他制御）
+            # On Linux add exclusive=True for process-level locking
             if sys.platform.startswith('linux'):
                 kwargs['exclusive'] = True
 
@@ -343,7 +343,7 @@ class ModernSerialComm:
             return False
 
     async def disconnect(self):
-        """シリアル接続終了 (Windows でのハング対策込み)"""
+        """End serial connection (includes Windows hang workaround)."""
         if not self.is_connected and not self.writer and not self.receive_task:
             self.logger.log_event("disconnect_attempt_while_disconnected", "Already disconnected or not connected.")
             return
@@ -496,7 +496,7 @@ class ModernSerialComm:
             self.logger.log_event('json_export_error', f"Failed to export log to JSON: {e}")
 
     def get_connection_status(self) -> Dict[str, Any]:
-        """接続状態の詳細情報を取得"""
+        """Retrieve detailed connection status."""
         status = {
             "is_connected": self.is_connected,
             "port": self.port,
@@ -518,7 +518,7 @@ class ModernSerialComm:
         return status
 
     async def safe_shutdown(self):
-        """プログラム終了時のクリーンアップ処理 (より安全なシャットダウン)"""
+        """Cleanup at program termination (safer shutdown)."""
         self.logger.log_event("shutdown_start", "Starting safe shutdown procedure")
 
         if self.is_connected:
@@ -532,7 +532,7 @@ class ModernSerialComm:
 
 
 async def example_usage():
-    """使用例"""
+    """Example usage."""
     serial_comm = ModernSerialComm()
 
     def handle_received_data_example(data: bytes, direction: str):
@@ -585,20 +585,20 @@ async def example_usage():
 
 
 if __name__ == "__main__":
-    # Windows の場合は特別なイベントループポリシーを設定
+    # On Windows set a special event loop policy
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
         config_file = "serial_config_windows.ini"
     elif sys.platform.startswith("linux"):
         config_file = "serial_config_linux.ini"
     else:
-        config_file = "serial_config.ini"  # それ以外は汎用設定を使用
+        config_file = "serial_config.ini"  # Use the generic settings for other platforms
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
     async def main():
-        # 指定した設定ファイルを使ってインスタンス化
+        # Instantiate using the chosen configuration file
         serial_comm = ModernSerialComm(config_file)
 
         def handle_received_data(data: bytes, direction: str):
