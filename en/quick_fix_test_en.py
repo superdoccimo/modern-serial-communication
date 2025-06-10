@@ -1,120 +1,120 @@
 #!/usr/bin/env python3
 """
-ModernSerialComm クイック修正テスト
-正しい設定ファイルを明示的に指定
+ModernSerialComm quick fix test.
+Explicitly specify the correct configuration file.
 """
 
 import asyncio
 import sys
 
 async def test_with_correct_config():
-    """正しい設定ファイルでテスト"""
-    print("=== ModernSerialComm修正テスト ===")
+    """Test with the correct configuration file."""
+    print("=== ModernSerialComm Fix Test ===")
     
     try:
         from modern_serial_comm import ModernSerialComm
         
-        # Linux用設定ファイルを明示的に指定
+        # Explicitly specify the configuration file for Linux
         comm = ModernSerialComm("serial_config_linux.ini")
-        print("✅ 明示的にLinux設定ファイル指定")
+        print("✅ Linux configuration file explicitly specified")
         
-        # 設定確認
-        print(f"設定ポート: {comm.port}")
-        print(f"設定ボーレート: {comm.baudrate}")
+        # Verify the settings
+        print(f"Configured port: {comm.port}")
+        print(f"Configured baud rate: {comm.baudrate}")
         
-        # 接続試行
-        print("接続試行中...")
+        # Attempt to connect
+        print("Trying to connect...")
         result = await comm.connect()
         
         if result:
-            print("✅ 接続成功！")
-            await comm.send_string("修正テスト成功\n")
-            print("✅ 送信成功！")
+            print("✅ Connection successful!")
+            await comm.send_string("Fix test successful\n")
+            print("✅ Send successful!")
             await comm.disconnect()
-            print("✅ 切断成功！")
+            print("✅ Disconnected successfully!")
             return True
         else:
-            print("❌ 接続失敗")
+            print("❌ Connection failed")
             return False
             
     except Exception as e:
-        print(f"❌ エラー: {e}")
+        print(f"❌ Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def test_with_manual_config():
-    """手動設定でテスト"""
-    print("\n=== 手動設定テスト ===")
+    """Test with manual configuration."""
+    print("\n=== Manual Configuration Test ===")
     
     try:
         from modern_serial_comm import ModernSerialComm, SerialConfig
-        
-        # 手動で設定作成
+
+        # Create configuration manually
         config = SerialConfig()
         config.config.set('SERIAL', 'port', '/dev/ttyS0')
         config.config.set('SERIAL', 'baudrate', '9600')
         config.config.set('SERIAL', 'timeout', '1.0')
-        print("✅ 手動設定作成")
-        
-        # インスタンス作成
+        print("✅ Manual configuration created")
+
+        # Create instance
         comm = ModernSerialComm()
-        comm.config_manager = config  # 直接設定を注入
-        comm._load_settings_from_config()  # 設定再読み込み
-        
-        print(f"手動設定ポート: {comm.port}")
-        print(f"手動設定ボーレート: {comm.baudrate}")
-        
-        # 接続試行
-        print("手動設定で接続試行中...")
+        comm.config_manager = config  # Inject the configuration directly
+        comm._load_settings_from_config()  # Reload settings
+
+        print(f"Manual config port: {comm.port}")
+        print(f"Manual config baud rate: {comm.baudrate}")
+
+        # Attempt to connect
+        print("Attempting connection with manual settings...")
         result = await comm.connect()
-        
+
         if result:
-            print("✅ 手動設定接続成功！")
-            await comm.send_string("手動設定テスト成功\n")
-            print("✅ 手動設定送信成功！")
+            print("✅ Manual configuration connection successful!")
+            await comm.send_string("Manual configuration test successful\n")
+            print("✅ Manual configuration send successful!")
             await comm.disconnect()
-            print("✅ 手動設定切断成功！")
+            print("✅ Manual configuration disconnected successfully!")
             return True
         else:
-            print("❌ 手動設定接続失敗")
+            print("❌ Manual configuration connection failed")
             return False
             
     except Exception as e:
-        print(f"❌ 手動設定エラー: {e}")
+        print(f"❌ Manual configuration error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def main():
-    """メイン実行"""
-    print("🔧 ModernSerialComm修正テスト開始")
+    """Main execution."""
+    print("🔧 Starting ModernSerialComm fix test")
     print("=" * 50)
     
-    # Windows用のイベントループ設定
+    # Event loop settings for Windows
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     
-    # テスト実行
+    # Run tests
     config_test = await test_with_correct_config()
     manual_test = await test_with_manual_config()
     
     print("\n" + "=" * 50)
-    print("📊 修正テスト結果")
-    print(f"設定ファイル指定: {'✅ 成功' if config_test else '❌ 失敗'}")
-    print(f"手動設定: {'✅ 成功' if manual_test else '❌ 失敗'}")
+    print("📊 Fix Test Results")
+    print(f"Configuration file specified: {'✅ Success' if config_test else '❌ Failure'}")
+    print(f"Manual configuration: {'✅ Success' if manual_test else '❌ Failure'}")
     
     if config_test or manual_test:
-        print("\n🎉 修正成功！ダッシュボードも動作するはずです")
+        print("\n🎉 Fix successful! The dashboard should also work")
     else:
-        print("\n❌ さらなる調査が必要です")
+        print("\n❌ Further investigation is needed")
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\n❌ ユーザーによって中断されました")
+        print("\n❌ Interrupted by user")
     except Exception as e:
-        print(f"\n❌ 予期しないエラー: {e}")
+        print(f"\n❌ Unexpected error: {e}")
         import traceback
         traceback.print_exc()
