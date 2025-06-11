@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-VMware仮想シリアルポート診断・設定ツール
-WindowsホストからLinuxゲスト間のシリアル通信確認
+VMware virtual serial port diagnostic and configuration tool.
+Verifies serial communication between a Windows host and a Linux guest.
 """
 
 import serial
@@ -18,57 +18,57 @@ class VMwareSerialDiagnostic:
         self.system = platform.system()
     
     def check_system_info(self):
-        """システム情報確認"""
-        print("=== システム情報 ===")
+        """Check system information"""
+        print("=== System information ===")
         print(f"OS: {platform.system()} {platform.release()}")
-        print(f"アーキテクチャ: {platform.machine()}")
+        print(f"Architecture: {platform.machine()}")
         
         if self.system == "Linux":
-            # VMware Toolsチェック
+            # Check VMware Tools
             try:
                 result = subprocess.run(['vmware-toolbox-cmd', '--version'], 
                                       capture_output=True, text=True)
                 if result.returncode == 0:
                     print(f"VMware Tools: {result.stdout.strip()}")
                 else:
-                    print("VMware Tools: インストールされていません")
+                    print("VMware Tools: not installed")
             except FileNotFoundError:
-                print("VMware Tools: インストールされていません")
+                print("VMware Tools: not installed")
             
-            # カーネルモジュール確認
+            # Check kernel modules
             try:
                 with open('/proc/modules', 'r') as f:
                     modules = f.read()
                     if 'vmw_' in modules:
-                        print("VMware カーネルモジュール: 検出済み")
+                        print("VMware kernel module: detected")
                     else:
-                        print("VMware カーネルモジュール: 未検出")
+                        print("VMware kernel module: not found")
             except:
                 pass
         
         print()
     
     def list_serial_devices(self):
-        """シリアルデバイス一覧"""
-        print("=== シリアルデバイス一覧 ===")
+        """List serial devices"""
+        print("=== Serial device list ===")
         
         if self.system == "Linux":
-            # /dev/ttyS* の確認
+            # Check /dev/ttyS*
             serial_devices = []
             for i in range(10):
                 device = f"/dev/ttyS{i}"
                 if os.path.exists(device):
                     serial_devices.append(device)
             
-            print("標準シリアルデバイス:")
+            print("Standard serial devices:")
             for device in serial_devices:
                 try:
                     stat = os.stat(device)
-                    print(f"  {device} (権限: {oct(stat.st_mode)[-3:]})")
+                    print(f"  {device} (permissions: {oct(stat.st_mode)[-3:]})")
                 except:
-                    print(f"  {device} (アクセス不可)")
+                    print(f"  {device} (not accessible)")
             
-            # /dev/ttyUSB*, /dev/ttyACM* の確認
+            # Check /dev/ttyUSB* and /dev/ttyACM*
             usb_devices = []
             for prefix in ['/dev/ttyUSB', '/dev/ttyACM']:
                 for i in range(10):
@@ -77,138 +77,138 @@ class VMwareSerialDiagnostic:
                         usb_devices.append(device)
             
             if usb_devices:
-                print("USBシリアルデバイス:")
+                print("USB serial devices:")
                 for device in usb_devices:
                     print(f"  {device}")
             else:
-                print("USBシリアルデバイス: なし")
+                print("USB serial devices: none")
         
-        # pyserialでの検出
-        print("\npyserial検出デバイス:")
+        # Detection via pyserial
+        print("\nDevices detected by pyserial:")
         ports = serial.tools.list_ports.comports()
         if ports:
             for port in ports:
                 print(f"  {port.device}: {port.description}")
         else:
-            print("  検出されませんでした")
+            print("  None detected")
         
         print()
     
     def test_serial_access(self, device_path):
-        """シリアルデバイスアクセステスト"""
-        print(f"=== {device_path} アクセステスト ===")
+        """Serial device access test"""
+        print(f"=== {device_path} access test ===")
         
         try:
-            # 基本的な開閉テスト
+            # Basic open/close test
             with serial.Serial(device_path, 9600, timeout=1) as ser:
-                print(f"✓ デバイス開封成功")
-                print(f"  ポート: {ser.port}")
-                print(f"  ボーレート: {ser.baudrate}")
-                print(f"  タイムアウト: {ser.timeout}")
+                print(f"✓ Successfully opened device")
+                print(f"  Port: {ser.port}")
+                print(f"  Baud rate: {ser.baudrate}")
+                print(f"  Timeout: {ser.timeout}")
                 
-                # 簡単な読み書きテスト
+                # Simple read/write test
                 try:
                     ser.write(b"TEST\r\n")
-                    print("✓ 書き込みテスト成功")
+                    print("✓ Write test successful")
                     
-                    # 少し待って読み取り試行
+                    # Wait a bit then attempt to read
                     time.sleep(0.1)
                     if ser.in_waiting > 0:
                         data = ser.read(ser.in_waiting)
-                        print(f"✓ データ受信: {data}")
+                        print(f"✓ Received data: {data}")
                     else:
-                        print("- データ受信なし（正常）")
+                        print("- No data received (expected)")
                         
                 except Exception as e:
-                    print(f"✗ 読み書きエラー: {e}")
+                    print(f"✗ Read/write error: {e}")
                     
         except serial.SerialException as e:
-            print(f"✗ シリアルポートエラー: {e}")
+            print(f"✗ Serial port error: {e}")
         except PermissionError:
-            print(f"✗ 権限エラー: {device_path}にアクセス権限がありません")
+            print(f"✗ Permission error: no access to {device_path}")
             if self.system == "Linux":
-                print(f"  解決方法: sudo chmod 666 {device_path}")
-                print(f"  または: sudo usermod -a -G dialout $USER")
+                print(f"  Solution: sudo chmod 666 {device_path}")
+                print(f"  or: sudo usermod -a -G dialout $USER")
         except Exception as e:
-            print(f"✗ 予期しないエラー: {e}")
+            print(f"✗ Unexpected error: {e}")
         
         print()
     
     def check_vmware_config(self):
-        """VMware設定確認ガイド"""
-        print("=== VMware仮想シリアルポート設定ガイド ===")
+        """VMware configuration guide"""
+        print("=== VMware virtual serial port setup guide ===")
         
         if self.system == "Windows":
-            print("Windowsホスト側設定:")
-            print("1. VMware Workstation/Player設定")
-            print("   - VM設定 → ハードウェア追加 → シリアルポート")
-            print("   - 接続先: 名前付きパイプを使用")
-            print("   - パイプ名: \\.\pipe\com_1 (例)")
-            print("   - パイプの端: サーバー")
-            print("   - I/O モード: アプリケーション")
+            print("Windows host settings:")
+            print("1. VMware Workstation/Player configuration")
+            print("   - VM settings → Add Hardware → Serial Port")
+            print("   - Use named pipe as connection")
+            print(r"   - Pipe name: \\.\pipe\com_1 (example)")
+            print("   - Pipe endpoint: server")
+            print("   - I/O mode: application")
             print()
-            print("2. Windows仮想COMポート作成")
-            print("   - com0com等で仮想ポートペア作成")
-            print("   - 例: COM1 ↔ COM2")
+            print("2. Create Windows virtual COM port")
+            print("   - Create a virtual port pair with com0com, etc.")
+            print("   - Example: COM1 ↔ COM2")
             print()
             
         elif self.system == "Linux":
-            print("Linuxゲスト側確認:")
-            print("1. VMware設定確認")
-            print("   - シリアルポートが追加されているか")
-            print("   - 通常 /dev/ttyS0 として認識される")
+            print("Linux guest checks:")
+            print("1. Verify VMware settings")
+            print("   - Is a serial port added?")
+            print("   - Typically recognized as /dev/ttyS0")
             print()
-            print("2. 権限設定")
+            print("2. Permission settings")
             print("   sudo chmod 666 /dev/ttyS0")
-            print("   または")
+            print("   or")
             print("   sudo usermod -a -G dialout $USER")
-            print("   (再ログインが必要)")
+            print("   (re-login required)")
             print()
-            print("3. VMware Tools確認")
-            print("   - VMware Toolsがインストール済みか確認")
-            print("   - 一部のドライバーが必要な場合があります")
+            print("3. Check VMware Tools")
+            print("   - Ensure VMware Tools is installed")
+            print("   - Some drivers may be required")
             print()
         
-        print("=== 代替案 ===")
-        print("1. TCP/IPソケット通信")
-        print("   - より確実で設定が簡単")
-        print("   - ネットワーク経由でのデータ転送")
+        print("=== Alternatives ===")
+        print("1. TCP/IP socket communication")
+        print("   - More reliable and easier to configure")
+        print("   - Transfer data over the network")
         print()
-        print("2. 共有フォルダー経由")
-        print("   - ファイルベースでのデータ交換")
-        print("   - リアルタイム性は劣るが確実")
+        print("2. Shared folders")
+        print("   - Exchange data via files")
+        print("   - Less real-time but reliable")
         print()
         print("3. SSH/SCP")
-        print("   - セキュアな通信")
-        print("   - 標準的なLinux機能")
+        print("   - Secure communication")
+        print("   - Standard Linux functionality")
         print()
     
     def network_alternative_test(self):
-        """ネットワーク代替案テスト"""
-        print("=== ネットワーク通信テスト ===")
+        """Network alternative test"""
+        print("=== Network communication test ===")
         
         if self.system == "Linux":
-            print("Linux側でのテストサーバー起動:")
-            print("1. Python3サーバー:")
+            print("Start a test server on Linux:")
+            print("1. Python3 server:")
             print("   python3 -c \"")
             print("import socket, datetime")
             print("s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)")
             print("s.bind(('0.0.0.0', 12345))")
             print("s.listen(1)")
-            print("print('待機中...')")
+            print("print('waiting...')")
             print("c, a = s.accept()")
             print("while True:")
             print("    data = c.recv(1024)")
             print("    if not data: break")
             print("    print(f'{datetime.datetime.now()}: {data.decode()}')\"")
             print()
-            print("2. netcat使用:")
+            print("2. Using netcat:")
             print("   nc -l -p 12345")
             print()
             
         elif self.system == "Windows":
-            print("Windows側からのテスト送信:")
-            print("PowerShellコマンド例:")
+            print("Send test data from Windows:")
+            print("PowerShell example:")
             print('$client = New-Object System.Net.Sockets.TcpClient')
             print('$client.Connect("192.168.xxx.xxx", 12345)')
             print('$stream = $client.GetStream()')
@@ -217,22 +217,22 @@ class VMwareSerialDiagnostic:
             print('$client.Close()')
             print()
         
-        # IP確認
+        # IP check
         try:
             hostname = socket.gethostname()
             ip = socket.gethostbyname(hostname)
-            print(f"現在のIPアドレス: {ip}")
+            print(f"Current IP address: {ip}")
         except:
-            print("IPアドレス取得失敗")
+            print("Failed to obtain IP address")
     
     def run_diagnosis(self):
-        """総合診断実行"""
-        print("VMware仮想シリアルポート診断開始\n")
+        """Run full diagnosis"""
+        print("Starting VMware virtual serial port diagnosis\n")
         
         self.check_system_info()
         self.list_serial_devices()
         
-        # Linuxの場合、主要なデバイスをテスト
+        # On Linux, test main devices
         if self.system == "Linux":
             test_devices = ["/dev/ttyS0", "/dev/ttyS1"]
             for device in test_devices:
@@ -246,16 +246,16 @@ def main():
     diagnostic = VMwareSerialDiagnostic()
     
     while True:
-        print("\n=== VMware シリアルポート診断ツール ===")
-        print("1. 総合診断実行")
-        print("2. システム情報確認")
-        print("3. シリアルデバイス一覧")
-        print("4. デバイステスト（手動指定）")
-        print("5. VMware設定ガイド")
-        print("6. ネットワーク代替案")
-        print("7. 終了")
+        print("\n=== VMware Serial Port Diagnostic Tool ===")
+        print("1. Run full diagnosis")
+        print("2. Show system information")
+        print("3. List serial devices")
+        print("4. Device test (manual)")
+        print("5. VMware configuration guide")
+        print("6. Network alternatives")
+        print("7. Exit")
         
-        choice = input("\n選択してください (1-7): ").strip()
+        choice = input("\nSelect an option (1-7): ").strip()
         
         if choice == "1":
             diagnostic.run_diagnosis()
@@ -267,7 +267,7 @@ def main():
             diagnostic.list_serial_devices()
         
         elif choice == "4":
-            device = input("テストするデバイスパス: ").strip()
+            device = input("Device path to test: ").strip()
             if device:
                 diagnostic.test_serial_access(device)
         
@@ -281,7 +281,7 @@ def main():
             break
         
         else:
-            print("1-7を選択してください")
+            print("Please choose between 1 and 7")
 
 if __name__ == "__main__":
     main()
