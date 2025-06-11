@@ -6,10 +6,10 @@ Setup script for Modern Serial Communication
 from setuptools import setup
 import pathlib
 
-# プロジェクトルートディレクトリ
+# Project root directory
 HERE = pathlib.Path(__file__).parent
 
-# README.mdの内容を読み込み
+# Read the contents of README.md
 README = (HERE / "README.md").read_text(encoding='utf-8')
 
 setup(

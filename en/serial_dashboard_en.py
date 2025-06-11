@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Serial Communication Dashboard
-ポート自動検出・選択機能付き
+with automatic port detection and selection
 """
 
 from textual.app import App, ComposeResult
@@ -22,17 +22,17 @@ from datetime import datetime
 from typing import List, Dict, Any
 from pathlib import Path
 
-# 先ほど作成したライブラリをインポート
+# Import the library created earlier
 try:
     from modern_serial_comm import ModernSerialComm, SerialConfig
 except ImportError:
-    print("Error: modern_serial_comm.py が見つかりません")
-    print("同じディレクトリに配置してください")
+    print("Error: modern_serial_comm.py not found")
+    print("Place it in the same directory")
     sys.exit(1)
 
 
 def detect_available_ports() -> List[tuple]:
-    """利用可能なシリアルポートを検出"""
+    """Detect available serial ports"""
     ports = []
     
     try:
@@ -41,51 +41,51 @@ def detect_available_ports() -> List[tuple]:
             description = f"{port.device} - {port.description}"
             ports.append((port.device, description))
     except ImportError:
-        # pyserial.tools.list_ports が使えない場合の手動検出
+        # Manual detection when pyserial.tools.list_ports is unavailable
         if sys.platform == "win32":
-            # Windows COM ポート
+            # Windows COM ports
             for i in range(1, 21):
                 port_name = f"COM{i}"
                 ports.append((port_name, f"COM Port {i}"))
         else:
-            # Linux/Unix シリアルポート
+            # Linux/Unix serial ports
             patterns = ['/dev/ttyS*', '/dev/ttyUSB*', '/dev/ttyACM*', '/dev/ttyAMA*']
             for pattern in patterns:
                 for device in glob.glob(pattern):
                     if os.path.exists(device):
                         ports.append((device, f"Serial Device {os.path.basename(device)}"))
     
-    # テスト用ループバック追加
-    ports.append(("loop://", "Loop back (テスト用)"))
+    # Add loopback for testing
+    ports.append(("loop://", "Loop back (test)"))
     
     return ports
 
 
 class PortSelector(Container):
-    """ポート選択ウィジェット"""
+    """Widget for selecting a serial port"""
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.available_ports = detect_available_ports()
     
     def compose(self) -> ComposeResult:
-        yield Label("🔌 ポート選択", classes="panel-title")
+        yield Label("🔌 Select Port", classes="panel-title")
         
-        # 利用可能ポートの選択肢作成 (表示名, 値) の形式
+        # Build list of available ports as (label, value)
         port_options = [(f"{port} - {desc}", port) for port, desc in self.available_ports]
         
         if port_options:
-            # デフォルト選択（プラットフォーム別）
+            # Default selection depending on platform
             default_port = "/dev/ttyS0" if sys.platform != "win32" else "COM2"
             
-            # デフォルトが利用可能ポートにあるか確認
+            # Check if the default port exists in the available list
             default_value = None
             for port, desc in self.available_ports:
                 if port == default_port:
-                    default_value = port  # 値部分を設定
+                    default_value = port  # set value part
                     break
             
-            # デフォルトが見つからない場合は最初のポート
+            # Use first port when default is not found
             if not default_value and self.available_ports:
                 default_value = self.available_ports[0][0]
             
@@ -95,25 +95,25 @@ class PortSelector(Container):
                 id="port_select"
             )
         else:
-            yield Label("❌ 利用可能なポートが見つかりません")
+            yield Label("❌ No available ports found")
         
-        yield Label("または手動入力:", classes="small-label")
-        yield Input(placeholder="手動でポート名を入力...", id="manual_port_input")
+        yield Label("Or enter manually:", classes="small-label")
+        yield Input(placeholder="Enter port name manually...", id="manual_port_input")
 
 
 class ConnectionPanel(Container):
-    """接続制御パネル"""
+    """Panel for managing connections"""
     
     def compose(self) -> ComposeResult:
         yield PortSelector(id="port_selector")
         with Horizontal(classes="button-row"):
-            yield Button("接続", id="connect_btn", variant="success")
-            yield Button("切断", id="disconnect_btn", variant="error", disabled=True)
-            yield Button("ポート更新", id="refresh_ports_btn", variant="default")
+            yield Button("Connect", id="connect_btn", variant="success")
+            yield Button("Disconnect", id="disconnect_btn", variant="error", disabled=True)
+            yield Button("Refresh Ports", id="refresh_ports_btn", variant="default")
 
 
 class EnhancedSerialDashboard(App):
-    """拡張版シリアルダッシュボード"""
+    """Enhanced serial dashboard"""
     
     CSS = """
     Screen {
@@ -215,64 +215,64 @@ class EnhancedSerialDashboard(App):
         self.connected = False
     
     def compose(self) -> ComposeResult:
-        """UI構成"""
+        """Build the user interface"""
         yield Header()
         
         with Horizontal():
-            # 左側パネル
+            # Left panel
             with Vertical(id="left_panel"):
                 yield ConnectionPanel(id="connection_panel")
                 yield SendPanel(id="send_panel")
                 yield SerialStats(id="stats_panel")
             
-            # 右側メインエリア
+            # Right main area
             with Vertical(id="main_area"):
-                # データテーブル
+                # Data table
                 yield DataTable(id="data_table")
                 
-                # スパークライン
+                # Sparkline
                 yield Sparkline(
                     id="sparkline",
                     data=[],
                     summary_function=max
                 )
                 
-                # ログビュー
+                # Log view
                 yield RichLog(id="log_view", highlight=True)
         
         yield Footer()
     
     def on_mount(self) -> None:
-        """アプリ起動時の初期化"""
-        # データテーブルの列設定
+        """Initialize when the app starts"""
+        # Set up columns for the data table
         table = self.query_one("#data_table", DataTable)
-        table.add_columns("時刻", "方向", "データ", "長さ")
+        table.add_columns("Time", "Dir", "Data", "Length")
         table.cursor_type = "row"
         
-        # ログ初期化
+        # Initialize log
         log = self.query_one("#log_view", RichLog)
-        log.write("📡 Enhanced Serial Dashboard 起動完了\n")
-        log.write("🔍 利用可能ポートを自動検出しました\n")
-        log.write("💡 'q'で終了、'c'でデータクリア、's'でCSV保存、'r'でポート更新\n")
+        log.write("📡 Enhanced Serial Dashboard started\n")
+        log.write("🔍 Automatically detected available ports\n")
+        log.write("💡 Press 'q' to quit, 'c' to clear data, 's' to save CSV, 'r' to refresh ports\n")
         
-        # 検出されたポート表示
+        # Show detected ports
         ports = detect_available_ports()
-        log.write(f"🔌 検出されたポート: {len(ports)} 個\n")
-        for port, desc in ports[:5]:  # 最初の5つを表示
+        log.write(f"🔌 Detected ports: {len(ports)}\n")
+        for port, desc in ports[:5]:  # show first five
             log.write(f"   • {port} - {desc}\n")
         
-        # スパークライン初期化
+        # Initialize sparkline
         sparkline = self.query_one("#sparkline", Sparkline)
         sparkline.data = []
     
     def get_selected_port(self) -> str:
-        """選択されたポートを取得"""
+        """Return the selected port"""
         try:
-            # Select ウィジェットから選択されたポート
+            # Port selected via the Select widget
             port_select = self.query_one("#port_select", Select)
             selected_port = port_select.value
             
-            # 手動入力があるかチェック
+            # Check manual input
             manual_input = self.query_one("#manual_port_input", Input)
             manual_port = manual_input.value.strip()
             
@@ -284,11 +284,11 @@ class EnhancedSerialDashboard(App):
                 return ""
                 
         except Exception as e:
-            self.log_message(f"❌ ポート取得エラー: {e}")
+            self.log_message(f"❌ Failed to get port: {e}")
             return ""
     
     async def on_button_pressed(self, event: Button.Pressed) -> None:
-        """ボタンクリック処理"""
+        """Handle button click"""
         button_id = event.button.id
         
         if button_id == "connect_btn":
@@ -303,90 +303,90 @@ class EnhancedSerialDashboard(App):
             self.query_one("#send_input", Input).value = ""
     
     async def refresh_ports(self):
-        """ポート一覧を更新"""
-        self.log_message("🔄 ポート一覧を更新中...")
+        """Update the list of serial ports"""
+        self.log_message("🔄 Refreshing port list...")
         
-        # 新しいポート一覧取得
+        # Get the updated port list
         ports = detect_available_ports()
         
-        # Select ウィジェット更新
+        # Update the Select widget
         try:
             port_select = self.query_one("#port_select", Select)
             port_options = [(desc, port) for port, desc in ports]
             
-            # 現在の選択を保持
+            # Keep current selection
             current_value = port_select.value
             
-            # オプション更新（Textualの制限により、新しいSelectを作成する必要がある場合）
-            self.log_message(f"🔌 {len(ports)} 個のポートを検出しました")
+            # Update options (may require creating a new Select due to Textual limitations)
+            self.log_message(f"🔌 Detected {len(ports)} ports")
             
         except Exception as e:
-            self.log_message(f"❌ ポート更新エラー: {e}")
+            self.log_message(f"❌ Error refreshing ports: {e}")
     
     def action_refresh_ports(self) -> None:
-        """ポート更新アクション"""
+        """Action to refresh ports"""
         asyncio.create_task(self.refresh_ports())
     
     async def connect_serial(self):
-        """シリアル接続"""
+        """Establish a serial connection"""
         port = self.get_selected_port()
         
         if not port:
-            self.log_message("❌ ポートを選択してください")
+            self.log_message("❌ Please select a port")
             return
         
         try:
-            # プラットフォーム別設定ファイル選択
+            # Select config file based on platform
             if sys.platform == "win32":
                 config_file = "serial_config_windows.ini"
             else:
                 config_file = "serial_config_linux.ini"
             
-            # シリアル通信オブジェクト作成
+            # Create serial communication object
             self.serial_comm = ModernSerialComm(config_file)
             
-            # 選択されたポートを設定
+            # Set the selected port
             self.serial_comm.config_manager.config.set('SERIAL', 'port', port)
             self.serial_comm._load_settings_from_config()
             
-            # コールバック設定
+            # Set callback
             self.serial_comm.set_receive_callback(self.on_data_received)
             
-            # 接続試行
+            # Attempt connection
             if await self.serial_comm.connect():
                 self.connected = True
-                self.log_message(f"✅ {port} に接続しました")
+                self.log_message(f"✅ Connected to {port}")
                 
-                # ボタン状態更新
+                # Update button states
                 self.query_one("#connect_btn", Button).disabled = True
                 self.query_one("#disconnect_btn", Button).disabled = False
                 
             else:
-                self.log_message(f"❌ {port} への接続に失敗しました")
+                self.log_message(f"❌ Failed to connect to {port}")
                 
         except Exception as e:
-            self.log_message(f"❌ 接続エラー: {str(e)}")
+            self.log_message(f"❌ Connection error: {str(e)}")
     
     async def disconnect_serial(self):
-        """シリアル切断"""
+        """Disconnect the serial connection"""
         if self.serial_comm and self.connected:
             await self.serial_comm.disconnect()
             self.connected = False
-            self.log_message("🔌 接続を切断しました")
+            self.log_message("🔌 Disconnected")
             
-            # ボタン状態更新
+            # Update button states
             self.query_one("#connect_btn", Button).disabled = False
             self.query_one("#disconnect_btn", Button).disabled = True
     
-    # [残りのメソッドは元のSerialDashboardと同じ]
-    # send_data, on_data_received, _handle_received_data, 
+    # The remaining methods are the same as in the original SerialDashboard
+    # send_data, on_data_received, _handle_received_data,
     # add_to_data_table, update_sparkline, log_message,
     # action_clear_data, action_save_data, action_quit
     
     async def send_data(self):
-        """データ送信"""
+        """Send data through the serial connection"""
         if not self.connected or not self.serial_comm:
-            self.log_message("❌ 接続されていません")
+            self.log_message("❌ Not connected")
             return
         
         send_input = self.query_one("#send_input", Input)
@@ -395,34 +395,34 @@ class EnhancedSerialDashboard(App):
         if not data:
             return
         
-        # 改行コード追加
+        # Append newline if missing
         if not data.endswith(('\r\n', '\r', '\n')):
             data += '\r\n'
         
         if await self.serial_comm.send_string(data):
-            self.log_message(f"📤 送信: {data.strip()}")
+            self.log_message(f"📤 Sent: {data.strip()}")
             send_input.value = ""
             
-            # 統計更新
+            # Update statistics
             stats = self.query_one("#stats_panel", SerialStats)
             stats.update_stats("TX", len(data.encode()))
             
-            # データテーブルに追加
+            # Add to data table
             self.add_to_data_table("TX", data.strip(), len(data.encode()))
         else:
-            self.log_message("❌ 送信に失敗しました")
+            self.log_message("❌ Failed to send")
     
     def on_data_received(self, data: bytes, direction: str):
-        """データ受信処理"""
+        """Handle received data"""
         self.call_later(self._handle_received_data, data, direction)
     
     def _handle_received_data(self, data: bytes, direction: str):
-        """データ受信処理（UIスレッド）"""
+        """Process received data on the UI thread"""
         try:
             data_str = data.decode('utf-8', errors='replace').strip()
             
             if direction == "RX":
-                self.log_message(f"📥 受信: {data_str}")
+                self.log_message(f"📥 Received: {data_str}")
                 self.add_to_data_table("RX", data_str, len(data))
                 
                 stats = self.query_one("#stats_panel", SerialStats)
@@ -431,10 +431,10 @@ class EnhancedSerialDashboard(App):
                 self.update_sparkline(len(data))
                 
         except Exception as e:
-            self.log_message(f"❌ データ処理エラー: {str(e)}")
+            self.log_message(f"❌ Data handling error: {str(e)}")
     
     def add_to_data_table(self, direction: str, data: str, length: int):
-        """データテーブルに行追加"""
+        """Add a row to the data table"""
         table = self.query_one("#data_table", DataTable)
         timestamp = datetime.now().strftime("%H:%M:%S.%f")[:-3]
         
@@ -454,7 +454,7 @@ class EnhancedSerialDashboard(App):
             table.remove_row(0)
     
     def update_sparkline(self, data_length: int):
-        """スパークライン更新"""
+        """Update the sparkline widget"""
         sparkline = self.query_one("#sparkline", Sparkline)
         self.sparkline_data.append(data_length)
         
@@ -464,13 +464,13 @@ class EnhancedSerialDashboard(App):
         sparkline.data = self.sparkline_data
     
     def log_message(self, message: str):
-        """ログメッセージ出力"""
+        """Output a log message"""
         log = self.query_one("#log_view", RichLog)
         timestamp = datetime.now().strftime("%H:%M:%S")
         log.write(f"[{timestamp}] {message}\n")
     
     def action_clear_data(self) -> None:
-        """データクリア"""
+        """Clear displayed data"""
         table = self.query_one("#data_table", DataTable)
         table.clear()
         
@@ -479,12 +479,12 @@ class EnhancedSerialDashboard(App):
         sparkline.data = []
         
         self.data_buffer.clear()
-        self.log_message("🗑️ データをクリアしました")
+        self.log_message("🗑️ Data cleared")
     
     def action_save_data(self) -> None:
-        """CSV保存"""
+        """Save data to CSV"""
         if not self.data_buffer:
-            self.log_message("💾 保存するデータがありません")
+            self.log_message("💾 No data to save")
             return
         
         import csv
@@ -503,31 +503,31 @@ class EnhancedSerialDashboard(App):
                         entry['length']
                     ])
             
-            self.log_message(f"💾 {filename} に保存しました ({len(self.data_buffer)} 件)")
+            self.log_message(f"💾 Saved to {filename} ({len(self.data_buffer)} entries)")
         except Exception as e:
-            self.log_message(f"❌ 保存エラー: {str(e)}")
+            self.log_message(f"❌ Save error: {str(e)}")
     
     async def action_quit(self) -> None:
-        """アプリ終了"""
+        """Exit the application"""
         if self.serial_comm and self.connected:
             await self.serial_comm.disconnect()
         self.exit()
 
 
-# SendPanel と SerialStats は元のコードと同じ
+# SendPanel and SerialStats are the same as in the original code
 class SendPanel(Container):
-    """データ送信パネル"""
+    """Panel for sending data"""
     
     def compose(self) -> ComposeResult:
-        yield Label("📤 データ送信", classes="panel-title")
-        yield Input(placeholder="送信データを入力...", id="send_input")
+        yield Label("📤 Send Data", classes="panel-title")
+        yield Input(placeholder="Enter data to send...", id="send_input")
         with Horizontal(classes="button-row"):
-            yield Button("送信", id="send_btn", variant="primary")
-            yield Button("クリア", id="clear_btn", variant="default")
+            yield Button("Send", id="send_btn", variant="primary")
+            yield Button("Clear", id="clear_btn", variant="default")
 
 
 class SerialStats(Static):
-    """統計情報表示ウィジェット"""
+    """Widget to display statistics"""
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -539,7 +539,7 @@ class SerialStats(Static):
         self.update_display()
     
     def update_stats(self, direction: str, byte_count: int):
-        """統計更新"""
+        """Update statistics"""
         if direction == "RX":
             self.rx_count += 1
             self.rx_bytes += byte_count
@@ -550,32 +550,32 @@ class SerialStats(Static):
         self.update_display()
     
     def update_display(self):
-        """表示更新"""
+        """Refresh the displayed stats"""
         elapsed = datetime.now() - self.start_time
         elapsed_str = str(elapsed).split('.')[0]
         
         rate = self.rx_count / max(elapsed.total_seconds(), 1)
         
-        content = f"""📊 統計情報
+        content = f"""📊 Stats
 ━━━━━━━━━━━━━━━━
-📥 受信: {self.rx_count:,} ({self.rx_bytes:,} B)
-📤 送信: {self.tx_count:,} ({self.tx_bytes:,} B)
-⏱️  時間: {elapsed_str}
-📈 速度: {rate:.1f} pkt/s"""
+📥 RX: {self.rx_count:,} ({self.rx_bytes:,} B)
+📤 TX: {self.tx_count:,} ({self.tx_bytes:,} B)
+⏱️  Time: {elapsed_str}
+📈 Rate: {rate:.1f} pkt/s"""
         
         self.update(content)
 
 
 def main():
-    """メイン実行関数"""
+    """Main execution function"""
     import sys
     
-    # Windowsイベントループ設定
+    # Windows event loop policy
     if sys.platform == "win32":
         import asyncio
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     
-    # アプリ実行
+    # Run the application
     app = EnhancedSerialDashboard()
     app.run()
 
