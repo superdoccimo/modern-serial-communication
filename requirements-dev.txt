@@ -1,0 +1,44 @@
+# Modern Serial Communication - Development Dependencies
+# 開発・テスト・品質管理用の依存関係
+
+# Runtime Dependencies (for development environment)
+pyserial>=3.5
+pyserial-asyncio>=0.6
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+
+# Code Quality
+black>=23.0.0
+isort>=5.12.0
+flake8>=5.0.0
+pylint>=2.17.0
+mypy>=1.0.0
+
+# Security
+bandit>=1.7.5
+safety>=2.3.0
+
+# Documentation
+sphinx>=6.0.0
+sphinx-rtd-theme>=1.2.0
+sphinx-autodoc-typehints>=1.20.0
+
+# Development Tools
+pre-commit>=3.0.0
+tox>=4.0.0
+
+# Type Stubs
+types-setuptools
+types-requests
+
+# Optional: Advanced testing
+hypothesis>=6.70.0
+factory-boy>=3.2.0
+
+# Optional: Performance monitoring
+memory-profiler>=0.60.0
+line-profiler>=4.0.0

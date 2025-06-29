@@ -9,8 +9,8 @@ import pathlib
 # プロジェクトルートディレクトリ
 HERE = pathlib.Path(__file__).parent
 
-# README.mdの内容を読み込み
-README = (HERE / "README.md").read_text(encoding='utf-8')
+# README.mdの内容を読み込み（親ディレクトリから）
+README = (HERE.parent / "README.md").read_text(encoding='utf-8')
 
 setup(
     name="modern-serial-communication",
@@ -27,7 +27,6 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "Intended Audience :: Manufacturing",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
