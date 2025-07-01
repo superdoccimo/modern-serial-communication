@@ -15,6 +15,7 @@ try:
     from .localization import LocalizationManager
     from .port_utils import detect_available_ports, get_platform_default_port, format_port_list
 except ImportError:
+<<<<<<< HEAD
     # 単体実行時の絶対インポート - sys.pathを追加
     import os
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -22,6 +23,9 @@ except ImportError:
     if parent_dir not in sys.path:
         sys.path.insert(0, parent_dir)
     
+=======
+    # 単体実行時の絶対インポート
+>>>>>>> bc9517a0b0ca52e220952e0d097c319d1ae1c154
     from common.localization import LocalizationManager
     from common.port_utils import detect_available_ports, get_platform_default_port, format_port_list
 
@@ -402,6 +406,7 @@ if __name__ == "__main__":
     # テスト実行
     if __name__ == "__main__":
         app = TestApp()
+<<<<<<< HEAD
         app.run()
 
 
@@ -409,3 +414,6 @@ if __name__ == "__main__":
     # 単体実行時のテスト
     print("UI Components モジュールのテスト実行")
     print("SerialStats, PortSelector, LogPanel, ConfigPanel が利用可能です。")
+=======
+        app.run()
+>>>>>>> bc9517a0b0ca52e220952e0d097c319d1ae1c154
