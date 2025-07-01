@@ -9,8 +9,8 @@ import pathlib
 # プロジェクトルートディレクトリ
 HERE = pathlib.Path(__file__).parent
 
-# README.mdの内容を読み込み
-README = (HERE / "README.md").read_text(encoding='utf-8')
+# README.mdの内容を読み込み（親ディレクトリから）
+README = (HERE.parent / "README.md").read_text(encoding='utf-8')
 
 setup(
     name="modern-serial-communication",
@@ -27,7 +27,6 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "Intended Audience :: Manufacturing",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
@@ -92,3 +91,15 @@ setup(
     include_package_data=True,
     zip_safe=False,
 )
+
+if __name__ == "__main__":
+    print("Modern Serial Communication - Setup Script")
+    print("=========================================")
+    print("使用可能なコマンド:")
+    print("  python setup.py --version     : バージョン表示")
+    print("  python setup.py --help        : ヘルプ表示")
+    print("  python setup.py --help-commands : コマンド一覧")
+    print("  python setup.py develop       : 開発用インストール")
+    print("  python setup.py sdist         : ソース配布パッケージ作成")
+    print("")
+    print("推奨: pip install -e . を使用してください")

@@ -14,3 +14,35 @@ env/
 ENV/
 .venv/
 .env/
+
+# Development and progress notes (DO NOT COMMIT)
+REFACTORING_PROGRESS.md
+TODO_NEXT_SESSION.md
+COMPLETED_WORK_SUMMARY.md
+*_PROGRESS.md
+*_TODO.md
+*_NOTES.md
+
+# IDE and development files
+.vscode/
+.idea/
+*.pyc
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.tox/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Local configuration (user-specific)
+local_config.ini
+user_settings.json

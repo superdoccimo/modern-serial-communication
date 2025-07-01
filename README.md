@@ -49,24 +49,52 @@ Modern Serial Communication is a lightweight, Python-powered serial port monitor
 
 ### Installation
 
+#### Method 1: Package Installation (Recommended)
 ```bash
 # Clone the repository
 git clone https://github.com/superdoccimo/modern-serial-communication.git
 cd modern-serial-communication
 
-# Install dependencies
+# Install as a package (development mode)
+pip install -e .
+
+# Use command line tools
+serial-dashboard --help
+serial-checker --help
+```
+
+#### Method 2: Direct Execution
+```bash
+# Clone the repository
+git clone https://github.com/superdoccimo/modern-serial-communication.git
+cd modern-serial-communication
+
+# Install dependencies only
 pip install -r requirements.txt
 
-# Run the dashboard (simplified)
-python simple_dashboard.py
+# Run cross-platform dashboard
+python cross-platform/serial_dashboard_refactored.py
+```
+
+#### Method 3: Platform-Specific
+```bash
+# For Windows-specific features
+python windows/dual_pipe_windows.py
+
+# For Linux-specific features  
+python linux/dual_pipe_linux.py
 ```
 
 ### Basic Usage
 
 1. **Launch Dashboard**
    ```bash
-   python simple_dashboard.py  # recommended
-   # python serial_dashboard.py  # full version
+   # If installed as package
+   serial-dashboard
+   
+   # Or direct execution
+   python cross-platform/simple_dashboard_refactored.py  # lightweight
+   python cross-platform/serial_dashboard_refactored.py  # full features
    ```
 
 2. **Connect to Serial Port**
@@ -92,6 +120,47 @@ python simple_dashboard.py
 - pyserial-asyncio
 - textual
 - rich
+
+## 🛠️ Development & Setup.py Usage
+
+### Package Information
+```bash
+# Check version
+python cross-platform/setup.py --version
+
+# View package metadata
+python cross-platform/setup.py --name
+python cross-platform/setup.py --author
+python cross-platform/setup.py --help
+
+# List all available commands
+python cross-platform/setup.py --help-commands
+```
+
+### Development Installation
+```bash
+# Install in development mode (recommended for contributors)
+python cross-platform/setup.py develop
+# or
+pip install -e .
+
+# Create distribution packages
+python cross-platform/setup.py sdist bdist_wheel
+
+# Install from source
+python cross-platform/setup.py install
+```
+
+### Project Structure
+```
+modern-serial-communication/
+├── common/           # Shared modules and utilities
+├── cross-platform/   # Cross-platform applications
+├── windows/          # Windows-specific features
+├── linux/            # Linux-specific features
+├── tests/            # Test suite
+└── requirements.txt  # Dependencies
+```
 
 ## 🔧 Configuration
 
