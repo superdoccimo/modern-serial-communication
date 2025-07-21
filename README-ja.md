@@ -225,6 +225,15 @@ rich>=10.0.0
 - [ ] モバイルアプリ
 - [ ] エンタープライズ機能
 
+## 📖 解説・チュートリアル
+
+### 解説ページ
+- [Modern Serial Communication 詳細解説](https://minokamo.tokyo/2025/06/03/9050/)
+- [実践的な使い方とトラブルシューティング](https://minokamo.tokyo/2025/06/05/9063/)
+
+### Youtube動画
+- [Modern Serial Communication デモンストレーション](https://youtu.be/IJkWY9RMJFo)
+
 ## 🤝 貢献・サポート
 
 ### コントリビューション歓迎
