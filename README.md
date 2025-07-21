@@ -162,6 +162,25 @@ modern-serial-communication/
 └── requirements.txt  # Dependencies
 ```
 
+## 📚 Documentation & Tutorials
+
+### Blog Posts & Guides
+- **English:**
+  - [Python Serial Communication Guide](https://betelgeuse.work/serial-python/)
+  - [Linux Serial Communication Tutorial](https://betelgeuse.work/linux-serial/)
+
+- **Japanese (日本語):**
+  - [シリアル通信の基礎とPython実装](https://minokamo.tokyo/2025/06/03/9050/)
+  - [Linuxでのシリアル通信プログラミング](https://minokamo.tokyo/2025/06/05/9063/)
+
+- **Hindi (हिंदी):**
+  - [Python Serial Communication Tutorial](https://minokamo.in/python-serial/)
+  - [Linux Serial Communication Guide](https://minokamo.in/linux-serial/)
+
+### Video Tutorials
+- **English:** [Modern Serial Communication Tutorial](https://youtu.be/ZyGcM10ewxY)
+- **Japanese:** [モダンシリアル通信チュートリアル](https://youtu.be/IJkWY9RMJFo)
+
 ## 🔧 Configuration
 
 Use the OS-specific `.ini` file for configuration:
