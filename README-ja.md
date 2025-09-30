@@ -248,7 +248,7 @@ rich>=10.0.0
 - 保守サポート
 - トレーニング
 
-**[📧 お問い合わせ](mailto:github@minokamo.xyz)**
+**[📧 お問い合わせ](mailto:summer@minokamo.xyz)**
 
 ## 📄 ライセンス
 
