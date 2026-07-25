@@ -12,11 +12,7 @@ authors = [
 ]
 description = "A modern, open-source alternative to commercial serial monitoring tools"
 readme = "README.md"
-<<<<<<< HEAD
 license = {text = "MIT"}
-=======
-license = "MIT"
->>>>>>> bc9517a0b0ca52e220952e0d097c319d1ae1c154
 requires-python = ">=3.8"
 classifiers = [
     "Development Status :: 4 - Beta",

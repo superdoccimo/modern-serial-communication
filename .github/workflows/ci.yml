@@ -17,6 +17,14 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+
+    - name: Reject unresolved merge conflicts
+      shell: bash
+      run: |
+        if git grep -n -E '^(<<<<<<< |=======|>>>>>>> )'; then
+          echo "Unresolved merge conflict markers found."
+          exit 1
+        fi
     
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
