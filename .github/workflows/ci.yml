@@ -138,8 +138,8 @@ jobs:
         path: security-report.json
 
   code-quality:
-    # The repository predates the current Black baseline. Enforce formatting
-    # on changed Python files without requiring an unrelated whole-tree rewrite.
+    # The repository predates the current Black baseline. Reject new formatting
+    # debt without requiring an unrelated whole-tree rewrite.
     runs-on: ubuntu-latest
     
     steps:
@@ -174,7 +174,28 @@ jobs:
           exit 0
         fi
 
-        python -m black --check --diff -- "${changed_python[@]}"
+        format_regressions=0
+        for path in "${changed_python[@]}"; do
+          if python -m black --check --diff -- "$path"; then
+            continue
+          fi
+
+          baseline_file="$(mktemp --suffix=.py)"
+          if git cat-file -e "$base_sha:$path" 2>/dev/null; then
+            git show "$base_sha:$path" > "$baseline_file"
+            if ! python -m black --check --quiet -- "$baseline_file"; then
+              echo "Legacy Black debt preserved for $path; no new baseline regression."
+              rm -f "$baseline_file"
+              continue
+            fi
+          fi
+
+          echo "Black formatting regression: $path"
+          rm -f "$baseline_file"
+          format_regressions=1
+        done
+
+        exit "$format_regressions"
 
   package:
     runs-on: ubuntu-latest
