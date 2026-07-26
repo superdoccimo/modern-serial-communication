@@ -225,6 +225,19 @@ python -m pytest --cov=modern_serial_comm
 - 行長: 88文字（Black デフォルト）
 - docstring: [Google Style](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings)
 
+既存コードには現在の Black baseline より前のファイルが含まれます。CI は
+branch で追加・変更した Python ファイルを検査し、base revision と同じ
+unformatted 状態を legacy debt として許容します。新規ファイルや、base では
+formatted だったファイルの regression は失敗します。これにより focused fix と
+無関係な whole-tree rewrite は要求しません。変更したファイルは次の形で
+確認してください。
+
+```bash
+python -m black --check --diff -- path/to/changed_file.py
+```
+
+将来 whole-tree baseline を作る場合は、専用の formatting change として分離します。
+
 ### 推奨ツール
 ```bash
 # フォーマッター
