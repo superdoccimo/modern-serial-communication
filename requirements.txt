@@ -20,4 +20,4 @@ rich>=13.0.0
 # websockets>=10.0
 
 # Optional: Windows向けWin32 APIサポート
-pywin32>=306
+pywin32>=306; sys_platform == "win32"
