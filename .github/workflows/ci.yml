@@ -101,7 +101,7 @@ jobs:
     
     - name: Test common modules
       run: |
-        python -c "from common import *; print('✅ Common modules import test passed')"
+        python -c "from common import *; print('Common modules import test passed')"
         python -c "
         from common.localization import LocalizationManager
         from common.config_manager import ConfigManager
@@ -123,7 +123,7 @@ jobs:
         ports = detect_available_ports()
         assert isinstance(ports, list)
         
-        print('✅ All functional tests passed')
+        print('All functional tests passed')
         "
     
     - name: Test dashboard syntax
