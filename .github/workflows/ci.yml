@@ -133,9 +133,12 @@ jobs:
         python -c "import serial_dashboard_refactored; print('Enhanced dashboard syntax OK')" || echo "Enhanced dashboard has issues"
     
     - name: Security scan with bandit
+      # Preserve the JSON findings without relying on Bash-specific fallback
+      # syntax; PowerShell otherwise keeps Bandit's expected finding status.
+      continue-on-error: true
       run: |
         pip install bandit
-        bandit -r . -f json -o security-report.json || echo "Security scan completed"
+        bandit -r . -f json -o security-report.json
     
     - name: Upload security report
       uses: actions/upload-artifact@v4
