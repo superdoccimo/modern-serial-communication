@@ -141,7 +141,7 @@ jobs:
         bandit -r . -f json -o security-report.json
     
     - name: Upload security report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: always()
       with:
         name: security-report-${{ matrix.os }}-${{ matrix.python-version }}
@@ -232,7 +232,7 @@ jobs:
         python -m build
     
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: dist-packages
         path: dist/
