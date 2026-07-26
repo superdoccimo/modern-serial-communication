@@ -129,8 +129,8 @@ jobs:
     - name: Test dashboard syntax
       working-directory: cross-platform
       run: |
-        python -c "import simple_dashboard_refactored; print('✅ Simple dashboard syntax OK')"
-        python -c "import serial_dashboard_refactored; print('✅ Enhanced dashboard syntax OK')" || echo "Enhanced dashboard has issues"
+        python -c "import simple_dashboard_refactored; print('Simple dashboard syntax OK')"
+        python -c "import serial_dashboard_refactored; print('Enhanced dashboard syntax OK')" || echo "Enhanced dashboard has issues"
     
     - name: Security scan with bandit
       run: |
