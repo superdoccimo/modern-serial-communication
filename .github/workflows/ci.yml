@@ -92,9 +92,12 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     
     - name: Type check with mypy
+      # Keep the legacy debt visible without relying on shell-specific exit
+      # handling; PowerShell preserves the native command's failing status.
+      continue-on-error: true
       run: |
         pip install mypy
-        mypy common/ --ignore-missing-imports || echo "Type checking completed with warnings"
+        mypy common/ --ignore-missing-imports
     
     - name: Test common modules
       run: |
