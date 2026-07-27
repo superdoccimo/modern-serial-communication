@@ -9,7 +9,11 @@ __author__ = "Modern Serial Communication Team"
 # 共通モジュールのインポート
 from .port_utils import detect_available_ports, get_platform_default_port, validate_port_access
 from .config_manager import ConfigManager
-from .localization import LocalizedStrings, get_localized_strings
+from .localization import (
+    LocalizationManager,
+    LocalizedStrings,
+    get_localized_strings,
+)
 from .ui_components import SerialStats, SendPanel, ConnectionPanel
 
 __all__ = [
@@ -17,6 +21,7 @@ __all__ = [
     'get_platform_default_port', 
     'validate_port_access',
     'ConfigManager',
+    'LocalizationManager',
     'LocalizedStrings',
     'get_localized_strings',
     'SerialStats',
